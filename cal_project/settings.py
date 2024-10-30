@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     # my apps
     "accounts",
     "pages",
+    "calendar_app",
 ]
 
 MIDDLEWARE = [
