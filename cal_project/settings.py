@@ -27,9 +27,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = env.str("DJANGO_SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env.bool("DEBUG", default=False)
+DEBUG = env.bool("DEBUG", default=True)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -71,7 +71,7 @@ ROOT_URLCONF = "cal_project.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [BASE_DIR / "templates"],
+        "DIRS": [BASE_DIR / "templates", BASE_DIR / "templates/errors"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -162,6 +162,15 @@ ACCOUNT_UNIQUE_EMAIL = True
 LOGIN_REDIRECT_URL = "home"
 LOGOUT_REDIRECT_URL = "home"
 ACCOUNT_LOGOUT_ON_GET = True
+SOCIALACCOUNT_AUTO_SIGNUP = True
+SOCIALACCOUNT_LOGIN_ON_GET = True
+
+SOCIALACCOUNT_PROVIDERS = {
+    "google": {
+        "SCOPE": ["email"],
+        "FIELDS": ["email"],  # Specify only the fields you need
+    }
+}
 
 # crispy forms
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
