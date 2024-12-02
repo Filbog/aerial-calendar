@@ -1,15 +1,8 @@
-{% extends "_base.html" %}
 
-{% block title %}Calendar{% endblock title %}
-
-{% block content %}
-
-<h1>Calendar Page</h1>
+<h1>LIST LAYOUT</h1>
 
 {% for event in events %}
     <h2> <a href="{{ event.get_absolute_url }}">{{ event.name }}</a></h2>
     <h3>{{ event.start_date }}</h3> - <h3>{{ event.end_date }}</h3>
     <hr>
 {% endfor %}
-
-{% endblock content %}

@@ -3,6 +3,6 @@ from django.urls import path
 from .views import EventListView, EventDetailView
 
 urlpatterns = [
-    path("", EventListView.as_view(), name="event_list"),
+    path("", EventListView.as_view(), name="events"),
     path("<uuid:pk>/", EventDetailView.as_view(), name="event_detail"),
 ]

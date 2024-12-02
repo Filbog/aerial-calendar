@@ -1,0 +1,20 @@
+{% extends "_base.html" %}
+
+{% block title %}Calendar{% endblock title %}
+
+{% block content %}
+
+<h1>Calendar Page</h1>
+
+<div id="events-container">
+    {% include 'calendar/calendar_layout.html' %}
+</div>
+
+<button class="btn" hx-get="{% url 'events' %}?layout=list" hx-target="#events-container" hx-swap="innerHTML" >
+    List layout
+</button>
+<button class="btn" hx-get="{% url 'events' %}?layout=calendar" hx-target="#events-container" hx-swap="innerHTML}" >
+    Calendar layout
+</button>
+
+{% endblock content %}

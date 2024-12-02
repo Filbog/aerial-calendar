@@ -1,4 +1,5 @@
 {% load static %}
+{% load django_htmx %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -9,6 +10,9 @@
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous" defer></script>
+    <!-- HTMX and django-htmx -->
+    <script src="https://unpkg.com/htmx.org@2.0.3" integrity="sha384-0895/pl2MU10Hqc6jd4RvrthNlDiE9U1tWmX7WRESftEDRosgxNsQG/Ze9YMRzHq" crossorigin="anonymous"></script>
+    {% django_htmx_script %}
     <!-- Custom assets -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <script src="{% static 'js/index.js' %}" defer></script>
@@ -22,7 +26,7 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-link active" href="{% url 'event_list' %}">Kalendarz</a>
+                <a class="nav-link active" href="{% url 'events' %}">Kalendarz</a>
                 {% if user.is_authenticated %}
                 <a class="nav-link" href="{% url 'account_logout' %}">Wyloguj</a>
                 {% else %}

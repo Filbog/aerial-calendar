@@ -1,0 +1,10 @@
+
+<h1>CALENDAR LAYOUT</h1>
+
+<div class="calendar">
+    {% for event in events %}
+        <div class="calendar-event">
+            <strong>{{ event.name }}</strong>: {{ event.start_date }}
+        </div>
+    {% endfor %}
+</div>
