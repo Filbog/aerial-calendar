@@ -1,4 +1,5 @@
 from django.db import models
+import json
 from django.contrib.auth import get_user_model
 from django.urls import reverse
 import uuid
@@ -44,3 +45,12 @@ class Event(models.Model):
 
     def get_absolute_url(self):
         return reverse("event_detail", args=[str(self.id)])
+
+
+class YearlyCalendar(models.Model):
+    year = models.PositiveIntegerField(unique=True)
+    data = models.JSONField()  # Stores the calendar as a JSON object
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Year {self.year} Calendar"

@@ -1,0 +1,5 @@
+Calendar:
+ - have a hard-coded "year" object as json/py file? Or take it from in-built python modules or sth?
+ - have a CSS calendar as a grid, google calendar-style
+ - populate the calendar with the dates from the year
+ - if there are events, and their dates match those in the calendar - those days, let's say, are marked green
