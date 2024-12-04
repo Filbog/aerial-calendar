@@ -11,7 +11,7 @@ body {
 
 .calendar-grid{
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: repeat(7, minmax(0, 1fr));
     padding: 10px;
     gap: 1px;
 
@@ -22,19 +22,34 @@ body {
 }
 
 .day{
-    height: 5rem;
+    height: 6rem;
     background: magenta;
     /* border: 1px solid grey; */
     border-radius: 1px;
     display: flex;
-    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    overflow: hidden;
 
 }
 
 .day.empty{
     background-color: lightgrey;
 }
+.day ul{
+    margin: 0;
+    padding: 2px;
+}
+.event-item{
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 100%;
+    margin: 0;
+}
 
+.day-number{
+    margin: 0 auto;
+}
 
 
 /* LIST LAYOUT */

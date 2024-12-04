@@ -92,9 +92,9 @@ function populateCalendar(yearData) {
         if (day === "") {
           dayElement.classList.add("empty");
         } else {
-          dayElement.textContent = day; // Display the day
+          dayElement.innerHTML = `<p class='day-number'>${day}</p>`; // Display the day
 
-          // Convert the
+          // Convert the day number to a date string in the format YYYY-MM-DD
           const dateString = `${year}-${String(monthIndex + 1).padStart(
             2,
             "0"
@@ -109,6 +109,7 @@ function populateCalendar(yearData) {
             const eventList = document.createElement("ul");
             eventsOnDay.forEach((event) => {
               const eventItem = document.createElement("li");
+              eventItem.classList.add("event-item");
               eventItem.textContent = event.name;
               eventList.appendChild(eventItem);
             });
