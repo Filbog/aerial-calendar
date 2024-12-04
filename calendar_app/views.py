@@ -2,6 +2,7 @@ from django.views.generic import ListView, DetailView
 from django.http import HttpResponse
 from django.template.loader import render_to_string
 from django.shortcuts import render
+import json
 
 from .models import Event
 
@@ -9,25 +10,41 @@ from .models import Event
 # weird implementation of base template, and then partials depending on button click
 class EventListView(ListView):
     model = Event
-    template_name = "calendar/events.html"
+    template_name = "calendar/list_layout.html"
     context_object_name = "events"
 
-    def render_to_response(self, context, **response_kwargs):
-        # Check if the request is made via HTMX
-        layout = self.request.GET.get("layout")
-        if layout == "list":
-            template = "calendar/list_layout.html"
-        elif layout == "calendar":
-            template = "calendar/calendar_layout.html"
-        else:
-            template = self.template_name
+    # def render_to_response(self, context, **response_kwargs):
+    #     # Check if the request is made via HTMX
+    #     layout = self.request.GET.get("layout")
+    #     if layout == "list":
+    #         template = "calendar/list_layout.html"
+    #     elif layout == "calendar":
+    #         template = "calendar/calendar_layout.html"
+    #     else:
+    #         template = self.template_name
 
-        return HttpResponse(render_to_string(template, context))
+    #     return HttpResponse(render_to_string(template, context))
 
 
 def calendar_view(request):
     events = Event.objects.all()
-    return render(request, "calendar/calendar_layout.html", {"events": events})
+    events_serialized = json.dumps(
+        [
+            {
+                "id": str(event.id),
+                "name": event.name,
+                "start_date": event.start_date.isoformat(),
+                "end_date": event.end_date.isoformat(),
+                "is_virtual": event.is_virtual,
+                "location": event.location if event.location else "",
+                "type": event.type,
+            }
+            for event in events
+        ]
+    )
+    return render(
+        request, "calendar/calendar_layout.html", {"events": events_serialized}
+    )
 
 
 class EventDetailView(DetailView):

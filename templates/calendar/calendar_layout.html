@@ -10,6 +10,10 @@
     <h3>2025</h3>
 
 </div>
+<p>{{events}}</p>
+<script>
+    const eventsData = {{ events|safe }}
+</script>
 <script src="{% static 'js/generate_calendar.js' %}" defer></script>
 
 

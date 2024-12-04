@@ -13,6 +13,8 @@ const monthNames = [
   "December",
 ];
 
+const year2025 = 2025;
+
 function generateCalendar(year) {
   const yearGrid = [];
 
@@ -47,17 +49,22 @@ function generateCalendar(year) {
 
     yearGrid.push(weeks);
   }
-  console.log(yearGrid.length);
-  console.log(yearGrid[11]);
-  return yearGrid;
+  // console.log(yearGrid.length);
+  // console.log(yearGrid[11]);
+  return { year: year, grid: yearGrid };
 }
 
 function populateCalendar(yearData) {
   const calendarContainer = document.getElementById("calendar-container");
+  // console.log(yearData);
+  yearGrid = yearData.grid;
+  year = yearData.year;
+  // console.log("year grid: ", yearGrid);
+  // console.log("year: ", year);
 
-  // Loop through each month in yearData
-  for (let monthIndex = 0; monthIndex < yearData.length; monthIndex++) {
-    const monthData = yearData[monthIndex]; // Get the weeks for the current month
+  // Loop through each month in yearGrid
+  for (let monthIndex = 0; monthIndex < yearGrid.length; monthIndex++) {
+    const monthData = yearGrid[monthIndex]; // Get the weeks for the current month
 
     const monthElement = document.createElement("div");
     monthElement.classList.add("month");
@@ -86,6 +93,27 @@ function populateCalendar(yearData) {
           dayElement.classList.add("empty");
         } else {
           dayElement.textContent = day; // Display the day
+
+          // Convert the
+          const dateString = `${year}-${String(monthIndex + 1).padStart(
+            2,
+            "0"
+          )}-${String(day).padStart(2, "0")}`;
+          // console.log(dateString);
+          const eventsOnDay = eventsData.filter(
+            (event) =>
+              event.start_date <= dateString && event.end_date >= dateString
+          );
+          if (eventsOnDay.length > 0) {
+            dayElement.classList.add("has-events");
+            const eventList = document.createElement("ul");
+            eventsOnDay.forEach((event) => {
+              const eventItem = document.createElement("li");
+              eventItem.textContent = event.name;
+              eventList.appendChild(eventItem);
+            });
+            dayElement.appendChild(eventList);
+          }
         }
         monthElement.appendChild(dayElement);
       });
@@ -101,5 +129,6 @@ function populateCalendar(yearData) {
 //   [26, 27, 28, 29, 30, 31, ""],
 // ];
 
-year2025 = generateCalendar(2025);
-populateCalendar(year2025);
+year2025Grid = generateCalendar(year2025);
+populateCalendar(year2025Grid);
+console.log(eventsData);

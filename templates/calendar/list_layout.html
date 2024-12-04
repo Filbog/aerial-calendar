@@ -1,8 +1,12 @@
-
+{% extends '_base.html' %}
 <h1>LIST LAYOUT</h1>
 
+{% block content %}
 {% for event in events %}
     <h2> <a href="{{ event.get_absolute_url }}">{{ event.name }}</a></h2>
-    <h3>{{ event.start_date }}</h3> - <h3>{{ event.end_date }}</h3>
+    <div class="list_dates">
+        <h3>{{ event.start_date }} - {{ event.end_date }}</h3>
+    </div>
     <hr>
 {% endfor %}
+{% endblock content %}

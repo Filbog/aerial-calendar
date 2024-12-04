@@ -7,12 +7,13 @@ body {
     padding-top: 4.5rem;
 }
 
+/* CALENDAR */
+
 .calendar-grid{
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     padding: 10px;
     gap: 1px;
-
 
 }
 .day-name{
@@ -21,9 +22,10 @@ body {
 }
 
 .day{
-    height: 4rem;
+    height: 5rem;
     background: magenta;
     /* border: 1px solid grey; */
+    border-radius: 1px;
     display: flex;
     justify-content: center;
 
@@ -31,4 +33,11 @@ body {
 
 .day.empty{
     background-color: lightgrey;
+}
+
+
+
+/* LIST LAYOUT */
+.list_dates{
+    display: flex;
 }
