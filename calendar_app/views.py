@@ -1,8 +1,17 @@
-from django.views.generic import ListView, DetailView
+from django.views.generic import (
+    ListView,
+    DetailView,
+    CreateView,
+    UpdateView,
+    DeleteView,
+)
+from .forms import EventForm
 from django.http import HttpResponse
 from django.template.loader import render_to_string
 from django.shortcuts import render
+from django.urls import reverse_lazy
 import json
+from datetime import datetime
 
 from .models import Event
 
@@ -27,6 +36,8 @@ class EventListView(ListView):
 
 
 def calendar_view(request):
+    years = [datetime.now().year + i for i in range(2)]
+    print(years)
     events = Event.objects.all()
     events_serialized = json.dumps(
         [
@@ -43,7 +54,9 @@ def calendar_view(request):
         ]
     )
     return render(
-        request, "calendar/calendar_layout.html", {"events": events_serialized}
+        request,
+        "calendar/calendar_layout.html",
+        {"events": events_serialized, "years": years},
     )
 
 
@@ -51,3 +64,14 @@ class EventDetailView(DetailView):
     model = Event
     template_name = "calendar/event_detail.html"
     context_object_name = "event"
+
+
+class EventCreateView(CreateView):
+    model = Event
+    form_class = EventForm
+    template_name = "calendar/event_create.html"
+    success_url = reverse_lazy("events")
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)

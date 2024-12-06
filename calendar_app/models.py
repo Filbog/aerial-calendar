@@ -38,7 +38,11 @@ class Event(models.Model):
     is_aerial = models.BooleanField(default=True)
 
     main_link = models.URLField()
-    additional_links = models.JSONField(default=list, blank=True)
+    additional_url_1 = models.URLField(blank=True, null=True)
+    additional_label_1 = models.CharField(max_length=100, blank=True, null=True)
+
+    additional_url_2 = models.URLField(blank=True, null=True)
+    additional_label_2 = models.CharField(max_length=100, blank=True, null=True)
 
     def __str__(self):
         return self.name

@@ -1,3 +1,8 @@
+
+*{
+    forced-color-adjust: none !important;
+}
+
 h1 {
     color: red;
     display: block;
@@ -7,13 +12,18 @@ body {
     padding-top: 4.5rem;
 }
 
+.nav-link {
+    color: white;
+    background: rgb(33, 37, 41);
+}
+
 /* CALENDAR */
 
 .calendar-grid{
     display: grid;
     grid-template-columns: repeat(7, minmax(0, 1fr));
-    padding: 10px;
     gap: 1px;
+    margin-bottom: 2rem;
 
 }
 .day-name{
@@ -45,14 +55,75 @@ body {
     overflow: hidden;
     max-width: 100%;
     margin: 0;
+    margin-bottom: 2px;
+    padding: 0 3px;
+    border-radius: 3px;
+    font-size: small;
 }
 
 .day-number{
     margin: 0 auto;
 }
 
+/* event types */
+.day .show{
+    background-color: lightgreen;
+}
+
+.day .festival{
+    background-color: lightblue;
+}
+
+.day .competiton{
+    background-color: lightcoral;
+}
+
+.day .workshop{
+    background-color: lightyellow;
+}
+.day .conference{
+    background-color: lightseagreen;
+}
+.day .convention{
+    background-color: lightsalmon;
+}
+.day .other{
+    background-color: lightpink;
+}
+
+.year-wrapper h2 {
+    position: sticky;
+    top: 50px; /* Adjust to the height of your navbar if needed */
+    z-index: 10; /* Ensure it appears above other content */
+    background-color: white; /* Optional: Match the page background for better visibility */
+    padding: 5px 10px; /* Optional: Add padding for better appearance */
+    border-bottom: 1px solid #ccc; /* Optional: Add a subtle underline */
+  }
+
+  .sticky-dropdown {
+    position: sticky;
+    top: 50px; /* Position at the top of the viewport */
+    left: 100%;
+    max-width: 200px;
+    z-index: 15; /* Ensure it stays above other content */
+    background: none; /* Add a background to avoid text overlap */
+    padding: 10px;
+  }
+
 
 /* LIST LAYOUT */
 .list_dates{
     display: flex;
+}
+
+
+@media (min-width: 768px) {
+
+    .day{
+        height: 7rem;
+    }
+
+    .event-item{
+        font-size: medium;
+    }
 }

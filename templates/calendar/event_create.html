@@ -1,0 +1,55 @@
+{% extends '_base.html' %}
+{% load crispy_forms_tags %}
+{%load django_bootstrap5 %}
+
+
+{% block content %}
+<h1>Nowe wydarzenie</h1>
+<form action="" method="post">
+    {% csrf_token %}
+    {% bootstrap_field form.name %}
+    {% bootstrap_field form.start_date %}
+    {% bootstrap_field form.end_date %}
+    {% bootstrap_field form.location %}
+    {% bootstrap_field form.is_virtual %}
+    {% bootstrap_field form.type %}
+    {% bootstrap_field form.is_aerial %}
+    {% bootstrap_field form.main_link %}
+
+
+    <button class="btn btn-success d-block mb-3"data-bs-toggle="collapse" data-bs-target="#additional-urls-collapse" type="button">Dodatkowe linki</button>
+    <div class="collapse" id="additional-urls-collapse">
+        {% bootstrap_field form.additional_url_1 %}
+        {% bootstrap_field form.additional_label_1 %}
+        {% bootstrap_field form.additional_url_2 %}
+        {% bootstrap_field form.additional_label_2 %}
+    </div>
+
+
+    <button class="btn btn-success" type="submit">Dodaj</button>
+</form>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const isVirtualCheckbox = document.querySelector("#id_is_virtual");
+        const locationInput = document.querySelector("#id_location");
+
+        function toggleLocationField() {
+            if (isVirtualCheckbox.checked) {
+                locationInput.value = "online"; // Set the value to "online"
+                locationInput.disabled = true;  // Disable the field
+            } else {
+                locationInput.value = "";       // Clear the value
+                locationInput.disabled = false; // Enable the field
+            }
+        }
+
+        // Add event listener for the checkbox
+        isVirtualCheckbox.addEventListener("change", toggleLocationField);
+
+        // Initialize the field state on page load
+        toggleLocationField();
+    });
+</script>
+{% endblock content %}

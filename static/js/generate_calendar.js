@@ -14,6 +14,8 @@ const monthNames = [
 ];
 
 const year2025 = 2025;
+const year2026 = 2026;
+console.log(yearsData);
 
 function generateCalendar(year) {
   const yearGrid = [];
@@ -56,24 +58,29 @@ function generateCalendar(year) {
 
 function populateCalendar(yearData) {
   const calendarContainer = document.getElementById("calendar-container");
-  // console.log(yearData);
   yearGrid = yearData.grid;
   year = yearData.year;
-  // console.log("year grid: ", yearGrid);
-  // console.log("year: ", year);
+
+  const yearWrapper = document.createElement("div");
+  yearWrapper.classList.add("year-wrapper");
+  yearWrapper.id = `year-${year}`;
+
+  const yearHeading = document.createElement("h2");
+  yearHeading.textContent = year;
+  yearWrapper.appendChild(yearHeading);
+  calendarContainer.appendChild(yearWrapper);
 
   // Loop through each month in yearGrid
   for (let monthIndex = 0; monthIndex < yearGrid.length; monthIndex++) {
     const monthData = yearGrid[monthIndex]; // Get the weeks for the current month
 
     const monthElement = document.createElement("div");
-    monthElement.classList.add("month");
-    monthElement.classList.add("calendar-grid");
-    monthElement.id = `month-${monthIndex}`;
+    monthElement.classList.add("month", "calendar-grid");
+    monthElement.id = `month-${monthIndex}-${year}`;
     const monthHeading = document.createElement("h1");
     monthHeading.textContent = monthNames[monthIndex];
-    calendarContainer.appendChild(monthHeading);
-    calendarContainer.appendChild(monthElement);
+    yearWrapper.appendChild(monthHeading);
+    yearWrapper.appendChild(monthElement);
 
     // Add day names
     const dayNames = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
@@ -104,12 +111,14 @@ function populateCalendar(yearData) {
             (event) =>
               event.start_date <= dateString && event.end_date >= dateString
           );
+          // console.log(eventsOnDay);
           if (eventsOnDay.length > 0) {
             dayElement.classList.add("has-events");
             const eventList = document.createElement("ul");
             eventsOnDay.forEach((event) => {
               const eventItem = document.createElement("li");
               eventItem.classList.add("event-item");
+              eventItem.classList.add(`${event.type}`);
               eventItem.textContent = event.name;
               eventList.appendChild(eventItem);
             });
@@ -130,6 +139,32 @@ function populateCalendar(yearData) {
 //   [26, 27, 28, 29, 30, 31, ""],
 // ];
 
-year2025Grid = generateCalendar(year2025);
-populateCalendar(year2025Grid);
-console.log(eventsData);
+yearsData.forEach((year) => {
+  const yearGrid = generateCalendar(year);
+  populateCalendar(yearGrid);
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const yearsDropdown = document.getElementById("year-dropdown");
+
+  // Populate the dropdown
+  yearsData.forEach((year) => {
+    const option = document.createElement("option");
+    option.value = `year-${year}`;
+    option.textContent = year;
+    yearsDropdown.appendChild(option);
+  });
+
+  // Scroll to the selected year
+  yearsDropdown.addEventListener("change", (event) => {
+    const selectedYear = event.target.value;
+    const yearHeading = document.getElementById(selectedYear);
+
+    if (yearHeading) {
+      yearHeading.scrollIntoView({
+        behavior: "smooth", // Smooth scrolling animation
+        block: "start", // Align to the top of the viewport
+      });
+    }
+  });
+});

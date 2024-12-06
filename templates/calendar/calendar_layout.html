@@ -4,14 +4,17 @@
 
 {% block content %}
 
-<h1>CALENDAR LAYOUT</h1>
-
+<h1 class="d-flex justify-content-center">CALENDAR LAYOUT</h1>
+<div id="year-selector" class="sticky-dropdown">
+    <label for="year-dropdown">Jump to Year:</label>
+    <select id="year-dropdown"></select>
+  </div>
 <div id="calendar-container">
-    <h3>2025</h3>
 
 </div>
 <p>{{events}}</p>
 <script>
+    const yearsData = {{ years|safe }}
     const eventsData = {{ events|safe }}
 </script>
 <script src="{% static 'js/generate_calendar.js' %}" defer></script>
