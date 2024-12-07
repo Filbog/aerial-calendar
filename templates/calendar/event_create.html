@@ -11,7 +11,7 @@
     {% bootstrap_field form.start_date %}
     {% bootstrap_field form.end_date %}
     {% bootstrap_field form.location %}
-    {% bootstrap_field form.is_virtual %}
+    <label><input type="checkbox" name="" id="id_is_virtual">Wydarzenie online</label>
     {% bootstrap_field form.type %}
     {% bootstrap_field form.is_aerial %}
     {% bootstrap_field form.main_link %}
@@ -37,11 +37,13 @@
 
         function toggleLocationField() {
             if (isVirtualCheckbox.checked) {
+                locationInput.readOnly = true;  // Disable the field
                 locationInput.value = "online"; // Set the value to "online"
-                locationInput.disabled = true;  // Disable the field
+                console.log(locationInput.value);
             } else {
                 locationInput.value = "";       // Clear the value
-                locationInput.disabled = false; // Enable the field
+                locationInput.readOnly = false; // Enable the field
+                console.log(locationInput.value);
             }
         }
 

@@ -19,8 +19,7 @@ class Event(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="events")
     organizer_alias = models.CharField(max_length=100)
 
-    is_virtual = models.BooleanField(default=False)
-    location = models.CharField(max_length=100, blank=True, null=True)
+    location = models.CharField(max_length=100)
 
     created_at = models.DateTimeField(auto_now_add=True)
 

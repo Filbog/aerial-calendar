@@ -13,9 +13,8 @@ const monthNames = [
   "December",
 ];
 
-const year2025 = 2025;
-const year2026 = 2026;
 console.log(yearsData);
+console.log(eventTypes);
 
 function generateCalendar(year) {
   const yearGrid = [];
@@ -65,7 +64,7 @@ function populateCalendar(yearData) {
   yearWrapper.classList.add("year-wrapper");
   yearWrapper.id = `year-${year}`;
 
-  const yearHeading = document.createElement("h2");
+  const yearHeading = document.createElement("h1");
   yearHeading.textContent = year;
   yearWrapper.appendChild(yearHeading);
   calendarContainer.appendChild(yearWrapper);
@@ -77,7 +76,7 @@ function populateCalendar(yearData) {
     const monthElement = document.createElement("div");
     monthElement.classList.add("month", "calendar-grid");
     monthElement.id = `month-${monthIndex}-${year}`;
-    const monthHeading = document.createElement("h1");
+    const monthHeading = document.createElement("h2");
     monthHeading.textContent = monthNames[monthIndex];
     yearWrapper.appendChild(monthHeading);
     yearWrapper.appendChild(monthElement);
@@ -155,16 +154,29 @@ document.addEventListener("DOMContentLoaded", () => {
     yearsDropdown.appendChild(option);
   });
 
-  // Scroll to the selected year
+  // Scroll to the selected year dropdown
   yearsDropdown.addEventListener("change", (event) => {
     const selectedYear = event.target.value;
-    const yearHeading = document.getElementById(selectedYear);
+    const yearContainer = document.getElementById(selectedYear);
 
-    if (yearHeading) {
-      yearHeading.scrollIntoView({
+    if (yearContainer) {
+      yearContainer.scrollIntoView({
         behavior: "smooth", // Smooth scrolling animation
         block: "start", // Align to the top of the viewport
       });
     }
   });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  const today = new Date();
+  const currentMonth = today.getMonth() + 1; // JavaScript months are 0-based
+  const monthElement = document.querySelector(
+    `#month-${today.getMonth()}-${today.getFullYear()}`
+  );
+
+  if (monthElement) {
+    // Optionally, scroll the current month into view
+    monthElement.scrollIntoView({ behavior: "smooth", block: "center" });
+  }
 });

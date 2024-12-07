@@ -4,7 +4,7 @@
 }
 
 h1 {
-    color: red;
+    /* color: red; */
     display: block;
 }
 
@@ -91,24 +91,47 @@ body {
     background-color: lightpink;
 }
 
-.year-wrapper h2 {
+.year-wrapper h1 {
     position: sticky;
-    top: 50px; /* Adjust to the height of your navbar if needed */
+    top: 53px; /* Adjust to the height of your navbar if needed */
     z-index: 10; /* Ensure it appears above other content */
     background-color: white; /* Optional: Match the page background for better visibility */
-    padding: 5px 10px; /* Optional: Add padding for better appearance */
+    padding: 6px 0;
+    /* padding: 10px 10px;*/
+    /* padding-top: 12px; */
+    margin: 0;
     border-bottom: 1px solid #ccc; /* Optional: Add a subtle underline */
   }
 
-  .sticky-dropdown {
-    position: sticky;
-    top: 50px; /* Position at the top of the viewport */
-    left: 100%;
-    max-width: 200px;
-    z-index: 15; /* Ensure it stays above other content */
-    background: none; /* Add a background to avoid text overlap */
-    padding: 10px;
-  }
+.calendar-navigation {
+position: sticky;
+top: 60px; /* Position at the top of the viewport */
+left: 100%;
+max-width: 66%;
+z-index: 15; /* Ensure it stays above other content */
+/* padding: 5px; */
+/* padding-top: 0; */
+/* margin-top: 2rem; */
+display: flex;
+justify-content: flex-end;
+/* margin-top: 2rem; */
+}
+#collapseFilters{
+    position: absolute;
+    top: 60px;
+}
+.form-select{
+    width: 130px;
+}
+
+.month {
+    scroll-margin-top: 2rem;
+}
+
+.year-wrapper{
+    scroll-margin-top: 3rem;
+}
+
 
 
 /* LIST LAYOUT */

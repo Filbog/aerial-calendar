@@ -38,6 +38,7 @@ class EventListView(ListView):
 def calendar_view(request):
     years = [datetime.now().year + i for i in range(2)]
     print(years)
+    event_types = Event.TYPE_CHOICES
     events = Event.objects.all()
     events_serialized = json.dumps(
         [
@@ -46,8 +47,7 @@ def calendar_view(request):
                 "name": event.name,
                 "start_date": event.start_date.isoformat(),
                 "end_date": event.end_date.isoformat(),
-                "is_virtual": event.is_virtual,
-                "location": event.location if event.location else "",
+                "location": event.location,
                 "type": event.type,
             }
             for event in events
@@ -56,7 +56,7 @@ def calendar_view(request):
     return render(
         request,
         "calendar/calendar_layout.html",
-        {"events": events_serialized, "years": years},
+        {"events": events_serialized, "event_types": event_types, "years": years},
     )
 
 
