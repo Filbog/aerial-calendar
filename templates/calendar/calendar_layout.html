@@ -5,41 +5,40 @@
 {% block content %}
 
 <h1 class="d-flex justify-content-center">CALENDAR LAYOUT</h1>
+<div class="calendar-navigation">
+  <button class="btn btn-info" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFilters" aria-expanded="false" aria-controls="collapseFilters">
+    Filtruj
+  </button>
+  <div class="collapse" id="collapseFilters">
+    <div id="type-filter">
+      <h5>Typ wydarzenia</h5>
+      <button class="btn" id="uncheck-all-types">Odznacz wszystkie</button>
+      <div id="type-checkboxes">
+        {% for type in event_types %}
+        <label><input type="checkbox" value="{{ type.1 }}" class="form-check-input type-checkbox" checked>{{ type.1 }}</label>
+        {% endfor %}
+      </div>
+    </div>
+    <div id="location-filter">
+      <h5>Lokalizacja</h5>
+      <select name="" id="location-dropdown">
+        <option value="all">Wszystkie</option>
+      </select>
+    </div>
+    <div id="aerial-filter">
+      <label><input type="checkbox" id="only-aerial" class="form-check-input"> Zwiazane z aerial</label>
+    </div>
+
+  </div>
+  <select class="form-select py-1 sticky-dropdown" id="year-dropdown"></select>
+</div>
 
 <div id="calendar-container">
-  <div class="calendar-navigation">
-    <button class="btn btn-info" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFilters" aria-expanded="false" aria-controls="collapseFilters">
-      Filtruj
-    </button>
-    <div class="collapse" id="collapseFilters">
-      <div id="type-filter">
-        <h5>Typ wydarzenia</h5>
-        <button class="btn" id="uncheck-all-types">Odznacz wszystkie</button>
-        <div id="type-checkboxes">
-          {% for type in event_types %}
-          <label><input type="checkbox" value="{{ type.1 }}" class="form-check-input">{{ type.1 }}</label>
-          {% endfor %}
-        </div>
-      </div>
-      <div id="location-filter">
-        <h5>Lokalizacja</h5>
-        <select name="" id="location-dropdown">
-          <option value="all">Wszystkie</option>
-        </select>
-      </div>
-      <div id="aerial-filter">
-        <label><input type="checkbox" id="only-aerial"> Zwiazane z aerial</label>
-      </div>
-
-    </div>
-    <select class="form-select py-1 sticky-dropdown" id="year-dropdown"></select>
-  </div>
-
 </div>
 <p>{{events}}</p>
 <script>
     const yearsData = {{ years|safe }}
-    const eventsData = {{ events|safe }}
+    const allEvents = {{ events|safe }}
     const eventTypes = {{ event_types|safe }}
 </script>
 <script src="{% static 'js/generate_calendar.js' %}" defer></script>

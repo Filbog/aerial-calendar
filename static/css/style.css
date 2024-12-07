@@ -103,6 +103,13 @@ body {
     border-bottom: 1px solid #ccc; /* Optional: Add a subtle underline */
   }
 
+@media (min-width: 768px){
+    .year-wrapper h1{
+        display: flex;
+        justify-content: center;
+        }
+}
+
 .calendar-navigation {
 position: sticky;
 top: 60px; /* Position at the top of the viewport */
@@ -149,4 +156,5 @@ justify-content: flex-end;
     .event-item{
         font-size: medium;
     }
+
 }

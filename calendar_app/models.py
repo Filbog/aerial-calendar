@@ -24,13 +24,13 @@ class Event(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     TYPE_CHOICES = [
-        ("competition", "Zawody"),
-        ("workshop", "Warsztaty"),
-        ("conference", "Konferencja"),
-        ("show", "Show"),
-        ("festival", "Festiwal"),
-        ("convention", "Konwent"),
-        ("other", "Inne"),
+        ("competition", "competition"),
+        ("workshop", "workshop"),
+        ("conference", "conference"),
+        ("show", "show"),
+        ("festival", "festival"),
+        ("convention", "convention"),
+        ("other", "other"),
     ]
     type = models.CharField(max_length=20, choices=TYPE_CHOICES)
 
@@ -57,3 +57,14 @@ class YearlyCalendar(models.Model):
 
     def __str__(self):
         return f"Year {self.year} Calendar"
+
+
+typy_pol = [
+    ("competition", "Zawody"),
+    ("workshop", "Warsztaty"),
+    ("conference", "Konferencja"),
+    ("show", "Show"),
+    ("festival", "Festiwal"),
+    ("convention", "Konwent"),
+    ("other", "Inne"),
+]

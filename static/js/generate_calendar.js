@@ -12,9 +12,9 @@ const monthNames = [
   "November",
   "December",
 ];
-
 console.log(yearsData);
-console.log(eventTypes);
+
+allEvents.forEach((e) => console.log(e.type));
 
 function generateCalendar(year) {
   const yearGrid = [];
@@ -50,12 +50,19 @@ function generateCalendar(year) {
 
     yearGrid.push(weeks);
   }
-  // console.log(yearGrid.length);
-  // console.log(yearGrid[11]);
+
   return { year: year, grid: yearGrid };
+  // the grid is an array of months like this:
+  // const januaryData = [
+  //   ["", "", "", 1, 2, 3, 4],
+  //   [5, 6, 7, 8, 9, 10, 11],
+  //   [12, 13, 14, 15, 16, 17, 18],
+  //   [19, 20, 21, 22, 23, 24, 25],
+  //   [26, 27, 28, 29, 30, 31, ""],
+  // ];
 }
 
-function populateCalendar(yearData) {
+function populateCalendar(yearData, eventsData) {
   const calendarContainer = document.getElementById("calendar-container");
   yearGrid = yearData.grid;
   year = yearData.year;
@@ -105,12 +112,11 @@ function populateCalendar(yearData) {
             2,
             "0"
           )}-${String(day).padStart(2, "0")}`;
-          // console.log(dateString);
+          // populate with events
           const eventsOnDay = eventsData.filter(
             (event) =>
               event.start_date <= dateString && event.end_date >= dateString
           );
-          // console.log(eventsOnDay);
           if (eventsOnDay.length > 0) {
             dayElement.classList.add("has-events");
             const eventList = document.createElement("ul");
@@ -130,19 +136,7 @@ function populateCalendar(yearData) {
   }
 }
 
-// const januaryData = [
-//   ["", "", "", 1, 2, 3, 4],
-//   [5, 6, 7, 8, 9, 10, 11],
-//   [12, 13, 14, 15, 16, 17, 18],
-//   [19, 20, 21, 22, 23, 24, 25],
-//   [26, 27, 28, 29, 30, 31, ""],
-// ];
-
-yearsData.forEach((year) => {
-  const yearGrid = generateCalendar(year);
-  populateCalendar(yearGrid);
-});
-
+// populate years-dropdown
 document.addEventListener("DOMContentLoaded", () => {
   const yearsDropdown = document.getElementById("year-dropdown");
 
@@ -168,6 +162,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+// scroll to the current month when page loads
 document.addEventListener("DOMContentLoaded", function () {
   const today = new Date();
   const currentMonth = today.getMonth() + 1; // JavaScript months are 0-based
@@ -179,4 +174,67 @@ document.addEventListener("DOMContentLoaded", function () {
     // Optionally, scroll the current month into view
     monthElement.scrollIntoView({ behavior: "smooth", block: "center" });
   }
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  const events = [...allEvents];
+  const typeCheckboxes = document.querySelectorAll(".type-checkbox");
+  const locationDropdown = document.getElementById("location-dropdown");
+  const onlyAerialCheckbox = document.getElementById("only-aerial");
+  const uncheckAllBtn = document.getElementById("uncheck-all-types");
+
+  // populate location dropdown
+  const locations = [...new Set(events.map((event) => event.location))];
+  locations.forEach((location) => {
+    const option = document.createElement("option");
+    option.value = location;
+    option.textContent = location;
+    locationDropdown.appendChild(option);
+  });
+
+  // apply filters and update calendar
+  function applyFilters() {
+    const selectedTypes = Array.from(typeCheckboxes)
+      .filter((checkbox) => checkbox.checked)
+      .map((checkbox) => checkbox.value);
+    console.log(selectedTypes);
+    const selectedLocation = locationDropdown.value;
+    const isOnlyAerial = onlyAerialCheckbox.checked;
+
+    const filteredEvents = events.filter((e) => {
+      const matchesType = selectedTypes.includes(e.type);
+      const matchesLocation =
+        selectedLocation === "all" || e.location === selectedLocation;
+      const matchesAerial = !isOnlyAerial || e.is_aerial;
+
+      return matchesType && matchesLocation && matchesAerial;
+    });
+
+    const calendarContainer = document.getElementById("calendar-container");
+    calendarContainer.innerHTML = "";
+    yearsData.forEach((year) => {
+      const yearGrid = generateCalendar(year);
+      populateCalendar(yearGrid, filteredEvents);
+    });
+  }
+
+  typeCheckboxes.forEach((checkbox) =>
+    checkbox.addEventListener("change", applyFilters)
+  );
+  locationDropdown.addEventListener("change", applyFilters);
+  onlyAerialCheckbox.addEventListener("change", applyFilters);
+
+  // Check/uncheck all buttons
+  // checkAllBtn.addEventListener("click", () => {
+  //   typeCheckboxes.forEach((checkbox) => (checkbox.checked = true));
+  //   applyFilters();
+  // });
+
+  uncheckAllBtn.addEventListener("click", () => {
+    typeCheckboxes.forEach((checkbox) => (checkbox.checked = false));
+    applyFilters();
+  });
+
+  // Initial calendar population
+  applyFilters();
 });
