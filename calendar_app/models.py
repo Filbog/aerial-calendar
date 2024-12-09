@@ -3,6 +3,7 @@ import json
 from django.contrib.auth import get_user_model
 from django.urls import reverse
 import uuid
+from django.core.exceptions import ValidationError
 
 User = get_user_model()
 
@@ -49,14 +50,15 @@ class Event(models.Model):
     def get_absolute_url(self):
         return reverse("event_detail", args=[str(self.id)])
 
+    def clean(self):
+        # Ensure the end date is not earlier than the start date
+        if self.end_date < self.start_date:
+            raise ValidationError("The end date cannot be earlier than the start date.")
 
-class YearlyCalendar(models.Model):
-    year = models.PositiveIntegerField(unique=True)
-    data = models.JSONField()  # Stores the calendar as a JSON object
-    created_at = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return f"Year {self.year} Calendar"
+    def save(self, *args, **kwargs):
+        # Call clean() before saving to ensure validation
+        self.clean()
+        super().save(*args, **kwargs)
 
 
 typy_pol = [

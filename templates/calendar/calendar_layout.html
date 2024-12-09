@@ -3,7 +3,14 @@
 
 
 {% block content %}
-
+{% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-success alert-dismissable fade show {% if message.tags %}{{ message.tags }}{% endif %}" role="alert" >
+      {{ message }}
+      <button type="button" class="btn-close ms-2" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
+{% endif %}
 <h1 class="d-flex justify-content-center">CALENDAR LAYOUT</h1>
 <div class="calendar-navigation">
   <button class="btn btn-info" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFilters" aria-expanded="false" aria-controls="collapseFilters">

@@ -5,8 +5,9 @@ from django.views.generic import (
     UpdateView,
     DeleteView,
 )
+from django.contrib.messages.views import SuccessMessageMixin
 from .forms import EventForm
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.template.loader import render_to_string
 from django.shortcuts import render
 from django.urls import reverse_lazy
@@ -66,12 +67,14 @@ class EventDetailView(DetailView):
     context_object_name = "event"
 
 
-class EventCreateView(CreateView):
+class EventCreateView(SuccessMessageMixin, CreateView):
     model = Event
     form_class = EventForm
     template_name = "calendar/event_create.html"
     success_url = reverse_lazy("events")
+    success_message = "Wydarzenie utworzone"
 
     def form_valid(self, form):
         form.instance.author = self.request.user
-        return super().form_valid(form)
+        response = super().form_valid(form)
+        return response

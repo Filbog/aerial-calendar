@@ -1,12 +1,17 @@
 {% extends '_base.html' %}
-{% load crispy_forms_tags %}
 {%load django_bootstrap5 %}
 
 
 {% block content %}
-<h1>Nowe wydarzenie</h1>
-<form action="" method="post">
+<form action="" method="post" id="my-form">
     {% csrf_token %}
+    <h1>Nowe wydarzenie</h1>
+    {% if form.errors %}
+    <div class="alert alert-warning alert-dismissable fade show d-flex justify-content-between" role="alert" data-bs-dismiss="alert">
+        {% bootstrap_form_errors form %}
+        <button type="button" class="btn-close ms-2" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endif %}
     {% bootstrap_field form.name %}
     {% bootstrap_field form.start_date %}
     {% bootstrap_field form.end_date %}
@@ -29,7 +34,7 @@
     <button class="btn btn-success" type="submit">Dodaj</button>
 </form>
 
-
+<!-- Script for the online checkbox -->
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         const isVirtualCheckbox = document.querySelector("#id_is_virtual");
