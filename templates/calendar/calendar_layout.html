@@ -13,36 +13,52 @@
 {% endif %}
 <h1 class="d-flex justify-content-center">CALENDAR LAYOUT</h1>
 <div class="calendar-navigation">
-  <button class="btn btn-info collapse-filters" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFilters" aria-expanded="false" aria-controls="collapseFilters">
-    Filtruj <span class="filter-arrow">&#9660;</span>
+  <button class="btn btn-info collapse-filters" type="button" data-bs-toggle="modal" data-bs-target="#collapseFilters">
+    Filtruj
   </button>
-  <div class="collapse" id="collapseFilters">
-    <div id="type-filter">
-      <h5>Typ wydarzenia</h5>
-      <button class="btn" id="uncheck-all-types">Odznacz wszystkie</button>
-      <div id="type-checkboxes">
-        {% for type in event_types %}
-        <label><input type="checkbox" value="{{ type.1 }}" class="form-check-input type-checkbox" checked>{{ type.1 }}</label>
-        {% endfor %}
-      </div>
-    </div>
-    <div id="location-filter">
-      <h5>Lokalizacja</h5>
-      <select name="" id="location-dropdown">
-        <option value="all">Wszystkie</option>
-      </select>
-    </div>
-    <div id="aerial-filter">
-      <label><input type="checkbox" id="only-aerial" class="form-check-input"> Zwiazane z aerial</label>
-    </div>
-
-  </div>
   <select class="form-select py-1 sticky-dropdown" id="year-dropdown"></select>
 </div>
 
 <div id="calendar-container">
 </div>
 <p>{{events}}</p>
+
+<!-- filters modal -->
+<div class="modal fade" id="collapseFilters" tabindex="-1" aria-labelledby="filterModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="filterModalLabel">Filtruj</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p id="type-filter" class="">
+          <h5>Typ wydarzenia</h5>
+          <input type="checkbox" class="form-check-input mb-2" id="uncheck-all-types">
+          <label for="uncheck-all-types">Odznacz/zaznacz wszystkie</label>
+          <div id="type-checkboxes">
+            {% for type in event_types %}
+            <label><input type="checkbox" value="{{ type.1 }}" class="form-check-input type-checkbox" checked> {{ type.1 }}</label>
+            {% endfor %}
+          </div>
+        </p>
+        <p id="location-filter">
+          <h5>Lokalizacja</h5>
+          <select class="form-select" name="" id="location-dropdown">
+            <option value="all">Wszystkie</option>
+          </select>
+        </p>
+        <p id="aerial-filter">
+          <label><input type="checkbox" id="only-aerial" class="form-check-input"> Zwiazane z aerial</label>
+        </p>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Zamknij</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="applyFiltersBtn">Zastosuj</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <script>
     const yearsData = {{ years|safe }}
     const allEvents = {{ events|safe }}

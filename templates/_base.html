@@ -65,4 +65,11 @@
       </div>
     </div>
 </body>
+<script>
+  document.addEventListener('hidden.bs.modal', function (event) {
+    if (document.activeElement) {
+    document.activeElement.blur();
+    }
+});
+</script>
 </html>

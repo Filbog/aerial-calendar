@@ -14,7 +14,7 @@ const monthNames = [
 ];
 console.log(yearsData);
 
-allEvents.forEach((e) => console.log(e.type));
+// allEvents.forEach((e) => console.log(e.type));
 
 function generateCalendar(year) {
   const yearGrid = [];
@@ -83,6 +83,7 @@ function populateCalendar(yearData, eventsData) {
     const monthElement = document.createElement("div");
     monthElement.classList.add("month", "calendar-grid");
     monthElement.id = `month-${monthIndex}-${year}`;
+    console.log(monthElement);
     const monthHeading = document.createElement("h2");
     monthHeading.textContent = monthNames[monthIndex];
     yearWrapper.appendChild(monthHeading);
@@ -162,26 +163,11 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// scroll to the current month when page loads
-document.addEventListener("DOMContentLoaded", function () {
-  const today = new Date();
-  const currentMonth = today.getMonth() + 1; // JavaScript months are 0-based
-  const monthElement = document.querySelector(
-    `#month-${today.getMonth()}-${today.getFullYear()}`
-  );
-
-  if (monthElement) {
-    // Optionally, scroll the current month into view
-    monthElement.scrollIntoView({ behavior: "smooth", block: "center" });
-  }
-});
-
 document.addEventListener("DOMContentLoaded", function () {
   const events = [...allEvents];
   const typeCheckboxes = document.querySelectorAll(".type-checkbox");
   const locationDropdown = document.getElementById("location-dropdown");
   const onlyAerialCheckbox = document.getElementById("only-aerial");
-  const uncheckAllBtn = document.getElementById("uncheck-all-types");
 
   // populate location dropdown
   const locations = [...new Set(events.map((event) => event.location))];
@@ -197,7 +183,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const selectedTypes = Array.from(typeCheckboxes)
       .filter((checkbox) => checkbox.checked)
       .map((checkbox) => checkbox.value);
-    console.log(selectedTypes);
+    // console.log(selectedTypes);
     const selectedLocation = locationDropdown.value;
     const isOnlyAerial = onlyAerialCheckbox.checked;
 
@@ -218,34 +204,36 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  typeCheckboxes.forEach((checkbox) =>
-    checkbox.addEventListener("change", applyFilters)
-  );
-  locationDropdown.addEventListener("change", applyFilters);
-  onlyAerialCheckbox.addEventListener("change", applyFilters);
-
-  // Check/uncheck all buttons
-  // checkAllBtn.addEventListener("click", () => {
-  //   typeCheckboxes.forEach((checkbox) => (checkbox.checked = true));
-  //   applyFilters();
-  // });
-
-  uncheckAllBtn.addEventListener("click", () => {
-    typeCheckboxes.forEach((checkbox) => (checkbox.checked = false));
-    applyFilters();
-  });
+  const applyFiltersBtn = document.getElementById("applyFiltersBtn");
+  applyFiltersBtn.addEventListener("click", applyFilters());
 
   // Initial calendar population
   applyFilters();
 });
 
 // For the up/down arrow in filter button
-document.addEventListener("DOMContentLoaded", function () {
-  const filterButton = document.querySelector(".collapse-filters");
-  const arrowSpan = filterButton.querySelector(".filter-arrow");
+// document.addEventListener("DOMContentLoaded", function () {
+//   const filterButton = document.querySelector(".collapse-filters");
+//   const arrowSpan = filterButton.querySelector(".filter-arrow");
 
-  filterButton.addEventListener("click", function () {
-    const isExpanded = filterButton.getAttribute("aria-expanded") === "false";
-    arrowSpan.classList.toggle("up", !isExpanded); // Add 'up' class when expanded
-  });
+//   filterButton.addEventListener("click", function () {
+//     const isExpanded = filterButton.getAttribute("aria-expanded") === "false";
+//     arrowSpan.classList.toggle("up", !isExpanded); // Add 'up' class when expanded
+//   });
+// });
+
+// scroll to the current month when page loads
+document.addEventListener("DOMContentLoaded", function () {
+  const today = new Date();
+  const currentMonth = today.getMonth(); // JavaScript months are 0-based
+  const monthElement = document.querySelector(
+    `#month-${today.getMonth()}-${today.getFullYear()}`
+  );
+  console.log(currentMonth);
+  console.log("month element:", monthElement);
+
+  if (monthElement) {
+    // Optionally, scroll the current month into view
+    monthElement.scrollIntoView({ behavior: "smooth", block: "center" });
+  }
 });

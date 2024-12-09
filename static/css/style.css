@@ -123,31 +123,23 @@ z-index: 15; /* Ensure it stays above other content */
 /* margin-top: 2rem; */
 display: flex;
 justify-content: flex-end;
+gap: 10px;
 /* margin-top: 2rem; */
 }
-#collapseFilters{
-    position: absolute;
-    top: 60px;
-}
+
 .form-select{
     width: 130px;
 }
 
 .month {
-    scroll-margin-top: 2rem;
+    scroll-margin-top: 4rem;
 }
 
 .year-wrapper{
-    scroll-margin-top: 3rem;
+    scroll-margin-top: 4rem;
 }
 
-#collapseFilters{
-    top: 50px;
-    background: white;
-    border-radius: 3px;
-    padding: 1rem;
-    background: lightblue;
-}
+
 
 #type-checkboxes{
     display: grid;
@@ -155,13 +147,7 @@ justify-content: flex-end;
 
 }
 
-.filter-arrow {
-    display: inline-block;
-    transition: transform 0.2s ease; /* Smooth rotation */
-}
-.filter-arrow.up {
-    transform: rotate(180deg); /* Rotate arrow upwards */
-}
+
 
 /* LIST LAYOUT */
 .list_dates{
