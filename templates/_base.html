@@ -29,7 +29,7 @@
                 <a class="nav-link" href="{% url 'events' %}">Kalendarz</a>
                 <a class="nav-link" href="{% url 'list_layout' %}">Lista</a>
                 {% if user.is_authenticated %}
-                <a class="nav-link" href="{% url 'account_logout' %}">Wyloguj</a>
+                <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">Wyloguj</a>
                 <a class="nav-link" href="{% url 'event_create' %}">Stwórz wydarzenie</a>
                 {% else %}
                 <a class="nav-link" href="{% url 'account_login' %}">Zaloguj się</a>
@@ -45,6 +45,24 @@
     <div class="container" id="main-container">
         {% block content %}
         {% endblock content %}
+    </div>
+    <!-- Logout modal -->
+    <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="logoutModalLabel">Wyloguj</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            Czy na pewno chcesz się wylogowac?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Zamknij</button>
+            <a class="btn btn-primary" href="{% url 'account_logout' %}">Wyloguj</a>
+          </div>
+        </div>
+      </div>
     </div>
 </body>
 </html>

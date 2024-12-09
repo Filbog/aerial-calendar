@@ -238,3 +238,14 @@ document.addEventListener("DOMContentLoaded", function () {
   // Initial calendar population
   applyFilters();
 });
+
+// For the up/down arrow in filter button
+document.addEventListener("DOMContentLoaded", function () {
+  const filterButton = document.querySelector(".collapse-filters");
+  const arrowSpan = filterButton.querySelector(".filter-arrow");
+
+  filterButton.addEventListener("click", function () {
+    const isExpanded = filterButton.getAttribute("aria-expanded") === "false";
+    arrowSpan.classList.toggle("up", !isExpanded); // Add 'up' class when expanded
+  });
+});
