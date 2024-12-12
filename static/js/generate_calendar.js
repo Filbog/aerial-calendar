@@ -80,14 +80,18 @@ function populateCalendar(yearData, eventsData) {
   for (let monthIndex = 0; monthIndex < yearGrid.length; monthIndex++) {
     const monthData = yearGrid[monthIndex]; // Get the weeks for the current month
 
-    const monthElement = document.createElement("div");
-    monthElement.classList.add("month", "calendar-grid");
-    monthElement.id = `month-${monthIndex}-${year}`;
-    console.log(monthElement);
+    const monthContainer = document.createElement("div");
+    monthContainer.classList.add("month-container");
+    monthContainer.id = `month-${monthIndex}-${year}`;
+
+    const monthGrid = document.createElement("div");
+    monthGrid.classList.add("month", "calendar-grid");
+    // console.log(monthGrid);
     const monthHeading = document.createElement("h2");
     monthHeading.textContent = monthNames[monthIndex];
-    yearWrapper.appendChild(monthHeading);
-    yearWrapper.appendChild(monthElement);
+    monthContainer.appendChild(monthHeading);
+    monthContainer.appendChild(monthGrid);
+    yearWrapper.appendChild(monthContainer);
 
     // Add day names
     const dayNames = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
@@ -95,7 +99,7 @@ function populateCalendar(yearData, eventsData) {
       const dayElement = document.createElement("div");
       dayElement.classList.add("day-name");
       dayElement.textContent = dayName;
-      monthElement.appendChild(dayElement);
+      monthGrid.appendChild(dayElement);
     });
 
     // Add day cells for the current month
@@ -131,7 +135,7 @@ function populateCalendar(yearData, eventsData) {
             dayElement.appendChild(eventList);
           }
         }
-        monthElement.appendChild(dayElement);
+        monthGrid.appendChild(dayElement);
       });
     });
   }
@@ -168,6 +172,12 @@ document.addEventListener("DOMContentLoaded", function () {
   const typeCheckboxes = document.querySelectorAll(".type-checkbox");
   const locationDropdown = document.getElementById("location-dropdown");
   const onlyAerialCheckbox = document.getElementById("only-aerial");
+  const uncheckAllBtn = document.getElementById("uncheck-all-types");
+
+  uncheckAllBtn.addEventListener("change", function () {
+    const isChecked = uncheckAllBtn.checked;
+    typeCheckboxes.forEach((el) => (el.checked = isChecked));
+  });
 
   // populate location dropdown
   const locations = [...new Set(events.map((event) => event.location))];
@@ -205,35 +215,27 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   const applyFiltersBtn = document.getElementById("applyFiltersBtn");
-  applyFiltersBtn.addEventListener("click", applyFilters());
+  console.log(applyFiltersBtn);
+  applyFiltersBtn.addEventListener("click", applyFilters);
 
   // Initial calendar population
   applyFilters();
 });
 
-// For the up/down arrow in filter button
-// document.addEventListener("DOMContentLoaded", function () {
-//   const filterButton = document.querySelector(".collapse-filters");
-//   const arrowSpan = filterButton.querySelector(".filter-arrow");
-
-//   filterButton.addEventListener("click", function () {
-//     const isExpanded = filterButton.getAttribute("aria-expanded") === "false";
-//     arrowSpan.classList.toggle("up", !isExpanded); // Add 'up' class when expanded
-//   });
-// });
-
 // scroll to the current month when page loads
 document.addEventListener("DOMContentLoaded", function () {
   const today = new Date();
   const currentMonth = today.getMonth(); // JavaScript months are 0-based
-  const monthElement = document.querySelector(
+  const currentMonthContainer = document.querySelector(
     `#month-${today.getMonth()}-${today.getFullYear()}`
   );
   console.log(currentMonth);
-  console.log("month element:", monthElement);
+  console.log("month element:", currentMonthContainer);
 
-  if (monthElement) {
+  if (currentMonthContainer) {
     // Optionally, scroll the current month into view
-    monthElement.scrollIntoView({ behavior: "smooth", block: "center" });
+    currentMonthContainer.scrollIntoView({
+      behavior: "smooth",
+    });
   }
 });

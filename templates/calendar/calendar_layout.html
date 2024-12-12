@@ -16,7 +16,9 @@
   <button class="btn btn-info collapse-filters" type="button" data-bs-toggle="modal" data-bs-target="#collapseFilters">
     Filtruj
   </button>
-  <select class="form-select py-1 sticky-dropdown" id="year-dropdown"></select>
+  <select class="form-select py-1 sticky-dropdown" id="year-dropdown">
+    <option selected disabled>Przejdź do roku...</option>
+  </select>
 </div>
 
 <div id="calendar-container">
@@ -34,7 +36,7 @@
       <div class="modal-body">
         <p id="type-filter" class="">
           <h5>Typ wydarzenia</h5>
-          <input type="checkbox" class="form-check-input mb-2" id="uncheck-all-types">
+          <input type="checkbox" class="form-check-input mb-2" id="uncheck-all-types" checked>
           <label for="uncheck-all-types">Odznacz/zaznacz wszystkie</label>
           <div id="type-checkboxes">
             {% for type in event_types %}
