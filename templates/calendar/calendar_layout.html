@@ -50,9 +50,9 @@
             <option value="all">Wszystkie</option>
           </select>
         </p>
-        <p id="aerial-filter">
-          <label><input type="checkbox" id="only-aerial" class="form-check-input"> Zwiazane z aerial</label>
-        </p>
+        <!-- <p id="aerial-filter">
+          <label><input type="checkbox" id="only-aerial" class="form-check-input" checked> Tylko związane z aerial</label>
+        </p> -->
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Zamknij</button>
           <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="applyFiltersBtn">Zastosuj</button>
@@ -66,7 +66,7 @@
     const allEvents = {{ events|safe }}
     const eventTypes = {{ event_types|safe }}
 </script>
-<script src="{% static 'js/generate_calendar.js' %}" defer></script>
+<script src="{% static 'js/generate_calendar/main.js' %}" defer type="module"></script>
 
 
 {% endblock content %}

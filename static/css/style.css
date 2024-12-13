@@ -3,6 +3,9 @@
     forced-color-adjust: none !important;
 }
 .alert{
+    position: sticky;
+    top: 60px;
+    z-index: 1000;
     width: fit-content;
 }
 .alert ul{

@@ -160,8 +160,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (yearContainer) {
       yearContainer.scrollIntoView({
-        behavior: "smooth", // Smooth scrolling animation
-        block: "start", // Align to the top of the viewport
+        behavior: "smooth",
       });
     }
   });

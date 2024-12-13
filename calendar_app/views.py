@@ -17,23 +17,25 @@ from datetime import datetime
 from .models import Event
 
 
-# weird implementation of base template, and then partials depending on button click
 class EventListView(ListView):
     model = Event
     template_name = "calendar/list_layout.html"
     context_object_name = "events"
 
-    # def render_to_response(self, context, **response_kwargs):
-    #     # Check if the request is made via HTMX
-    #     layout = self.request.GET.get("layout")
-    #     if layout == "list":
-    #         template = "calendar/list_layout.html"
-    #     elif layout == "calendar":
-    #         template = "calendar/calendar_layout.html"
-    #     else:
-    #         template = self.template_name
 
-    #     return HttpResponse(render_to_string(template, context))
+# weird implementation of base template, and then partials depending on button click
+
+# def render_to_response(self, context, **response_kwargs):
+#     # Check if the request is made via HTMX
+#     layout = self.request.GET.get("layout")
+#     if layout == "list":
+#         template = "calendar/list_layout.html"
+#     elif layout == "calendar":
+#         template = "calendar/calendar_layout.html"
+#     else:
+#         template = self.template_name
+
+#     return HttpResponse(render_to_string(template, context))
 
 
 def calendar_view(request):
@@ -50,6 +52,7 @@ def calendar_view(request):
                 "end_date": event.end_date.isoformat(),
                 "location": event.location,
                 "type": event.type,
+                "is_aerial": event.is_aerial,
             }
             for event in events
         ]
@@ -78,3 +81,11 @@ class EventCreateView(SuccessMessageMixin, CreateView):
         form.instance.author = self.request.user
         response = super().form_valid(form)
         return response
+
+
+class EventUpdateView(SuccessMessageMixin, UpdateView):
+    model = Event
+    form_class = EventForm
+    template_name = "calendar/event_update.html"
+    success_message = "Wydarzenie edytowane"
+    success_url = reverse_lazy("events")
