@@ -53,6 +53,7 @@ def calendar_view(request):
                 "location": event.location,
                 "type": event.type,
                 "is_aerial": event.is_aerial,
+                "main_link": event.main_link,
             }
             for event in events
         ]

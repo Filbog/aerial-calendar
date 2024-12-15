@@ -1,4 +1,5 @@
 import { MONTH_NAMES, DAY_NAMES } from "./constants.js";
+import { fillEventsModal } from "./utils.js";
 
 export function generateCalendar(year) {
   const yearGrid = [];
@@ -89,14 +90,21 @@ export function populateCalendar(yearData, eventsData) {
 
           if (eventsOnDay.length > 0) {
             dayElement.classList.add("has-events");
+            dayElement.setAttribute("data-bs-toggle", "modal");
+            dayElement.setAttribute("data-bs-target", "#eventsModal");
             const eventList = document.createElement("ul");
             eventsOnDay.forEach((event) => {
               const eventItem = document.createElement("li");
-              eventItem.classList.add("event-item", event.type);
+              eventItem.classList.add("event-item", `${event.type}-type`);
+              eventItem.id = event.id;
               eventItem.textContent = event.name;
               eventList.appendChild(eventItem);
             });
             dayElement.appendChild(eventList);
+            // console.log(eventsOnDay);
+            dayElement.addEventListener("click", () =>
+              fillEventsModal(eventsOnDay, dateString)
+            );
           }
         }
         monthGrid.appendChild(dayElement);

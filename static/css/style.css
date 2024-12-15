@@ -76,28 +76,28 @@ body {
 
 
 /* event types */
-.day .show{
+.show-type{
     background-color: lightgreen;
 }
 
-.day .festival{
+.festival-type{
     background-color: lightblue;
 }
 
-.day .competiton{
+.competiton-type{
     background-color: lightcoral;
 }
 
-.day .workshop{
+.workshop-type{
     background-color: lightyellow;
 }
-.day .conference{
+.conference-type{
     background-color: lightseagreen;
 }
-.day .convention{
+.convention-type{
     background-color: lightsalmon;
 }
-.day .other{
+.other-type{
     background-color: lightpink;
 }
 
@@ -150,6 +150,14 @@ gap: 10px;
 
 .month-container{
     scroll-margin-top: 100px;
+}
+
+.day.has-events{
+    transition: background-color 0.3s ease-in;
+}
+
+.day.has-events:hover{
+    background-color: rgb(232, 85, 232);
 }
 
 
