@@ -48,8 +48,8 @@ def calendar_view(request):
             {
                 "id": str(event.id),
                 "name": event.name,
-                "start_date": event.start_date.isoformat(),
-                "end_date": event.end_date.isoformat(),
+                "start_date": event.start_date.strftime("%d-%m-%Y"),
+                "end_date": event.end_date.strftime("%d-%m-%Y"),
                 "location": event.location,
                 "type": event.type,
                 "is_aerial": event.is_aerial,
@@ -58,6 +58,7 @@ def calendar_view(request):
             for event in events
         ]
     )
+    print(events[0].start_date.isoformat())
     return render(
         request,
         "calendar/calendar_layout.html",
@@ -90,3 +91,12 @@ class EventUpdateView(SuccessMessageMixin, UpdateView):
     template_name = "calendar/event_update.html"
     success_message = "Wydarzenie edytowane"
     success_url = reverse_lazy("events")
+
+
+class EventDeleteView(SuccessMessageMixin, DeleteView):
+    model = Event
+    success_message = "Wydarzenie usunięte"
+    success_url = reverse_lazy("events")
+
+    def get(self, request, *args, **kwargs):
+        return self.post(request, *args, **kwargs)

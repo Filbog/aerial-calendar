@@ -23,6 +23,17 @@ export function fillEventsModal(eventsArray, dateString) {
       <h5>${e.start_date} - ${e.end_date}</h5>
       <h4 class="bold">Link do wydarzenia: </h4>
       <a href="${e.main_link}" target="_blank" rel="noopener">${e.main_link}</a>
+      <div class="btn-group">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">
+          Dodaj do Kalendarza...
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Kalendarz Google</a></li>
+          <li><a class="dropdown-item" href="#">Outlook</a></li>
+          <li><a class="dropdown-item" href="#">Kalendarz Apple</a></li>
+          <li><a class="dropdown-item" href="#">Inny kalendarz</a></li>
+        </ul>
+      </div>
       <hr>
     `;
     eventsModalBody.appendChild(eventItem);

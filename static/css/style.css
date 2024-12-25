@@ -153,11 +153,12 @@ gap: 10px;
 }
 
 .day.has-events{
-    transition: background-color 0.3s ease-in;
+    transition: background-color 0.1s ease-in;
 }
 
 .day.has-events:hover{
-    background-color: rgb(232, 85, 232);
+    background-color: rgb(248, 106, 248);
+    cursor: pointer;
 }
 
 

@@ -12,5 +12,12 @@ document.addEventListener("DOMContentLoaded", () => {
     populateCalendar(yearGrid, events);
   });
 
+  const yearDropdown = document.getElementById("year-dropdown");
+  yearDropdown.addEventListener("change", () => {
+    // const chosenYear = document.getElementById(`year-${yearDropdown.value}`);
+    scrollToElement(`year-${yearDropdown.value}`);
+    // console.log("SCROLL WER");
+  });
+
   scrollToElement(`month-${today.getMonth()}-${today.getFullYear()}`);
 });

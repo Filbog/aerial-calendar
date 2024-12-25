@@ -79,14 +79,31 @@ export function populateCalendar(yearData, eventsData) {
         } else {
           dayElement.innerHTML = `<p class='day-number'>${day}</p>`;
 
-          const dateString = `${year}-${String(monthIndex + 1).padStart(
-            2,
-            "0"
-          )}-${String(day).padStart(2, "0")}`;
-          const eventsOnDay = eventsData.filter(
-            (event) =>
-              event.start_date <= dateString && event.end_date >= dateString
+          const dateString = `${String(day).padStart(2, "0")}-${String(
+            monthIndex + 1
+          ).padStart(2, "0")}-${year}`;
+          // same date as the one in dateString, but easier to compare Date objects
+          const targetDate = new Date(
+            `${year}-${String(monthIndex + 1).padStart(2, "0")}-${String(
+              day
+            ).padStart(2, "0")}`
           );
+
+          const eventsOnDay = eventsData.filter((event) => {
+            const startDateParts = event.start_date.split("-");
+            const endDateParts = event.end_date.split("-");
+
+            // Parse start_date and end_date into Date objects
+            const startDate = new Date(
+              `${startDateParts[2]}-${startDateParts[1]}-${startDateParts[0]}`
+            );
+            const endDate = new Date(
+              `${endDateParts[2]}-${endDateParts[1]}-${endDateParts[0]}`
+            );
+
+            // Compare dates properly
+            return startDate <= targetDate && endDate >= targetDate;
+          });
 
           if (eventsOnDay.length > 0) {
             dayElement.classList.add("has-events");
