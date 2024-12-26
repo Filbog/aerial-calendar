@@ -1,13 +1,20 @@
 {% extends '_base.html' %}
-<h1>LIST LAYOUT</h1>
+{% load static %}
+
 
 {% block content %}
-{% for event in events %}
-    <h2> <a href="{{ event.get_absolute_url }}">{{ event.name }}</a></h2>
-    <div class="list_dates">
-        <h3>{{ event.start_date }} - {{ event.end_date }}</h3>
-    </div>
-    <a href="{% url 'event_edit' event.pk %}">UPDATE</a>
-    <hr>
-{% endfor %}
+<h1>LIST LAYOUT</h1>
+<div id="list-container">
+
+</div>
+
+
+
+
+<script>
+    const yearsData = {{ years|safe }}
+    const allEvents = {{ events|safe }}
+    const eventTypes = {{ event_types|safe }}
+</script>
+<script src="{% static 'js/generate_calendar/generate_list.js' %}" defer type="module"></script>
 {% endblock content %}

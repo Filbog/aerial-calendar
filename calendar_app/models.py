@@ -53,10 +53,13 @@ class Event(models.Model):
     def clean(self):
         # Ensure the end date is not earlier than the start date
         if self.end_date < self.start_date:
-            raise ValidationError("The end date cannot be earlier than the start date.")
+            raise ValidationError(
+                "Data rozpoczęcia nie może być późniejsza od daty zakończenia"
+            )
 
     def save(self, *args, **kwargs):
         # Call clean() before saving to ensure validation
+
         self.clean()
         super().save(*args, **kwargs)
 

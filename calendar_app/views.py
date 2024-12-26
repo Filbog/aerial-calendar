@@ -5,11 +5,12 @@ from django.views.generic import (
     UpdateView,
     DeleteView,
 )
+from .utils import generate_ics_file, serialize_events
 from django.contrib.messages.views import SuccessMessageMixin
 from .forms import EventForm
 from django.http import HttpResponse, JsonResponse
 from django.template.loader import render_to_string
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 import json
 from datetime import datetime
@@ -38,27 +39,26 @@ class EventListView(ListView):
 #     return HttpResponse(render_to_string(template, context))
 
 
+def list_view(request):
+    years = [datetime.now().year + i for i in range(2)]
+    event_types = Event.TYPE_CHOICES
+    events = Event.objects.all().order_by("start_date")
+    events_serialized = serialize_events.serialize_events(events)
+
+    return render(
+        request,
+        "calendar/list_layout.html",
+        {"events": events_serialized, "event_types": event_types, "years": years},
+    )
+
+
 def calendar_view(request):
     years = [datetime.now().year + i for i in range(2)]
     print(years)
     event_types = Event.TYPE_CHOICES
     events = Event.objects.all()
-    events_serialized = json.dumps(
-        [
-            {
-                "id": str(event.id),
-                "name": event.name,
-                "start_date": event.start_date.strftime("%d-%m-%Y"),
-                "end_date": event.end_date.strftime("%d-%m-%Y"),
-                "location": event.location,
-                "type": event.type,
-                "is_aerial": event.is_aerial,
-                "main_link": event.main_link,
-            }
-            for event in events
-        ]
-    )
-    print(events[0].start_date.isoformat())
+    events_serialized = serialize_events.serialize_events(events)
+
     return render(
         request,
         "calendar/calendar_layout.html",
@@ -100,3 +100,8 @@ class EventDeleteView(SuccessMessageMixin, DeleteView):
 
     def get(self, request, *args, **kwargs):
         return self.post(request, *args, **kwargs)
+
+
+def download_event_ics_view(request, pk):
+    event = get_object_or_404(Event, id=pk)
+    return generate_ics_file.generate_ics_file(event)
