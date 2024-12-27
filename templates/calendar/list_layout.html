@@ -4,6 +4,14 @@
 
 {% block content %}
 <h1>LIST LAYOUT</h1>
+<div class="calendar-navigation">
+    <select class="form-select py-1 sticky-dropdown" id="year-dropdown">
+      <option selected disabled>Przejdź do roku...</option>
+      {% for year in years %}
+      <option value="{{ year }}">{{ year }}</option>
+      {% endfor %}
+    </select>
+  </div>
 <div id="list-container">
 
 </div>

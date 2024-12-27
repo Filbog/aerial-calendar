@@ -45,6 +45,7 @@ export function populateCalendar(yearData, eventsData) {
   yearWrapper.id = `year-${year}`;
 
   const yearHeading = document.createElement("h1");
+  yearHeading.classList.add("year-heading");
   yearHeading.textContent = year;
   yearWrapper.appendChild(yearHeading);
   calendarContainer.appendChild(yearWrapper);
@@ -127,5 +128,15 @@ export function populateCalendar(yearData, eventsData) {
         monthGrid.appendChild(dayElement);
       });
     });
+  });
+}
+
+export function renderCalendar(eventsData, yearsData) {
+  const calendarContainer = document.getElementById("calendar-container");
+  calendarContainer.innerHTML = ""; // Clear the previous content
+
+  yearsData.forEach((year) => {
+    const yearGrid = generateCalendar(year);
+    populateCalendar(yearGrid, eventsData);
   });
 }

@@ -61,10 +61,11 @@ function generateOutlookCalendarURL(event) {
 
 export function renderEvent(e) {
   return `
-    <div><h2 class='d-inline'>${e.name}</h2> <span class='${
+    <div><h3 class='d-inline'>${e.name}</h3> <span class='${
     e.type
   }-type px-1 rounded'>${e.type}</span></div>
-      <h4>${e.start_date} - ${e.end_date}</h4>
+      <h5>${e.start_date} - ${e.end_date}</h5>
+      <h6><i class="bi bi-pin-map-fill"></i> ${e.location}</h6>
       <div class='modal-description d-none' id='${e.id}-description'>
       </div>
       <div class="modal-links d-flex flex-column gap-3" id="${e.id}-links">
@@ -150,7 +151,7 @@ export function fillEventsModal(eventsArray, dateString) {
   eventsArray.forEach((e) => {
     console.log(e);
     const eventItem = document.createElement("div");
-    eventItem.classList.add("d-flex", "flex-column", "gap-3");
+    eventItem.classList.add("d-flex", "flex-column", "gap-2");
     eventItem.id = `event-${e.id}`;
     eventItem.innerHTML = renderEvent(e);
     eventsModalBody.appendChild(eventItem);

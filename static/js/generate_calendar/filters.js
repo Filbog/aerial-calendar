@@ -1,6 +1,6 @@
 import { generateCalendar, populateCalendar } from "./generate_calendar.js";
 
-export function setupFilters(events, yearsData) {
+export function setupFilters(events, yearsData, renderFunction) {
   const typeCheckboxes = document.querySelectorAll(".type-checkbox");
   const locationDropdown = document.getElementById("location-dropdown");
   const uncheckAllBtn = document.getElementById("uncheck-all-types");
@@ -40,5 +40,6 @@ export function setupFilters(events, yearsData) {
       populateCalendar(yearGrid, filteredEvents);
       console.log(filteredEvents[0]);
     });
+    renderFunction(filteredEvents, yearsData);
   });
 }
