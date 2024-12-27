@@ -33,6 +33,7 @@ export function setupFilters(events, yearsData, renderFunction) {
       return matchesType && matchesLocation;
     });
 
+    // rendering either calendar or list, depending on the layout
     renderFunction(filteredEvents, yearsData);
   });
 }

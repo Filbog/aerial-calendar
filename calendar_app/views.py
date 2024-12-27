@@ -56,7 +56,7 @@ def calendar_view(request):
     years = [datetime.now().year + i for i in range(2)]
     print(years)
     event_types = Event.TYPE_CHOICES
-    events = Event.objects.all()
+    events = Event.objects.all().order_by("created_at")
     events_serialized = serialize_events.serialize_events(events)
 
     return render(
