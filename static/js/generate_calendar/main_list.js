@@ -3,7 +3,6 @@ import { setupFilters } from "./filters.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   const events = [...allEvents];
-  const yearsData = [...years]; // Ensure this is correctly defined
 
   // Set up filters with the renderList function
   setupFilters(events, yearsData, renderList);

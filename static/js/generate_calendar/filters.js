@@ -33,13 +33,6 @@ export function setupFilters(events, yearsData, renderFunction) {
       return matchesType && matchesLocation;
     });
 
-    const calendarContainer = document.getElementById("calendar-container");
-    calendarContainer.innerHTML = "";
-    yearsData.forEach((year) => {
-      const yearGrid = generateCalendar(year);
-      populateCalendar(yearGrid, filteredEvents);
-      console.log(filteredEvents[0]);
-    });
     renderFunction(filteredEvents, yearsData);
   });
 }

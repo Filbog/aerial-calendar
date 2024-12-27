@@ -6,9 +6,7 @@ import {
   scrollToElement,
 } from "./utils.js";
 
-export function generateList(year) {
-  const events = [...allEvents];
-
+export function generateList(year, events) {
   for (let i = 0; i < MONTH_NAMES.length; i++) {
     const eventsThisMonth = events.filter((event) => {
       const eventStartDateMonth = parseInt(event.start_date.split("-")[1]);
@@ -48,8 +46,10 @@ export function generateList(year) {
   }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+export function renderList(filteredEvents, yearsData) {
   const listContainer = document.getElementById("list-container");
+  listContainer.innerHTML = "";
+
   yearsData.forEach((year) => {
     const yearContainer = document.createElement("div");
     yearContainer.id = `year-${year}`;
@@ -60,11 +60,11 @@ document.addEventListener("DOMContentLoaded", () => {
     yearContainer.appendChild(yearHeading);
     listContainer.appendChild(yearContainer);
 
-    generateList(year);
+    generateList(year, filteredEvents);
   });
 
   const yearDropdown = document.getElementById("year-dropdown");
   yearDropdown.addEventListener("change", () => {
     scrollToElement(`year-${yearDropdown.value}`);
   });
-});
+}
