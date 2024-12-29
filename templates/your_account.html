@@ -1,0 +1,17 @@
+{% extends "_base.html" %}
+
+{% block title %}Twoje konto{% endblock title %}
+
+
+{% block content %}
+<a href="{% url 'account_change_password' %}">Zmień hasło</a>
+<a href="{% url 'account_email' %}">Zmień adres email</a>
+
+<h1>Twoje wydarzenia:</h1>
+{% for event in event_list %}
+    <h3>{{ event.name }}</h3>
+
+{% endfor %}
+
+
+{% endblock content %}

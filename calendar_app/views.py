@@ -1,5 +1,4 @@
 from django.views.generic import (
-    ListView,
     DetailView,
     CreateView,
     UpdateView,
@@ -16,12 +15,6 @@ import json
 from datetime import datetime
 
 from .models import Event
-
-
-class EventListView(ListView):
-    model = Event
-    template_name = "calendar/list_layout.html"
-    context_object_name = "events"
 
 
 # weird implementation of base template, and then partials depending on button click

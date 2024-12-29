@@ -1,4 +1,5 @@
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView
+from calendar_app.models import Event
 
 
 class HomePageView(TemplateView):
@@ -15,3 +16,11 @@ class ContactPageView(TemplateView):
 
 class FAQPageView(TemplateView):
     template_name = "faq.html"
+
+
+class YourAccountView(ListView):
+    template_name = "your_account.html"
+    model = Event
+
+    def get_queryset(self):
+        return Event.objects.filter(author=self.request.user).order_by("-created_at")

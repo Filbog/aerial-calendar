@@ -33,6 +33,7 @@
                 {% if user.is_authenticated %}
                 <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">Wyloguj</a>
                 <a class="nav-link" href="{% url 'event_create' %}">Stwórz wydarzenie</a>
+                <a href="{% url 'your_account' %}" class="nav-link">Twoje konto</a>
                 {% else %}
                 <a class="nav-link" href="{% url 'account_login' %}">Zaloguj się</a>
                 <a class="nav-link" href="{% url 'account_signup' %}">Rejestracja</a>
