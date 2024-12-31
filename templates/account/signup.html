@@ -1,5 +1,5 @@
 {% extends "_base.html" %}
-{% load crispy_forms_tags %}
+{% load django_bootstrap5 %}
 {% load socialaccount %}
 
 {% block title %}Sign Up{% endblock title %}
@@ -7,7 +7,7 @@
 {% block content %}
     <h1 class="subpage-heading">Sign Up</h1>
     <form method="post">{% csrf_token %}
-        {{ form|crispy }}
+        {% bootstrap_form form %}
         <button type="submit" class="btn btn-success">Sign Up</button>
     </form>
     <a href="{% provider_login_url 'google' %}">Login with Google</a>

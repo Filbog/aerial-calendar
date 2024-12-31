@@ -5,6 +5,7 @@ from django.views.generic import (
     DeleteView,
 )
 from .utils import generate_ics_file, serialize_events
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from .forms import EventForm
 from django.http import HttpResponse, JsonResponse
@@ -15,21 +16,6 @@ import json
 from datetime import datetime
 
 from .models import Event
-
-
-# weird implementation of base template, and then partials depending on button click
-
-# def render_to_response(self, context, **response_kwargs):
-#     # Check if the request is made via HTMX
-#     layout = self.request.GET.get("layout")
-#     if layout == "list":
-#         template = "calendar/list_layout.html"
-#     elif layout == "calendar":
-#         template = "calendar/calendar_layout.html"
-#     else:
-#         template = self.template_name
-
-#     return HttpResponse(render_to_string(template, context))
 
 
 def list_view(request):
@@ -59,18 +45,20 @@ def calendar_view(request):
     )
 
 
-class EventDetailView(DetailView):
+class EventDetailView(LoginRequiredMixin, DetailView):
     model = Event
     template_name = "calendar/event_detail.html"
     context_object_name = "event"
+    login_url = "account_login"
 
 
-class EventCreateView(SuccessMessageMixin, CreateView):
+class EventCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     model = Event
     form_class = EventForm
     template_name = "calendar/event_create.html"
     success_url = reverse_lazy("events")
     success_message = "Wydarzenie utworzone"
+    login_url = "account_login"
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -78,21 +66,35 @@ class EventCreateView(SuccessMessageMixin, CreateView):
         return response
 
 
-class EventUpdateView(SuccessMessageMixin, UpdateView):
+class EventUpdateView(
+    LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, UpdateView
+):
     model = Event
     form_class = EventForm
     template_name = "calendar/event_update.html"
     success_message = "Wydarzenie edytowane"
     success_url = reverse_lazy("events")
+    login_url = "account_login"
+
+    def test_func(self):
+        event = self.get_object()
+        return event.author == self.request.user
 
 
-class EventDeleteView(SuccessMessageMixin, DeleteView):
+class EventDeleteView(
+    LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, DeleteView
+):
     model = Event
     success_message = "Wydarzenie usunięte"
     success_url = reverse_lazy("events")
+    login_url = "account_login"
 
     def get(self, request, *args, **kwargs):
         return self.post(request, *args, **kwargs)
+
+    def test_func(self):
+        event = self.get_object()
+        return event.author == self.request.user
 
 
 def download_event_ics_view(request, pk):

@@ -37,11 +37,11 @@ class Event(models.Model):
 
     is_aerial = models.BooleanField(default=True)
 
-    main_link = models.URLField()
-    additional_url_1 = models.URLField(blank=True, null=True)
+    main_link = models.URLField(max_length=300)
+    additional_url_1 = models.URLField(max_length=300, blank=True, null=True)
     additional_label_1 = models.CharField(max_length=100, blank=True, null=True)
 
-    additional_url_2 = models.URLField(blank=True, null=True)
+    additional_url_2 = models.URLField(max_length=300, blank=True, null=True)
     additional_label_2 = models.CharField(max_length=100, blank=True, null=True)
 
     def __str__(self):
@@ -52,6 +52,7 @@ class Event(models.Model):
 
     def clean(self):
         # Ensure the end date is not earlier than the start date
+
         if self.end_date < self.start_date:
             raise ValidationError(
                 "Data rozpoczęcia nie może być późniejsza od daty zakończenia"

@@ -26,6 +26,7 @@ export function generateList(year, events) {
       monthContainer.id = `${MONTH_NAMES[i]}`;
 
       const monthHeading = document.createElement("h1");
+      monthHeading.classList.add("text-center", "my-2", "display-5");
       monthHeading.innerHTML = `${MONTH_NAMES[i]}`;
       monthContainer.appendChild(monthHeading);
 
@@ -34,7 +35,7 @@ export function generateList(year, events) {
 
       eventsThisMonth.forEach((event) => {
         const eventItem = document.createElement("div");
-        eventItem.classList.add("d-flex", "flex-column", "gap-2");
+        eventItem.classList.add("d-flex", "flex-column", "gap-3");
         eventItem.id = `event-${event.id}`;
         eventItem.innerHTML = renderEvent(event);
         monthContainer.appendChild(eventItem);
@@ -56,7 +57,7 @@ export function renderList(filteredEvents, yearsData) {
     yearContainer.classList = "year-wrapper";
     const yearHeading = document.createElement("h1");
     yearHeading.innerHTML = `${year}`;
-    yearHeading.classList = "my-0 mx-auto year-heading";
+    yearHeading.classList = "my-0 mx-auto year-heading display-5";
     yearContainer.appendChild(yearHeading);
     listContainer.appendChild(yearContainer);
 

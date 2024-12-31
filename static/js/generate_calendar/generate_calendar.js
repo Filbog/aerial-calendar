@@ -45,7 +45,7 @@ export function populateCalendar(yearData, eventsData) {
   yearWrapper.id = `year-${year}`;
 
   const yearHeading = document.createElement("h1");
-  yearHeading.classList.add("year-heading");
+  yearHeading.classList.add("year-heading", "display-5");
   yearHeading.textContent = year;
   yearWrapper.appendChild(yearHeading);
   calendarContainer.appendChild(yearWrapper);

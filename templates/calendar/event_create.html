@@ -14,7 +14,11 @@
     {% endif %}
     {% bootstrap_field form.name %}
     {% bootstrap_field form.start_date %}
-    {% bootstrap_field form.end_date %}
+    {% if form.errors %}
+        {% bootstrap_field form.end_date field_class='form-control is-invalid' %}
+    {% else %}
+        {% bootstrap_field form.end_date %}
+    {% endif %}
     {% bootstrap_field form.description %}
     {% bootstrap_field form.location %}
     <label><input type="checkbox" name="" id="id_is_virtual">Wydarzenie online</label>

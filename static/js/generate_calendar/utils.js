@@ -68,7 +68,7 @@ export function renderEvent(e) {
       <h6><i class="bi bi-pin-map-fill"></i> ${e.location}</h6>
       <div class='modal-description d-none' id='${e.id}-description'>
       </div>
-      <div class="modal-links d-flex flex-column gap-3" id="${e.id}-links">
+      <div class="modal-links d-flex flex-column gap-2" id="${e.id}-links">
         <div class="modal-main-link">
           <h4 class="bold">Link do wydarzenia: </h4>
           <a href="${e.main_link}" target="_blank" rel="noopener">${
@@ -95,7 +95,7 @@ export function renderEvent(e) {
           }/download-ics/"><i class="bi bi-calendar"></i> Inny kalendarz</a></li>
         </ul>
       </div>
-      <hr>
+      <hr class='event-hr'>
     `;
 }
 

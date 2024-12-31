@@ -4,14 +4,42 @@
 
 
 {% block content %}
-<a href="{% url 'account_change_password' %}">Zmień hasło</a>
-<a href="{% url 'account_email' %}">Zmień adres email</a>
+<div class="account-changes-container mb-5">
+    <h1 class="display-5 text-center mb-3">Twoje konto</h1>
+    <div class="d-flex gap-3 flex-column flex-sm-row justify-content-center">
+            <a class="btn btn-outline-primary" href="{% url 'account_change_password' %}">Zmień hasło</a>
+            <a class="btn btn-outline-primary" href="{% url 'account_email' %}">Zmień adres email</a>
+            <a class="btn btn-outline-danger" href="#">Usuń konto</a>
+    </div>
+</div>
 
-<h1>Twoje wydarzenia:</h1>
-{% for event in event_list %}
-    <h3>{{ event.name }}</h3>
 
-{% endfor %}
+<div class="user-events-container">
+    <h1 class="display-5 text-center mb-3">Twoje wydarzenia:</h1>
+    {% for event in event_list %}
+    <div class="d-flex flex-column gap-3 mt-3">
+        <div>
+            <h3 class='d-inline'>{{event.name}}</h3> <span class='{{event.type}}-type px-1 rounded'>{{event.type}}</span>
+        </div>
+        <h5>{{event.start_date}} - {{event.end_date}}</h5>
+        <h6><i class="bi bi-pin-map-fill"></i> {{event.location}}</h6>
+        {% if event.description %}
+        <div class='modal-description d-none' id='{{event.id}}-description'></div>
+        {% endif %}
+        <div class="modal-links d-flex flex-column gap-2" id="{{event.id}}-links">
+            <div class="modal-main-link">
+                <h4 class="bold">Link do wydarzenia: </h4>
+                <a href="{{event.main_link}}" target="_blank" rel="noopener">{{event.main_link}}</a>
+            </div>
+        </div>
+        <div class="edit-button-wrapper">
+            <a href="{% url 'event_edit' event.pk %}" class="btn btn-primary">Edytuj</a>
+            <hr class="event-hr">
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
 
 
 {% endblock content %}

@@ -1,5 +1,6 @@
 from django.views.generic import TemplateView, ListView
 from calendar_app.models import Event
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 class HomePageView(TemplateView):
@@ -18,7 +19,7 @@ class FAQPageView(TemplateView):
     template_name = "faq.html"
 
 
-class YourAccountView(ListView):
+class YourAccountView(LoginRequiredMixin, ListView):
     template_name = "your_account.html"
     model = Event
 
