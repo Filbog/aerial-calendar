@@ -1,15 +1,15 @@
 {% extends "_base.html" %}
 {% load django_bootstrap5 %}
 {% load socialaccount %}
+{% load i18n %}
 
-{% block title %}Sign Up{% endblock title %}
+{% block title %}{% trans "Sign Up" %}{% endblock title %}
 
 {% block content %}
-    <h1 class="subpage-heading">Sign Up</h1>
+    <h1 class="subpage-heading">{% trans "Sign Up" %}</h1>
     <form method="post">{% csrf_token %}
         {% bootstrap_form form %}
-        <button type="submit" class="btn btn-success">Sign Up</button>
+        <button type="submit" class="btn btn-success">{% trans "Sign Up" %}</button>
     </form>
-    <a href="{% provider_login_url 'google' %}">Login with Google</a>
-
+    <a href="{% provider_login_url 'google' %}">{% trans "Login with Google" %}</a>
 {% endblock content %}

@@ -4,6 +4,7 @@ from django.contrib.auth import get_user_model
 from django.urls import reverse
 import uuid
 from django.core.exceptions import ValidationError
+from django.utils.translation import gettext_lazy as _
 
 User = get_user_model()
 
@@ -25,17 +26,19 @@ class Event(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     TYPE_CHOICES = [
-        ("competition", "competition"),
-        ("workshop", "workshop"),
-        ("conference", "conference"),
-        ("show", "show"),
-        ("festival", "festival"),
-        ("convention", "convention"),
-        ("other", "other"),
+        ("competition", _("competition")),
+        ("workshop", _("workshop")),
+        ("conference", _("conference")),
+        ("show", _("show")),
+        ("festival", _("festival")),
+        ("convention", _("convention")),
+        ("other", _("other")),
     ]
     type = models.CharField(max_length=20, choices=TYPE_CHOICES)
 
     is_aerial = models.BooleanField(default=True)
+
+    is_verified = models.BooleanField(default=False)
 
     main_link = models.URLField(max_length=300)
     additional_url_1 = models.URLField(max_length=300, blank=True, null=True)
@@ -54,9 +57,7 @@ class Event(models.Model):
         # Ensure the end date is not earlier than the start date
 
         if self.end_date < self.start_date:
-            raise ValidationError(
-                "Data rozpoczęcia nie może być późniejsza od daty zakończenia"
-            )
+            raise ValidationError(_("Start date cannot be later than end date"))
 
     def save(self, *args, **kwargs):
         # Call clean() before saving to ensure validation
@@ -74,3 +75,5 @@ typy_pol = [
     ("convention", "Konwent"),
     ("other", "Inne"),
 ]
+
+# _("Data rozpoczęcia nie może być późniejsza od daty zakończenia")

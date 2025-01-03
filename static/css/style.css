@@ -4,7 +4,6 @@
 }
 
 .alert{
-    position: sticky;
     top: 60px;
     z-index: 1000;
     width: fit-content;
@@ -13,7 +12,6 @@
     margin-bottom: 0;
 }
 h1 {
-    /* color: red; */
     display: block;
 }
 
@@ -108,8 +106,6 @@ body {
     z-index: 10; /* Ensure it appears above other content */
     background-color: white; /* Optional: Match the page background for better visibility */
     padding: 6px 4px;
-    /* padding: 10px 10px;*/
-    /* padding-top: 12px; */
     margin-left: -1px;
     border-bottom: 1px solid #ccc; /* Optional: Add a subtle underline */
   }
@@ -118,17 +114,13 @@ body {
 
 .calendar-navigation {
 position: sticky;
-top: 60px; /* Position at the top of the viewport */
+top: 60px; /* below the navbar */
 left: 100%;
 max-width: 66%;
-z-index: 15; /* Ensure it stays above other content */
-/* padding: 5px; */
-/* padding-top: 0; */
-/* margin-top: 2rem; */
+z-index: 100;
 display: flex;
 justify-content: flex-end;
 gap: 10px;
-/* margin-top: 2rem; */
 }
 
 .form-select{

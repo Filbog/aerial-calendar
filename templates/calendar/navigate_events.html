@@ -1,49 +1,48 @@
+{% load i18n %}
 <div class="calendar-navigation">
     <button class="btn btn-info collapse-filters" type="button" data-bs-toggle="modal" data-bs-target="#collapseFilters">
-      Filtruj
+        {% trans "Filter" %}
     </button>
     <select class="form-select py-1 sticky-dropdown" id="year-dropdown">
-      <option selected disabled>Przejdź do roku...</option>
-      {% for year in years %}
-      <option value="{{ year }}">{{ year }}</option>
-      {% endfor %}
+        <option selected disabled>{% trans "Go to year..." %}</option>
+        {% for year in years %}
+        <option value="{{ year }}">{{ year }}</option>
+        {% endfor %}
     </select>
-  </div>
+</div>
 
-
-  <!-- filters modal -->
+<!-- Filters Modal -->
 <div class="modal fade" id="collapseFilters" tabindex="-1" aria-labelledby="filterModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="filterModalLabel">Filtruj</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <p id="type-filter" class="">
-            <h5>Typ wydarzenia</h5>
-            <input type="checkbox" class="form-check-input mb-2" id="uncheck-all-types" checked>
-            <label for="uncheck-all-types">Odznacz/zaznacz wszystkie</label>
-            <div id="type-checkboxes">
-              {% for type in event_types %}
-              <label><input type="checkbox" value="{{ type.1 }}" class="form-check-input type-checkbox" checked> {{ type.1 }}</label>
-              {% endfor %}
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="filterModalLabel">{% trans "Filter" %}</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="{% trans 'Close' %}"></button>
             </div>
-          </p>
-          <p id="location-filter">
-            <h5>Lokalizacja</h5>
-            <select class="form-select" name="" id="location-dropdown">
-              <option value="all">Wszystkie</option>
-            </select>
-          </p>
-          <!-- <p id="aerial-filter">
-            <label><input type="checkbox" id="only-aerial" class="form-check-input" checked> Tylko związane z aerial</label>
-          </p> -->
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Zamknij</button>
-            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="applyFiltersBtn">Zastosuj</button>
-          </div>
+            <div class="modal-body">
+                <p id="type-filter" class="">
+                    <h5>{% trans "Event Type" %}</h5>
+                    <input type="checkbox" class="form-check-input mb-2" id="uncheck-all-types" checked>
+                    <label for="uncheck-all-types">{% trans "Uncheck/Check all" %}</label>
+                    <div id="type-checkboxes">
+                        {% for type in event_types %}
+                        <label>
+                            <input type="checkbox" value="{{ type.1 }}" class="form-check-input type-checkbox" checked> {{ type.1 }}
+                        </label>
+                        {% endfor %}
+                    </div>
+                </p>
+                <p id="location-filter">
+                    <h5>{% trans "Location" %}</h5>
+                    <select class="form-select" name="" id="location-dropdown">
+                        <option value="all">{% trans "All" %}</option>
+                    </select>
+                </p>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{% trans "Close" %}</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="applyFiltersBtn">{% trans "Apply" %}</button>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
+</div>

@@ -14,6 +14,7 @@ def serialize_events(events):
                 "type": event.type,
                 "is_aerial": event.is_aerial,
                 "main_link": event.main_link,
+                "verified": event.is_verified,
                 "additional_url_1": event.additional_url_1,
                 "additional_label_1": event.additional_label_1,
                 "additional_url_2": event.additional_url_2,

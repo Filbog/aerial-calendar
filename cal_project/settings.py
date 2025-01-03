@@ -67,6 +67,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "django_htmx.middleware.HtmxMiddleware",
     "allauth.account.middleware.AccountMiddleware",
+    "django.middleware.locale.LocaleMiddleware",  # translation
 ]
 
 ROOT_URLCONF = "cal_project.urls"
@@ -124,10 +125,16 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
 LANGUAGE_CODE = "en-us"
-
+LANGUAGES = [
+    ("en", "English"),
+    ("pl", "Polish"),
+]
 TIME_ZONE = "UTC"
 
 USE_I18N = True
+LOCALE_PATHS = [
+    BASE_DIR / "locale",
+]
 
 USE_TZ = True
 

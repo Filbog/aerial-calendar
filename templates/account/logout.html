@@ -1,13 +1,14 @@
 {% extends "_base.html" %}
+{% load i18n %}
 
-{% block title %}Log Out{% endblock %}
+{% block title %}{% trans "Log Out" %}{% endblock %}
 
 {% block content %}
-    <h1>Log Out</h1>
-    <p>Are you sure you want to log out?</p>
+    <h1>{% trans "Log Out" %}</h1>
+    <p>{% trans "Are you sure you want to log out?" %}</p>
     <form method="post" action="{% url 'account_logout' %}">
         {% csrf_token %}
         {% bootstrap_form form %}
-        <button class="btn btn-danger" type="submit">Log Out</button>
+        <button class="btn btn-danger" type="submit">{% trans "Log Out" %}</button>
     </form>
 {% endblock content %}

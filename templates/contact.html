@@ -1,4 +1,8 @@
 {% extends "_base.html" %}
-{% block title %}Contact{% endblock title %}
-{% block content %} <h1>Contact Page</h1>
+{% load i18n %}
+
+{% block title %}{% trans "Contact" %}{% endblock title %}
+
+{% block content %}
+    <h1>{% trans "Contact Page" %}</h1>
 {% endblock content %}

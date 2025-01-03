@@ -1,11 +1,10 @@
 {% extends 'error_template.html' %}
-
-
+{% load i18n %}
 
 {% block error_title %}
-Server Error (500)
+{% trans "Server Error (500)" %}
 {% endblock error_title %}
 
 {% block error_description %}
-Sorry, there was an error on the server.
+{% trans "Sorry, there was an error on the server." %}
 {% endblock error_description %}

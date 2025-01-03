@@ -1,9 +1,10 @@
 {% extends 'error_template.html' %}
+{% load i18n %}
 
 {% block error_title %}
-Unauthorized (401)
+{% trans "Unauthorized (401)" %}
 {% endblock error_title %}
 
 {% block error_description %}
-Sorry, you need to log in to access this page.
+{% trans "Sorry, you need to log in to access this page." %}
 {% endblock error_description %}

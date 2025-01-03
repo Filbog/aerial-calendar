@@ -1,4 +1,8 @@
 {% extends "_base.html" %}
-{% block title %}FAQ{% endblock title %}
-{% block content %} <h1>Najczęściej zadawane pytania</h1>
+{% load i18n %}
+
+{% block title %}{% trans "FAQ" %}{% endblock title %}
+
+{% block content %}
+    <h1>{% trans "Najczęściej zadawane pytania" %}</h1>
 {% endblock content %}

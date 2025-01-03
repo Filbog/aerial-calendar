@@ -8,5 +8,10 @@ class CustomUser(AbstractUser):
     email = models.EmailField(unique=True)
     alias = models.CharField(max_length=100, blank=True, null=True)
 
+    class Meta:
+        permissions = [
+            ("verified", "Can automatically create verified events"),
+        ]
+
     def __str__(self):
         return self.email

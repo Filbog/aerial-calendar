@@ -1,11 +1,10 @@
 {% extends 'error_template.html' %}
-
-
+{% load i18n %}
 
 {% block error_title %}
-Bad Request (400)
+{% trans "Bad Request (400)" %}
 {% endblock error_title %}
 
 {% block error_description %}
-Sorry, the server could not understand the request due to invalid syntax.
+{% trans "Sorry, the server could not understand the request due to invalid syntax." %}
 {% endblock error_description %}
