@@ -32,7 +32,7 @@ class EventForm(forms.ModelForm):
             "additional_url_1": _("Additional link 1"),
             "additional_label_1": _("Where does additonal link 1 lead to"),
             "additional_url_2": _("Additional link 2"),
-            "additional_label_2": _("Where does additonal link 1 lead to"),
+            "additional_label_2": _("Where does additonal link 2 lead to"),
         }
         widgets = {
             "description": forms.Textarea(attrs={"rows": "5"}),

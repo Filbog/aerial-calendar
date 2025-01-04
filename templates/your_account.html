@@ -1,20 +1,20 @@
 {% extends "_base.html" %}
 {% load i18n %}
 
-{% block title %}{% trans "Twoje konto" %}{% endblock title %}
+{% block title %}{% trans "Your account" %}{% endblock title %}
 
 {% block content %}
 <div class="account-changes-container mb-5">
-    <h1 class="display-5 text-center mb-3">{% trans "Twoje konto" %}</h1>
+    <h1 class="display-5 text-center mb-3">{% trans "Your account" %}</h1>
     <div class="d-flex gap-3 flex-column flex-sm-row justify-content-center">
-        <a class="btn btn-outline-primary" href="{% url 'account_change_password' %}">{% trans "Zmień hasło" %}</a>
-        <a class="btn btn-outline-primary" href="{% url 'account_email' %}">{% trans "Zmień adres email" %}</a>
-        <a class="btn btn-outline-danger" href="#">{% trans "Usuń konto" %}</a>
+        <a class="btn btn-outline-primary" href="{% url 'account_change_password' %}">{% trans "Change password" %}</a>
+        <a class="btn btn-outline-primary" href="{% url 'account_email' %}">{% trans "Change e-mail address" %}</a>
+        <a class="btn btn-outline-danger" href="#">{% trans "Delete account" %}</a>
     </div>
 </div>
 
 <div class="user-events-container">
-    <h1 class="display-5 text-center mb-3">{% trans "Twoje wydarzenia:" %}</h1>
+    <h1 class="display-5 text-center mb-3">{% trans "Your events:" %}</h1>
     {% for event in event_list %}
     <div class="d-flex flex-column gap-3 mt-3">
         <div>
@@ -28,12 +28,12 @@
         {% endif %}
         <div class="modal-links d-flex flex-column gap-2" id="{{ event.id }}-links">
             <div class="modal-main-link">
-                <h4 class="bold">{% trans "Link do wydarzenia:" %}</h4>
+                <h4 class="bold">{% trans "Link to the event:" %}</h4>
                 <a href="{{ event.main_link }}" target="_blank" rel="noopener">{{ event.main_link }}</a>
             </div>
         </div>
         <div class="edit-button-wrapper">
-            <a href="{% url 'event_edit' event.pk %}" class="btn btn-primary">{% trans 'Edytuj' %}</a>
+            <a href="{% url 'event_edit' event.pk %}" class="btn btn-primary">{% trans 'Edit' %}</a>
             <hr class="event-hr">
         </div>
     </div>

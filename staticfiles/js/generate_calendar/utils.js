@@ -1,7 +1,3 @@
-const _ = window.gettext || ((x) => x);
-const itp = window.interpolate || ((str, obj) => str);
-import { translatedTypes } from "./constants.js";
-
 export function scrollToElement(
   elementId,
   behavior = "smooth",
@@ -64,18 +60,17 @@ function generateOutlookCalendarURL(event) {
 }
 
 export function renderEvent(e) {
-  const translatedType = _(e.type);
   return `
     <div><h3 class='d-inline'>${e.name}</h3> <span class='${
     e.type
-  }-type px-1 rounded'>${translatedTypes[e.type]}</span></div>
+  }-type px-1 rounded'>${e.type}</span></div>
       <h5>${e.start_date} - ${e.end_date}</h5>
       <h6><i class="bi bi-pin-map-fill"></i> ${e.location}</h6>
       <div class='modal-description d-none' id='${e.id}-description'>
       </div>
       <div class="modal-links d-flex flex-column gap-2" id="${e.id}-links">
         <div class="modal-main-link">
-          <h4 class="bold"> ${_("Link to the event:")} </h4>
+          <h4 class="bold">Link do wydarzenia: </h4>
           <a href="${e.main_link}" target="_blank" rel="noopener">${
     e.main_link
   }</a>
@@ -83,25 +78,21 @@ export function renderEvent(e) {
       </div>
       <div class="btn-group d-inline-block">
         <button class="btn btn-secondary dropdown-toggle d-inline" type="button" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">
-          ${_("Add to calendar...")}
+          Dodaj do Kalendarza...
         </button>
         <ul class="dropdown-menu">
           <li><a class="dropdown-item" href="${generateGoogleCalendarURL(
             e
-          )}"><i class="bi bi-google"></i> ${_("Google Calendar")}</a></li>
+          )}"><i class="bi bi-google"></i> Kalendarz Google</a></li>
           <li><a class="dropdown-item" href="${generateOutlookCalendarURL(
             e
-          )}"><i class="bi bi-microsoft"></i> ${_("Outlook")}</a></li>
+          )}"><i class="bi bi-microsoft"></i> Outlook</a></li>
           <li><a class="dropdown-item" href="${
             e.id
-          }/download-ics/"><i class="bi bi-apple"></i> ${_(
-    "Apple Calendar"
-  )}</a></li>
+          }/download-ics/"><i class="bi bi-apple"></i> Kalendarz Apple</a></li>
           <li><a class="dropdown-item" href="${
             e.id
-          }/download-ics/"><i class="bi bi-calendar"></i> ${_(
-    "Other Calendar"
-  )}</a></li>
+          }/download-ics/"><i class="bi bi-calendar"></i> Inny kalendarz</a></li>
         </ul>
       </div>
       <hr class='event-hr'>
@@ -114,7 +105,7 @@ export function renderAdditionalUrls(e) {
     const additionalLinks = document.createElement("div");
     additionalLinks.classList.add("additional-links");
     additionalLinks.innerHTML = `
-    <h5 class='mb-0'>${_("Additional links:")}</h5>
+    <h5 class='mb-0'>Dodatkowe linki:</h5>
     ${
       e.additional_url_1
         ? `<a href="${e.additional_url_1}" class="d-block">${
@@ -139,17 +130,14 @@ export function renderDescription(e) {
     const modalDescription = document.getElementById(`${e.id}-description`);
     modalDescription.classList.remove("d-none");
     modalDescription.innerHTML = `
-    <button class="btn btn-secondary mb-2" type="button" data-bs-toggle="collapse" data-bs-target="#${
-      e.id
-    }-collapseDescription" aria-expanded="false" aria-controls="${
-      e.id
-    }-collapseDescription">
-      ${_("Show/hide description")}
+    <button class="btn btn-secondary mb-2" type="button" data-bs-toggle="collapse" data-bs-target="#${e.id}-collapseDescription" aria-expanded="false" aria-controls="${e.id}-collapseDescription">
+      Rozwiń/schowaj opis
     </button>
     <p class='collapse' id='${e.id}-collapseDescription'>
       ${e.description}
     </p>
     `;
+    console.log("DESCRIPTION EHWERE");
   }
 }
 
@@ -157,7 +145,7 @@ export function fillEventsModal(eventsArray, dateString) {
   const eventsModalTitle = document.getElementById("eventsModalTitle");
   const eventsModalBody = document.getElementById("eventsModalBody");
 
-  eventsModalTitle.textContent = `${_("Events")} ${dateString}`;
+  eventsModalTitle.textContent = `Wydarzenia ${dateString}`;
   eventsModalBody.innerHTML = "";
 
   eventsArray.forEach((e) => {

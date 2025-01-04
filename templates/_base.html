@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}{% trans "Kalendarium Aerial" %}{% endblock title %}</title>
+    <title>{% block title %}{% trans "Aerial Calendar" %}{% endblock title %}</title>
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous" defer></script>
@@ -22,31 +22,30 @@
     {% django_htmx_script %}
     <!-- My custom assets -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <script src="{% static 'js/index.js' %}" defer></script>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg fixed-top bg-dark" data-bs-theme="dark">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">{% trans "Kalendarz Aerial" %}</a>
+          <a class="navbar-brand" href="#">{% trans "Aerial Calendar" %}</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="{% trans 'Toggle navigation' %}">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-link" href="{% url 'events' %}">{% trans "Kalendarz" %}</a>
-                <a class="nav-link" href="{% url 'list_layout' %}">{% trans "Lista" %}</a>
+                <a class="nav-link" href="{% url 'events' %}">{% trans "Calendar" %}</a>
+                <a class="nav-link" href="{% url 'list_layout' %}">{% trans "List" %}</a>
                 {% if user.is_authenticated %}
-                <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">{% trans "Wyloguj" %}</a>
-                <a class="nav-link" href="{% url 'event_create' %}">{% trans "Stwórz wydarzenie" %}</a>
-                <a href="{% url 'your_account' %}" class="nav-link">{% trans "Twoje konto" %}</a>
-                <a href="{% url 'unverified_events' %}" class="nav-link">{% trans "Niezweryfikowane" %}</a>
+                <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">{% trans "Log out" %}</a>
+                <a class="nav-link" href="{% url 'event_create' %}">{% trans "Create event" %}</a>
+                <a href="{% url 'your_account' %}" class="nav-link">{% trans "Your account" %}</a>
+                <a href="{% url 'unverified_events' %}" class="nav-link">{% trans "Unverified" %}</a>
                 {% else %}
-                <a class="nav-link" href="{% url 'account_login' %}">{% trans "Zaloguj się" %}</a>
-                <a class="nav-link" href="{% url 'account_signup' %}">{% trans "Rejestracja" %}</a>
+                <a class="nav-link" href="{% url 'account_login' %}">{% trans "Log in" %}</a>
+                <a class="nav-link" href="{% url 'account_signup' %}">{% trans "Sign up" %}</a>
                 {% endif %}
               <a class="nav-link" href="{% url 'faq' %}">{% trans "FAQ" %}</a>
-              <a class="nav-link" href="{% url 'about' %}">{% trans "O projekcie" %}</a>
-              <a class="nav-link" href="{% url 'contact' %}">{% trans "Kontakt" %}</a>
+              <a class="nav-link" href="{% url 'about' %}">{% trans "About" %}</a>
+              <a class="nav-link" href="{% url 'contact' %}">{% trans "Contact" %}</a>
             </div>
           </div>
         </div>
@@ -68,15 +67,15 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="logoutModalLabel">{% trans "Wyloguj" %}</h1>
+            <h1 class="modal-title fs-5" id="logoutModalLabel">{% trans "Log out" %}</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="{% trans 'Close' %}"></button>
           </div>
           <div class="modal-body">
-            {% trans "Czy na pewno chcesz się wylogować?" %}
+            {% trans "Are you sure you want to log out?" %}
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{% trans "Zamknij" %}</button>
-            <a class="btn btn-primary" href="{% url 'account_logout' %}">{% trans "Wyloguj" %}</a>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{% trans "Close" %}</button>
+            <a class="btn btn-primary" href="{% url 'account_logout' %}">{% trans "Log out" %}</a>
           </div>
         </div>
       </div>

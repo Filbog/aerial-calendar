@@ -1,8 +1,11 @@
 {% extends '_base.html' %}
 {% load static %}
-
+{% load i18n %}
 
 {% block content %}
+<!-- For translation -->
+<script type="text/javascript" src="{% url 'javascript-catalog' %}"></script>
+
 
 <h1 class="d-flex justify-content-center">CALENDAR LAYOUT</h1>
 {% include 'calendar/navigate_events.html' %}
@@ -24,7 +27,7 @@
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Zamknij</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{% trans 'Close' %}</button>
       </div>
     </div>
   </div>

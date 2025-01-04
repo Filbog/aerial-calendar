@@ -8,7 +8,7 @@
 
 <form method="post" id="event-update-form">
     {% csrf_token %}
-    <h1>{% trans 'Edytuj wydarzenie' %}</h1>
+    <h1>{% trans 'Edit event' %}</h1>
     {% if form.errors %}
     <div class="alert alert-warning alert-dismissable fade show d-flex justify-content-between" role="alert" data-bs-dismiss="alert">
         {% bootstrap_form_errors form %}
@@ -24,13 +24,13 @@
     {% endif %}
     {% bootstrap_field form.description %}
     {% bootstrap_field form.location %}
-    <label><input type="checkbox" name="" id="id_is_virtual">{% trans 'Wydarzenie online' %}</label>
+    <label><input type="checkbox" name="" id="id_is_virtual">{% trans 'Online event' %}</label>
     {% bootstrap_field form.type %}
     {% bootstrap_field form.is_aerial %}
     {% bootstrap_field form.main_link %}
 
 
-    <button class="btn btn-success d-block mb-3"data-bs-toggle="collapse" data-bs-target="#additional-urls-collapse" type="button">{% trans 'Dodatkowe linki' %}</button>
+    <button class="btn btn-success d-block mb-3"data-bs-toggle="collapse" data-bs-target="#additional-urls-collapse" type="button">{% trans 'Additional links' %}</button>
     <div class="collapse" id="additional-urls-collapse">
         {% bootstrap_field form.additional_url_1 %}
         {% bootstrap_field form.additional_label_1 %}
@@ -39,12 +39,12 @@
     </div>
 
 
-    <button class="btn btn-success" type="submit">{% trans 'Zapisz zmiany' %}</button>
+    <button class="btn btn-success" type="submit">{% trans 'Save changes' %}</button>
 </form>
 
 <form action="{% url 'event_delete' event.pk %}" method="post" id="delete-form">
     {% csrf_token %}
-    <button type="submit" class="btn btn-danger" onclick="return confirm('{% trans "Czy na pewno chcesz usunac wydarzenie?" %}')">{% trans 'Usuń wydarzenie' %}</button>
+    <button type="submit" class="btn btn-danger" onclick="return confirm('{% trans "Are you sure you want to delete the event?" %}')">{% trans 'Delete' %}</button>
 </form>
 
 
