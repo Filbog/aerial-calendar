@@ -13,10 +13,12 @@
 }
 h1 {
     display: block;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
 }
 
 body {
-    padding-top: 4.5rem;
+    padding-top: 60px;
 }
 
 .nav-link {
@@ -113,14 +115,14 @@ body {
 
 
 .calendar-navigation {
-position: sticky;
-top: 60px; /* below the navbar */
-left: 100%;
-max-width: 66%;
-z-index: 100;
-display: flex;
-justify-content: flex-end;
-gap: 10px;
+    position: sticky;
+    top: 60px; /* below the navbar */
+    left: 100%;
+    max-width: 66%;
+    z-index: 100;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
 }
 
 .form-select{
@@ -211,4 +213,21 @@ gap: 10px;
     .month-container{
         /* scroll-margin-top: 210px; */
     }
+}
+
+
+/* Rather ugly solution for disabling the styles applied on bootstrap validation */
+.form-control.is-invalid, .form-control.is-valid, .form-select.is-invalid, .form-select.is-valid, .form-check-input.is-valid, .form-check-input.is-invalid {
+    background-image: none;
+    border-color: gray;
+    background-color: inherit !important;
+}
+
+.form-check-label{
+    color: black !important;
+}
+
+.form-control.is-invalid:focus, .form-control.is-valid:focus, .form-select.is-invalid:focus, .form-select.is-valid:focus, .form-check-input.is-valid:focus, .form-check-input.is-invalid:focus{
+    border-color: gray;
+    box-shadow: 0 0 0 .25rem rgba(159, 158, 158, .25);
 }

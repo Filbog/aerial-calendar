@@ -1611,7 +1611,7 @@ msgstr "Usuń konto"
 
 #: templates/your_account.html:17
 msgid "Your events:"
-msgstr "Twoje wydarzzenia:"
+msgstr "Twoje wydarzenia:"
 
 #: templates/your_account.html:31
 #, fuzzy
