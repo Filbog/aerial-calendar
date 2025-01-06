@@ -16,11 +16,7 @@
     {% endif %}
     {% bootstrap_field form.name %}
     {% bootstrap_field form.start_date %}
-    {% if form.errors %}
-        {% bootstrap_field form.end_date field_class='form-control is-invalid' %}
-    {% else %}
-        {% bootstrap_field form.end_date %}
-    {% endif %}
+    {% bootstrap_field form.end_date %}
     {% bootstrap_field form.description %}
     {% bootstrap_field form.location %}
     <label><input type="checkbox" name="" id="id_is_virtual">{% trans 'Online event' %}</label>
@@ -29,7 +25,7 @@
     {% bootstrap_field form.main_link %}
 
 
-    <button class="btn btn-success d-block mb-3"data-bs-toggle="collapse" data-bs-target="#additional-urls-collapse" type="button">{% trans 'Additonal links' %}</button>
+    <button class="btn btn-secondary d-block mb-3"data-bs-toggle="collapse" data-bs-target="#additional-urls-collapse" type="button">{% trans 'Additional links' %}</button>
     <div class="collapse" id="additional-urls-collapse">
         {% bootstrap_field form.additional_url_1 %}
         {% bootstrap_field form.additional_label_1 %}
@@ -38,7 +34,7 @@
     </div>
 
 
-    <button class="btn btn-success" type="submit">{% trans 'Add' %}</button>
+    <button class="btn btn-primary" type="submit">{% trans 'Add Event' %}</button>
 </form>
 
 <!-- Script for the online checkbox -->

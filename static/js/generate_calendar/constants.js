@@ -1,4 +1,4 @@
-const _ = window._ || ((x) => x);
+const _ = window.gettext || ((x) => x);
 
 export const MONTH_NAMES = [
   _("January"),
@@ -27,11 +27,11 @@ export const DAY_NAMES = [
 
 // Hacky way, but not sure how to translate dynamically generated JS strings in django otherwise
 export const translatedTypes = {
-  competition: _("zawody"),
-  workshop: _("warsztaty"),
-  conference: _("konferencja"),
-  show: _("show"),
-  festival: _("festiwal"),
-  convention: _("spotkania"),
-  other: _("inne"),
+  competition: "zawody",
+  workshop: "warsztaty",
+  conference: "konferencja",
+  show: "show",
+  festival: "festiwal",
+  convention: "spotkania",
+  other: "inne",
 };

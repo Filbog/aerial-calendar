@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import (
-    HomePageView,
+    redirect_to_calendar,
     AboutPageView,
     ContactPageView,
     FAQPageView,
@@ -8,7 +8,7 @@ from .views import (
 )
 
 urlpatterns = [
-    path("", HomePageView.as_view(), name="home"),
+    # path("", redirect_to_calendar, name="home"),
     path("about/", AboutPageView.as_view(), name="about"),
     path("contact/", ContactPageView.as_view(), name="contact"),
     path("faq/", FAQPageView.as_view(), name="faq"),

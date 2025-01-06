@@ -7,9 +7,9 @@
 <div class="account-changes-container mb-5">
     <h1 class="display-5 text-center mb-3">{% trans "Your account" %}</h1>
     <div class="d-flex gap-3 flex-column flex-sm-row justify-content-center">
-        <a class="btn btn-outline-primary" href="{% url 'account_change_password' %}">{% trans "Change password" %}</a>
-        <a class="btn btn-outline-primary" href="{% url 'account_email' %}">{% trans "Change e-mail address" %}</a>
-        <a class="btn btn-outline-danger" href="#">{% trans "Delete account" %}</a>
+        <a class="btn btn-primary" href="{% url 'account_email' %}">{% trans "Change email address" %}</a>
+        <a class="btn btn-primary" href="{% url 'account_change_password' %}">{% trans "Change password" %}</a>
+        <a class="btn btn-danger" href="#">{% trans "Delete account" %}</a>
     </div>
 </div>
 
@@ -21,7 +21,7 @@
             <h3 class='d-inline'>{{ event.name }}</h3>
             <span class='{{ event.type }}-type px-1 rounded'>{{ event.type }}</span>
         </div>
-        <h5>{{ event.start_date }} - {{ event.end_date }}</h5>
+        <h5>{{ event.start_date|date:"j-m-Y" }} - {{ event.end_date|date:"j-m-Y" }}</h5>
         <h6><i class="bi bi-pin-map-fill"></i> {{ event.location }}</h6>
         {% if event.description %}
         <div class='modal-description d-none' id='{{ event.id }}-description'></div>

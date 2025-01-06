@@ -1,10 +1,14 @@
 from django.views.generic import TemplateView, ListView
 from calendar_app.models import Event
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import redirect
+from django.urls import reverse
 
 
-class HomePageView(TemplateView):
-    template_name = "home.html"
+def redirect_to_calendar(request):
+    # Reverse the URL for the view in app2
+    url = reverse("calendar_app:events")
+    return redirect(url)
 
 
 class AboutPageView(TemplateView):

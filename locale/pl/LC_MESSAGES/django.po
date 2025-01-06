@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-04 18:54+0100\n"
+"POT-Creation-Date: 2025-01-06 16:45+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -611,7 +611,6 @@ msgid "Order"
 msgstr ""
 
 #: cal_env/lib/python3.12/site-packages/django/forms/formsets.py:499
-#: templates/calendar/event_update.html:47
 msgid "Delete"
 msgstr ""
 
@@ -1247,7 +1246,7 @@ msgstr ""
 
 #: cal_env/lib/python3.12/site-packages/django_bootstrap5/components.py:26
 msgid "close"
-msgstr ""
+msgstr "zamknij"
 
 #: calendar_app/forms.py:24
 msgid "Name of the event"
@@ -1267,7 +1266,7 @@ msgstr "Data zakończenia"
 
 #: calendar_app/forms.py:28 templates/calendar/navigate_events.html:36
 msgid "Location"
-msgstr "Lokacja"
+msgstr "Miejsce wydarzenia"
 
 #: calendar_app/forms.py:29
 msgid "Type"
@@ -1294,8 +1293,6 @@ msgid "Additional link 2"
 msgstr "Dodatkowy link 2"
 
 #: calendar_app/forms.py:35
-#, fuzzy
-#| msgid "Where does additonal link 1 lead to"
 msgid "Where does additonal link 2 lead to"
 msgstr "Dokąd prowadzi link 2"
 
@@ -1368,8 +1365,6 @@ msgid "Log out"
 msgstr "Wyloguj"
 
 #: templates/_base.html:39
-#, fuzzy
-#| msgid "Name of the event"
 msgid "Create event"
 msgstr "Utwórz wydarzenie"
 
@@ -1417,6 +1412,232 @@ msgstr "Czy na pewno chcesz się wylogować?"
 msgid "About Page"
 msgstr "O projekcie"
 
+#: templates/account/email/account_already_exists_message.txt:4
+#, python-format
+msgid ""
+"You are receiving this email because you or someone else tried to signup for "
+"an\n"
+"account using email address:\n"
+"\n"
+"%(email)s\n"
+"\n"
+"However, an account using that email address already exists.  In case you "
+"have\n"
+"forgotten about this, please use the password forgotten procedure to "
+"recover\n"
+"your account:\n"
+"\n"
+"%(password_reset_url)s"
+msgstr ""
+"Otrzymujesz tę wiadomość, ponieważ ktoś inny próbował zarejestrować się "
+"używając tego adresu e-mail:\n"
+"\n"
+"%(email)s\n"
+"\n"
+"Ale konto z tym adresem e-mail już istnieje. Jeśli o tym zapomniałeś/aś,użyj "
+"procedury przypomnienia hasła aby odzyskać dostęp do konta:\n"
+"%(password_reset_url)s"
+
+#: templates/account/email/account_already_exists_subject.txt:3
+msgid "Account Already Exists"
+msgstr "Konto już istnieje"
+
+#: templates/account/email/base_message.txt:1
+#, python-format
+msgid "Hello from %(site_name)s!"
+msgstr "Witaj na %(site_name)s!"
+
+#: templates/account/email/base_message.txt:5
+#, python-format
+msgid ""
+"Thank you for using %(site_name)s!\n"
+"%(site_domain)s"
+msgstr ""
+"Pozdrowienia od teamu %(site_name)s!\n"
+"%(site_domain)s"
+
+#: templates/account/email/base_notification.txt:5
+msgid ""
+"You are receiving this mail because the following change was made to your "
+"account:"
+msgstr "Otrzymujesz tego maila z powodu następujących zmian na Twoim koncie:"
+
+#: templates/account/email/base_notification.txt:10
+#, python-format
+msgid ""
+"If you do not recognize this change then please take proper security "
+"precautions immediately. The change to your account originates from:\n"
+"\n"
+"- IP address: %(ip)s\n"
+"- Browser: %(user_agent)s\n"
+"- Date: %(timestamp)s"
+msgstr ""
+"Jeśli nie rozpoznajesz tych zmian, natychmiast zastosuj odpowiednie środki "
+"bezpieczeństwa. Zmiana na Twoim koncie pochodzi z:\n"
+"\n"
+"- Adres IP: %(ip)s\n"
+"- Przeglądarka: %(user_agent)s\n"
+"- Data: %(timestamp)s"
+
+#: templates/account/email/email_changed_message.txt:4
+#, python-format
+msgid "Your email has been changed from %(from_email)s to %(to_email)s."
+msgstr "Twój e-mail został zmieniony z %(from_email)s na %(to_email)s."
+
+#: templates/account/email/email_changed_subject.txt:3
+msgid "Email Changed"
+msgstr "E-mail zmieniony"
+
+#: templates/account/email/email_confirm_message.txt:4
+msgid "Your email has been confirmed."
+msgstr "Twój adres e-mail został potwierdzony"
+
+#: templates/account/email/email_confirm_subject.txt:3
+msgid "Email Confirmation"
+msgstr "Potwierdź adres e-mail"
+
+#: templates/account/email/email_confirmation_message.txt:5
+#, python-format
+msgid ""
+"You're receiving this email because someone has given your email address to "
+"register an account on %(site_domain)s."
+msgstr ""
+"Otrzymujesz tę wiadomość, ponieważ ktoś podał ten adres e-mail jako adres do "
+"swojego konta na %(site_domain)s."
+
+#: templates/account/email/email_confirmation_message.txt:7
+msgid ""
+"Your email verification code is listed below. Please enter it in your open "
+"browser window."
+msgstr ""
+
+#: templates/account/email/email_confirmation_message.txt:9
+#, python-format
+msgid "To confirm this is correct, go to %(activate_url)s"
+msgstr "Aby potwierdzić, przejdź do %(activate_url)s"
+
+#: templates/account/email/email_confirmation_subject.txt:3
+msgid "Please Confirm Your Email Address"
+msgstr "Potwierdź adres e-mail"
+
+#: templates/account/email/email_deleted_message.txt:4
+#, python-format
+msgid "Email address %(deleted_email)s has been removed from your account."
+msgstr "Adres e-mail %(deleted_email)s został usunięty z Twojego konta"
+
+#: templates/account/email/email_deleted_subject.txt:3
+msgid "Email Removed"
+msgstr "E-mail usunięty"
+
+#: templates/account/email/login_code_message.txt:5
+msgid ""
+"Your sign-in code is listed below. Please enter it in your open browser "
+"window."
+msgstr ""
+
+#: templates/account/email/login_code_message.txt:9
+#: templates/account/email/unknown_account_message.txt:6
+msgid "This mail can be safely ignored if you did not initiate this action."
+msgstr ""
+"Zignoruj tę wiadomość jeśli nie podjąłeś/aś tego działania na swoim koncie."
+
+#: templates/account/email/login_code_subject.txt:3
+msgid "Sign-In Code"
+msgstr ""
+
+#: templates/account/email/password_changed_message.txt:4
+msgid "Your password has been changed."
+msgstr "Twoje hasło zostało zmienione."
+
+#: templates/account/email/password_changed_subject.txt:3
+msgid "Password Changed"
+msgstr "Hasło zmienione"
+
+#: templates/account/email/password_reset_key_message.txt:4
+msgid ""
+"You're receiving this email because you or someone else has requested a "
+"password reset for your user account.\n"
+"It can be safely ignored if you did not request a password reset. Click the "
+"link below to reset your password."
+msgstr ""
+
+#: templates/account/email/password_reset_key_message.txt:9
+#, python-format
+msgid "In case you forgot, your username is %(username)s."
+msgstr "Dla przypomnienia: Twoja nazwa użytkownika to %(username)s."
+
+#: templates/account/email/password_reset_key_subject.txt:3
+msgid "Password Reset Email"
+msgstr "Zmiana hasła"
+
+#: templates/account/email/password_reset_message.txt:4
+msgid "Your password has been reset."
+msgstr "Twoje hasło zostało zresetowane."
+
+#: templates/account/email/password_reset_subject.txt:3
+msgid "Password Reset"
+msgstr "Zmiana hasła"
+
+#: templates/account/email/password_set_message.txt:4
+msgid "Your password has been set."
+msgstr "Twoje hasło zostało ustawione"
+
+#: templates/account/email/password_set_subject.txt:3
+msgid "Password Set"
+msgstr "Hasło ustawione"
+
+#: templates/account/email/unknown_account_message.txt:4
+#, python-format
+msgid ""
+"You are receiving this email because you, or someone else, tried to access "
+"an account with email %(email)s. However, we do not have any record of such "
+"an account in our database."
+msgstr ""
+"Otrzymujesz tę wiadomość ponieważ Ty lub ktoś inny próbował uzyskać dostęp "
+"do konta z tym adresem e-mail %(email)s. Nie mamy jednak takiego konta w "
+"naszej bazie danych."
+
+#: templates/account/email/unknown_account_message.txt:8
+msgid "If it was you, you can sign up for an account using the link below."
+msgstr "Jeśli to Ty, możesz zarejestrować się używając linku poniżej:"
+
+#: templates/account/email/unknown_account_subject.txt:3
+msgid "Unknown Account"
+msgstr "Nieznane konto"
+
+#: templates/account/email_change.html:5 templates/account/email_change.html:9
+msgid "Email Address"
+msgstr "Adres e-mail"
+
+#: templates/account/email_change.html:21
+#: templates/account/email_change.html:29
+msgid "Current email"
+msgstr ""
+
+#: templates/account/email_change.html:31
+msgid "Changing to"
+msgstr ""
+
+#: templates/account/email_change.html:35
+msgid "Your email address is still pending verification."
+msgstr "Twój główny adres e-mail musi zostać zweryfikowany."
+
+#: templates/account/email_change.html:37
+msgid "Re-send Verification"
+msgstr ""
+
+#: templates/account/email_change.html:41
+msgid "Cancel Change"
+msgstr "E-mail zmieniony"
+
+#: templates/account/email_change.html:49
+msgid "Change to"
+msgstr "Zmień hasło"
+
+#: templates/account/email_change.html:54
+msgid "Change Email"
+msgstr "Zmień adres e-mail"
+
 #: templates/account/email_confirm.html:6
 #: templates/account/email_confirm.html:10
 msgid "Confirm Email Address"
@@ -1428,17 +1649,22 @@ msgid ""
 "Please confirm that <a href=\"mailto:%(email)s\">%(email)s</a> is an email "
 "address for user %(user_display)s."
 msgstr ""
+"Potwierdź proszę <a href=\"mailto:%(email)s\">%(email)s</a>, że jest adresem "
+"e-mail dla użytkownika %(user_display)s."
 
 #: templates/account/email_confirm.html:24
 msgid "Confirm"
 msgstr "Potwierdź"
 
 #: templates/account/email_confirm.html:30
+#: templates/account/messages/email_confirmation_failed.txt:2
 #, python-format
 msgid ""
 "Unable to confirm %(email)s because it is already confirmed by a different "
 "account."
 msgstr ""
+"Nie możemy potwierdzić ponieważ adres %(email)s został już potwierdzony dla "
+"innego konta"
 
 #: templates/account/email_confirm.html:36
 #, python-format
@@ -1446,6 +1672,8 @@ msgid ""
 "This email confirmation link expired or is invalid. Please <a "
 "href=\"%(email_url)s\">issue a new email confirmation request</a>."
 msgstr ""
+"Ten link wygasł lub jest niepoprawny. <a href=\"%(email_url)s\">Spróbuj "
+"potwierdzić swój email ponownie</a>."
 
 #: templates/account/login.html:5 templates/account/login.html:8
 #: templates/account/login.html:12
@@ -1457,6 +1685,57 @@ msgstr "Zaloguj"
 msgid "Log Out"
 msgstr "Wyloguj"
 
+#: templates/account/messages/cannot_delete_primary_email.txt:2
+#, python-format
+msgid "You cannot remove your primary email address (%(email)s)."
+msgstr "Nie możesz usunąć swojego głównego adresu e-mail (%(email)s)."
+
+#: templates/account/messages/email_confirmation_sent.txt:2
+#, python-format
+msgid "Confirmation email sent to %(email)s."
+msgstr "E-mail potwierdzający został wysłany na adres %(email)s."
+
+#: templates/account/messages/email_confirmed.txt:2
+#, python-format
+msgid "You have confirmed %(email)s."
+msgstr "Potwierdziłeś adres e-mail %(email)s."
+
+#: templates/account/messages/email_deleted.txt:2
+msgid "Removed email address %(email)s."
+msgstr "Adres e-mail %(email)s został usunięty."
+
+#: templates/account/messages/logged_in.txt:4
+#, python-format
+msgid "Successfully signed in as %(name)s."
+msgstr "Pomyślnie zalogowano jako %(name)s."
+
+#: templates/account/messages/logged_out.txt:2
+msgid "You have signed out."
+msgstr "Zostałeś wylogowany."
+
+#: templates/account/messages/login_code_sent.txt:2
+#, python-format
+msgid "A sign-in code has been mailed to %(email)s."
+msgstr "Kod logowania został wysłany na adres %(email)s."
+
+#: templates/account/messages/password_changed.txt:2
+msgid "Password successfully changed."
+msgstr "Hasło zostało pomyślnie zmienione."
+
+#: templates/account/messages/password_set.txt:2
+msgid "Password successfully set."
+msgstr "Hasło zostało pomyślnie ustawione."
+
+#: templates/account/messages/primary_email_set.txt:2
+#, fuzzy
+#| msgid "Email address"
+msgid "Primary email address set."
+msgstr "Główny adres e-mail został ustawiony."
+
+#: templates/account/messages/unverified_primary_email.txt:2
+msgid "Your primary email address must be verified."
+msgstr "Twój główny adres e-mail musi zostać zweryfikowany."
+
 #: templates/account/signup.html:6 templates/account/signup.html:9
 #: templates/account/signup.html:12
 msgid "Sign Up"
@@ -1466,36 +1745,51 @@ msgstr "Rejestracja"
 msgid "Login with Google"
 msgstr "Zaloguj się"
 
-#: templates/calendar/event_create.html:10
+#: templates/account/verification_sent.html:5
+#: templates/account/verification_sent.html:8
 #, fuzzy
-#| msgid "Name of the event"
+#| msgid "Confirm Email Address"
+msgid "Verify Your Email Address"
+msgstr "Potwierdź adres e-mail"
+
+#: templates/account/verification_sent.html:10
+msgid ""
+"We have sent an email to you for verification. Follow the link provided to "
+"finalize the signup process. If you do not see the verification email in "
+"your main inbox, check your spam folder. Please contact us if you do not "
+"receive the verification email within a few minutes."
+msgstr ""
+"Wysłaliśmy do Ciebie e-mail w celu weryfikacji. Kliknij w link, aby "
+"zakończyć proces rejestracji. Jeśli nie widzisz e-maila weryfikacyjnego w "
+"swojej głównej skrzynce odbiorczej, sprawdź folder spam. Skontaktuj się z "
+"nami, jeśli nie otrzymasz e-maila weryfikacyjnego w ciągu kilku minut."
+
+#: templates/calendar/event_create.html:10
 msgid "New event"
 msgstr "Nowe wydarzenie"
 
-#: templates/calendar/event_create.html:26
+#: templates/calendar/event_create.html:22
 #: templates/calendar/event_update.html:27
 msgid "Online event"
 msgstr "Wydarzenie online"
 
-#: templates/calendar/event_create.html:32
+#: templates/calendar/event_create.html:28
 #, fuzzy
 #| msgid "Additional link 1"
 msgid "Additonal links"
 msgstr "Dodatkowy link 1"
 
-#: templates/calendar/event_create.html:41
-msgid "Add"
-msgstr "Dodaj"
+#: templates/calendar/event_create.html:37
+msgid "Add Event"
+msgstr "Utwórz wydarzenie"
 
 #: templates/calendar/event_update.html:11
 msgid "Edit event"
 msgstr "Edytuj wydarzenie"
 
 #: templates/calendar/event_update.html:33
-#, fuzzy
-#| msgid "Additional link 1"
 msgid "Additional links"
-msgstr "Dodatkowy link 1"
+msgstr "Dodatkowe linki"
 
 #: templates/calendar/event_update.html:42
 msgid "Save changes"
@@ -1504,6 +1798,10 @@ msgstr "Zapisz zmiany"
 #: templates/calendar/event_update.html:47
 msgid "Are you sure you want to delete the event?"
 msgstr "Czy na pewno chcesz usunąć to wydarzenie?"
+
+#: templates/calendar/event_update.html:47
+msgid "Delete event"
+msgstr "Usuń wydarzenie"
 
 #: templates/calendar/navigate_events.html:4
 #: templates/calendar/navigate_events.html:19
@@ -1596,14 +1894,12 @@ msgid "Frequently Asked Questions"
 msgstr "Najczęściej zadawane pytania"
 
 #: templates/your_account.html:10
-msgid "Change password"
-msgstr "Zmień hasło"
+msgid "Change email address"
+msgstr "Zmień adres e-mail"
 
 #: templates/your_account.html:11
-#, fuzzy
-#| msgid "Email address"
-msgid "Change e-mail address"
-msgstr "Zmień adres e-mail"
+msgid "Change password"
+msgstr "Zmień hasło"
 
 #: templates/your_account.html:12
 msgid "Delete account"
@@ -1614,11 +1910,12 @@ msgid "Your events:"
 msgstr "Twoje wydarzenia:"
 
 #: templates/your_account.html:31
-#, fuzzy
-#| msgid "Name of the event"
 msgid "Link to the event:"
 msgstr "Link do wydarzenia:"
 
 #: templates/your_account.html:36
 msgid "Edit"
 msgstr "Edytuj"
+
+#~ msgid "Add"
+#~ msgstr "Dodaj"

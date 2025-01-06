@@ -1,9 +1,9 @@
 {% load i18n %}
 <div class="calendar-navigation">
-    <button class="btn btn-info collapse-filters" type="button" data-bs-toggle="modal" data-bs-target="#collapseFilters">
+    <button class="btn btn-secondary collapse-filters" type="button" data-bs-toggle="modal" data-bs-target="#collapseFilters">
         {% trans "Filter" %}
     </button>
-    <select class="form-select py-1 sticky-dropdown" id="year-dropdown">
+    <select class="form-select sticky-dropdown" id="year-dropdown">
         <option selected disabled>{% trans "Go to year..." %}</option>
         {% for year in years %}
         <option value="{{ year }}">{{ year }}</option>

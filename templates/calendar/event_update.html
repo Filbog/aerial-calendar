@@ -16,12 +16,14 @@
     </div>
     {% endif %}
     {% bootstrap_field form.name %}
-    {% bootstrap_field form.start_date %}
-    {% if form.errors %}
-        {% bootstrap_field form.end_date field_class='form-control is-invalid' %}
-    {% else %}
-        {% bootstrap_field form.end_date %}
-    {% endif %}
+    <div class="mb-3">
+        <label class="form-label" for="id_start_date">Data rozpoczęcia</label>
+        <input type="date" name="start_date" value="{{event.start_date|date:'Y-m-d'}}" onfocus="this.showPicker()" class="form-control mb-3" placeholder="Data rozpoczęcia" required="" id="id_start_date">
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="id_end_date">Data zakończenia</label>
+        <input type="date" name="end_date" value="{{event.end_date|date:'Y-m-d'}}" onfocus="this.showPicker()" class="form-control" placeholder="Data zakończenia" required="" id="id_end_date">
+    </div>
     {% bootstrap_field form.description %}
     {% bootstrap_field form.location %}
     <label><input type="checkbox" name="" id="id_is_virtual">{% trans 'Online event' %}</label>
@@ -30,7 +32,7 @@
     {% bootstrap_field form.main_link %}
 
 
-    <button class="btn btn-success d-block mb-3"data-bs-toggle="collapse" data-bs-target="#additional-urls-collapse" type="button">{% trans 'Additional links' %}</button>
+    <button class="btn btn-secondary d-block mb-3"data-bs-toggle="collapse" data-bs-target="#additional-urls-collapse" type="button">{% trans 'Additional links' %}</button>
     <div class="collapse" id="additional-urls-collapse">
         {% bootstrap_field form.additional_url_1 %}
         {% bootstrap_field form.additional_label_1 %}
@@ -39,12 +41,12 @@
     </div>
 
 
-    <button class="btn btn-success" type="submit">{% trans 'Save changes' %}</button>
+    <button class="btn btn-primary" type="submit">{% trans 'Save changes' %}</button>
 </form>
 
 <form action="{% url 'event_delete' event.pk %}" method="post" id="delete-form">
     {% csrf_token %}
-    <button type="submit" class="btn btn-danger" onclick="return confirm('{% trans "Are you sure you want to delete the event?" %}')">{% trans 'Delete' %}</button>
+    <button type="submit" class="btn btn-danger" onclick="return confirm('{% trans "Are you sure you want to delete the event?" %}')">{% trans 'Delete event' %}</button>
 </form>
 
 

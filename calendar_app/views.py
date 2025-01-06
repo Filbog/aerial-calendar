@@ -93,6 +93,7 @@ class EventUpdateView(
 
     def test_func(self):
         event = self.get_object()
+        print(event.start_date)
         return event.author == self.request.user
 
 

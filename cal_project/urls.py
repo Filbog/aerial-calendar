@@ -23,6 +23,6 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("jsi18n/", JavaScriptCatalog.as_view(), name="javascript-catalog"),
     path("accounts/", include("allauth.urls")),
+    path("", include("calendar_app.urls")),
     path("", include("pages.urls")),
-    path("calendar/", include("calendar_app.urls")),
 ]

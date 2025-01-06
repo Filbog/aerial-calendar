@@ -12,6 +12,7 @@ from .views import (
     download_event_ics_view,
 )
 
+
 urlpatterns = [
     path("list_layout/", list_view, name="list_layout"),
     path("", calendar_view, name="events"),

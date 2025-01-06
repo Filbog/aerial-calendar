@@ -64,25 +64,25 @@ function generateOutlookCalendarURL(event) {
 }
 
 export function renderEvent(e) {
-  const translatedType = _(e.type);
+  const translatedType = translatedTypes[e.type];
   return `
-    <div><h3 class='d-inline'>${e.name}</h3> <span class='${
+    <div><h2 class='d-inline'>${e.name}</h2> <span class='${
     e.type
-  }-type px-1 rounded'>${translatedTypes[e.type]}</span></div>
+  }-type px-1 rounded'>${translatedType}</span></div>
       <h5>${e.start_date} - ${e.end_date}</h5>
       <h6><i class="bi bi-pin-map-fill"></i> ${e.location}</h6>
       <div class='modal-description d-none' id='${e.id}-description'>
       </div>
       <div class="modal-links d-flex flex-column gap-2" id="${e.id}-links">
         <div class="modal-main-link">
-          <h4 class="bold"> ${_("Link to the event:")} </h4>
+          <h4 class="bold my-0"> ${_("Link to the event:")} </h4>
           <a href="${e.main_link}" target="_blank" rel="noopener">${
     e.main_link
   }</a>
         </div>
       </div>
       <div class="btn-group d-inline-block">
-        <button class="btn btn-secondary dropdown-toggle d-inline" type="button" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">
+        <button class="btn btn-primary dropdown-toggle d-inline" type="button" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">
           ${_("Add to calendar...")}
         </button>
         <ul class="dropdown-menu">
@@ -100,7 +100,7 @@ export function renderEvent(e) {
           <li><a class="dropdown-item" href="${
             e.id
           }/download-ics/"><i class="bi bi-calendar"></i> ${_(
-    "Other Calendar"
+    "ICS File"
   )}</a></li>
         </ul>
       </div>
