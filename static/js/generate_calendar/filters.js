@@ -1,4 +1,4 @@
-const _ = window.gettext || ((x) => x);
+// Here as well I have to use the translated events object bc Django doesn't translate it dynamically
 import { translatedTypes } from "./constants.js";
 
 export function setupFilters(events, yearsData, renderFunction) {
@@ -29,8 +29,8 @@ export function setupFilters(events, yearsData, renderFunction) {
     const selectedLocation = locationDropdown.value;
 
     const filteredEvents = events.filter((event) => {
-      console.log("Transl", translatedTypes[event.type]);
-      const matchesType = selectedTypes.includes(translatedTypes[event.type]);
+      // const matchesType = selectedTypes.includes(translatedTypes[event.type]);
+      const matchesType = selectedTypes.includes(event.type);
       const matchesLocation =
         selectedLocation === "all" || event.location === selectedLocation;
       return matchesType && matchesLocation;
