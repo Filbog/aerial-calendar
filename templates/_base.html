@@ -59,7 +59,7 @@
     {% if messages %}
       {% for message in messages %}
       <div class="position-fixed alert alert-success alert-dismissable fade show {% if message.tags %}{{ message.tags }}{% endif %}" role="alert" >
-        {{ message }}
+        {% trans message.message %}
         <button type="button" class="btn-close ms-2" data-bs-dismiss="alert" aria-label="{% trans 'Close' %}"></button>
       </div>
       {% endfor %}

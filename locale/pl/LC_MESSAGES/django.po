@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-06 16:45+0000\n"
+"POT-Creation-Date: 2025-01-08 01:05+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1332,79 +1332,83 @@ msgstr "inne"
 msgid "Start date cannot be later than end date"
 msgstr "Data rozpoczęcia nie może być późniejsza niż data zakończenia"
 
+#: calendar_app/views.py:72
+msgid "Event created"
+msgstr "Wydarzenie utworzone"
+
 #: calendar_app/views.py:90
 msgid "Event updated"
 msgstr "Wydarzenie zaktualizowane"
 
-#: calendar_app/views.py:103
+#: calendar_app/views.py:104
 msgid "Event deleted"
 msgstr "Wydarzenie usunięte"
 
-#: calendar_app/views.py:132
+#: calendar_app/views.py:133
 msgid "Event successfully verified"
 msgstr "Wydarzenie zweryfikowane"
 
-#: templates/_base.html:10 templates/_base.html:29
+#: templates/_base.html:11 templates/_base.html:32
 msgid "Aerial Calendar"
 msgstr "Kalendarium Aerial"
 
-#: templates/_base.html:30
+#: templates/_base.html:33
 msgid "Toggle navigation"
 msgstr "Włącz nawigację"
 
-#: templates/_base.html:35
+#: templates/_base.html:38
 msgid "Calendar"
 msgstr "Kalendarz"
 
-#: templates/_base.html:36
+#: templates/_base.html:39
 msgid "List"
 msgstr "Lista"
 
-#: templates/_base.html:38 templates/_base.html:70 templates/_base.html:78
+#: templates/_base.html:41 templates/_base.html:75 templates/_base.html:83
 msgid "Log out"
 msgstr "Wyloguj"
 
-#: templates/_base.html:39
+#: templates/_base.html:42
 msgid "Create event"
 msgstr "Utwórz wydarzenie"
 
-#: templates/_base.html:40 templates/your_account.html:4
+#: templates/_base.html:43 templates/your_account.html:4
 #: templates/your_account.html:8
 msgid "Your account"
 msgstr "Twoje konto"
 
-#: templates/_base.html:41
+#: templates/_base.html:45
 msgid "Unverified"
 msgstr "Niezweryfikowane"
 
-#: templates/_base.html:43
+#: templates/_base.html:48
 msgid "Log in"
 msgstr "Zaloguj"
 
-#: templates/_base.html:44
+#: templates/_base.html:49
 msgid "Sign up"
 msgstr "Rejestracja"
 
-#: templates/_base.html:46 templates/faq.html:4
+#: templates/_base.html:51 templates/faq.html:4
 msgid "FAQ"
 msgstr "FAQ"
 
-#: templates/_base.html:47 templates/about.html:4
+#: templates/_base.html:52 templates/about.html:4
 msgid "About"
 msgstr "O projekcie"
 
-#: templates/_base.html:48 templates/contact.html:4
+#: templates/_base.html:53 templates/contact.html:4
 msgid "Contact"
 msgstr "Kontakt"
 
-#: templates/_base.html:58 templates/_base.html:71 templates/_base.html:77
-#: templates/calendar/calendar_layout.html:30
+#: templates/_base.html:63 templates/_base.html:76 templates/_base.html:82
+#: templates/calendar/calendar_layout.html:29
 #: templates/calendar/navigate_events.html:20
 #: templates/calendar/navigate_events.html:42
 msgid "Close"
 msgstr "Zamknij"
 
-#: templates/_base.html:74 templates/account/logout.html:8
+#: templates/_base.html:79 templates/account/logout.html:8
 msgid "Are you sure you want to log out?"
 msgstr "Czy na pewno chcesz się wylogować?"
 
@@ -1701,6 +1705,7 @@ msgid "You have confirmed %(email)s."
 msgstr "Potwierdziłeś adres e-mail %(email)s."
 
 #: templates/account/messages/email_deleted.txt:2
+#, python-format
 msgid "Removed email address %(email)s."
 msgstr "Adres e-mail %(email)s został usunięty."
 
@@ -1727,8 +1732,6 @@ msgid "Password successfully set."
 msgstr "Hasło zostało pomyślnie ustawione."
 
 #: templates/account/messages/primary_email_set.txt:2
-#, fuzzy
-#| msgid "Email address"
 msgid "Primary email address set."
 msgstr "Główny adres e-mail został ustawiony."
 
@@ -1747,10 +1750,8 @@ msgstr "Zaloguj się"
 
 #: templates/account/verification_sent.html:5
 #: templates/account/verification_sent.html:8
-#, fuzzy
-#| msgid "Confirm Email Address"
 msgid "Verify Your Email Address"
-msgstr "Potwierdź adres e-mail"
+msgstr "Zweryfikuj adres e-mail"
 
 #: templates/account/verification_sent.html:10
 msgid ""
@@ -1769,15 +1770,14 @@ msgid "New event"
 msgstr "Nowe wydarzenie"
 
 #: templates/calendar/event_create.html:22
-#: templates/calendar/event_update.html:27
+#: templates/calendar/event_update.html:29
 msgid "Online event"
 msgstr "Wydarzenie online"
 
 #: templates/calendar/event_create.html:28
-#, fuzzy
-#| msgid "Additional link 1"
-msgid "Additonal links"
-msgstr "Dodatkowy link 1"
+#: templates/calendar/event_update.html:35
+msgid "Additional links"
+msgstr "Dodatkowe linki"
 
 #: templates/calendar/event_create.html:37
 msgid "Add Event"
@@ -1787,19 +1787,15 @@ msgstr "Utwórz wydarzenie"
 msgid "Edit event"
 msgstr "Edytuj wydarzenie"
 
-#: templates/calendar/event_update.html:33
-msgid "Additional links"
-msgstr "Dodatkowe linki"
-
-#: templates/calendar/event_update.html:42
+#: templates/calendar/event_update.html:44
 msgid "Save changes"
 msgstr "Zapisz zmiany"
 
-#: templates/calendar/event_update.html:47
+#: templates/calendar/event_update.html:49
 msgid "Are you sure you want to delete the event?"
 msgstr "Czy na pewno chcesz usunąć to wydarzenie?"
 
-#: templates/calendar/event_update.html:47
+#: templates/calendar/event_update.html:49
 msgid "Delete event"
 msgstr "Usuń wydarzenie"
 
@@ -1828,7 +1824,20 @@ msgstr "Wszytkie"
 msgid "Apply"
 msgstr "Zastosuj"
 
-#: templates/calendar/unverified_events.html:10
+#: templates/calendar/unverified_events.html:20 templates/your_account.html:31
+msgid "Link to the event:"
+msgstr "Link do wydarzenia:"
+
+#: templates/calendar/unverified_events.html:25 templates/your_account.html:36
+msgid "Edit"
+msgstr "Edytuj"
+
+#: templates/calendar/unverified_events.html:28
+
+msgid "Are you sure you want to verify the event?"
+msgstr "Czy na pewno chcesz zweryfikować to wydarzenie?"
+
+#: templates/calendar/unverified_events.html:28
 msgid "Verify"
 msgstr "Zweryfikuj"
 
@@ -1909,13 +1918,8 @@ msgstr "Usuń konto"
 msgid "Your events:"
 msgstr "Twoje wydarzenia:"
 
-#: templates/your_account.html:31
-msgid "Link to the event:"
-msgstr "Link do wydarzenia:"
-
-#: templates/your_account.html:36
-msgid "Edit"
-msgstr "Edytuj"
+#~ msgid "Additonal links"
+#~ msgstr "Dodatkowe linki"
 
 #~ msgid "Add"
 #~ msgstr "Dodaj"

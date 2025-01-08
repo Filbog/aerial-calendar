@@ -1,14 +1,36 @@
 {% extends '_base.html' %}
+{% load static %}
 {% load i18n %}
 
 {% block content %}
+<h1>Niezweryfikowane wydarzenia</h1>
 {% for event in unverified_events %}
-    <div>
-        <h3>{{ event.name }}</h3>
-        <form method="post" action="{% url 'verify_event' event.id %}">
-            {% csrf_token %}
-            <button class='btn btn-primary' type="submit">{% trans "Verify" %}</button>
-        </form>
-    </div>
+        <div class="event-container d-flex flex-column gap-3 mb-3" id="{{ event.id }}">
+            <div>
+                <h3 class='d-inline'>{{ event.name }}</h3>
+                <span class='{{ event.type }}-type px-1 rounded'>{{ event.type }}</span>
+            </div>
+            <h5>{{ event.start_date|date:"j-m-Y" }} - {{ event.end_date|date:"j-m-Y" }}</h5>
+            <h6><i class="bi bi-pin-map-fill"></i> {{ event.location }}</h6>
+            {% if event.description %}
+            <div class='modal-description d-none' id='{{ event.id }}-description'></div>
+            {% endif %}
+            <div class="modal-links d-flex flex-column gap-2" id="{{ event.id }}-links">
+                <div class="modal-main-link">
+                    <h4 class="bold">{% trans "Link to the event:" %}</h4>
+                    <a href="{{ event.main_link }}" target="_blank" rel="noopener">{{ event.main_link }}</a>
+                </div>
+            </div>
+            <div class="buttons d-flex gap-2">
+                <a href="{% url 'event_edit' event.pk %}" class="btn btn-primary">{% trans 'Edit' %}</a>
+                <form method="post" action="{% url 'verify_event' event.pk %}">
+                    {% csrf_token %}
+                    <button class='btn btn-primary' type="submit" onclick="return confirm('{% trans "Are you sure you want to verify the event?" %}')">{% trans "Verify" %}</button>
+                </form>
+            </div>
+
+        </div>
 {% endfor %}
+
+
 {% endblock content %}

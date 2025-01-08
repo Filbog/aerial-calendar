@@ -1,5 +1,5 @@
 const _ = window.gettext || ((x) => x);
-const itp = window.interpolate || ((str, obj) => str);
+// const itp = window.interpolate || ((str, obj) => str);
 import { translatedTypes } from "./constants.js";
 
 export function scrollToElement(
@@ -167,7 +167,6 @@ export function fillEventsModal(eventsArray, dateString) {
     eventItem.id = `event-${e.id}`;
     eventItem.innerHTML = renderEvent(e);
     eventsModalBody.appendChild(eventItem);
-
     renderAdditionalUrls(e);
     renderDescription(e);
   });

@@ -69,7 +69,7 @@ class EventCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     form_class = EventForm
     template_name = "calendar/event_create.html"
     success_url = reverse_lazy("events")
-    success_message = "Event created"
+    success_message = _("Event created")
     login_url = "account_login"
 
     def form_valid(self, form):
@@ -94,7 +94,7 @@ class EventUpdateView(
     def test_func(self):
         event = self.get_object()
         print(event.start_date)
-        return event.author == self.request.user
+        return self.request.user == event.author or self.request.user.is_staff
 
 
 class EventDeleteView(
