@@ -1,0 +1,290 @@
+
+*{
+    font-family: 'Roboto', serif;
+}
+
+:root{
+    --primary: #4361EE;
+    --primary-hover: #7189f6;
+    --secondary: #de7df6;
+    --secondary-hover: #b03eaa;
+    --background: linear-gradient(to bottom, #d9e1f9, #ffffff);
+    --background-lighter:#f8f8ff;
+    --navbar-bg: #2c3ebd;
+}
+
+.btn{
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+}
+
+.btn-primary{
+    --bs-btn-bg: var(--primary);
+    --bs-btn-border-color: var(--primary);
+}
+.btn-secondary{
+    --bs-btn-bg: var(--secondary);
+    --bs-btn-border-color: var(--secondary);
+}
+.btn-secondary:hover{
+    --bs-btn-hover-bg: var(--secondary-hover);
+    --bs-btn-border-color: var(--secondary-hover);
+}
+.modal-content{
+    background-color: var(--background-lighter);
+}
+
+
+.alert{
+    top: 60px;
+    z-index: 1000;
+    width: fit-content;
+}
+.alert ul{
+    margin-bottom: 0;
+}
+h1 {
+    display: block;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+body {
+    padding-top: 60px; /* for the navbar */
+    padding-bottom: 3rem;
+    background: url("/static/images/transparent-bg-even-more-opaque.79af35dd413b.png"), var(--background);
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+
+.form-control, .form-select, .form-check-input {
+    background-color: var(--background-lighter);
+}
+
+
+.nav-link {
+    color: white;
+    background: rgb(33, 37, 41);
+}
+
+/* CALENDAR */
+
+.calendar-grid{
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 1px;
+    margin-bottom: 2rem;
+
+}
+.day-name{
+    display: flex;
+    justify-content: center;
+}
+
+.day{
+    height: 6rem;
+    background: #b7d6ff;
+    /* border: 1px solid grey; */
+    border-radius: 1px;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    overflow: hidden;
+
+}
+
+.day.empty{
+    background-color: lightgrey;
+}
+.day ul{
+    margin: 0;
+    padding: 2px;
+}
+.event-item{
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 100%;
+    margin: 0;
+    margin-bottom: 2px;
+    padding: 0 3px;
+    border-radius: 3px;
+    font-size: small;
+}
+
+
+.day-number{
+    margin: 4px auto;
+}
+
+
+/* event types */
+.show-type{
+    background-color: lightgreen;
+}
+
+.festival-type{
+    background-color: lightblue;
+}
+
+.competiton-type{
+    background-color: lightcoral;
+}
+
+.workshop-type{
+    background-color: lightyellow;
+}
+.conference-type{
+    background-color: lightseagreen;
+}
+.convention-type{
+    background-color: lightsalmon;
+}
+.other-type{
+    background-color: lightpink;
+}
+
+.year-heading {
+    position: sticky;
+    top: 53px; /* Adjust to the height of your navbar if needed */
+    z-index: 10; /* Ensure it appears above other content */
+    background-color: var(--background-lighter);
+    padding: 6px 4px;
+    margin-left: -1px;
+    border-bottom: 1px solid #ccc; /* Optional: Add a subtle underline */
+    border-radius: 5px;
+  }
+
+
+
+.calendar-navigation {
+    position: sticky;
+    top: 60px; /* below the navbar */
+    left: 100%;
+    max-width: 66%;
+    z-index: 100;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.collapse-filters{
+    margin: 0;
+}
+
+.form-select{
+    width: 130px;
+    border: none;
+}
+
+
+
+.year-wrapper{
+    scroll-margin-top: 3rem;
+}
+
+
+
+#type-checkboxes{
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+}
+
+.month-container{
+    scroll-margin-top: 100px;
+}
+
+.day.has-events{
+    transition: background-color 0.1s ease-in;
+}
+
+.day.has-events:hover{
+    background-color: var(--primary-hover);
+    cursor: pointer;
+}
+
+
+
+/* LIST LAYOUT */
+.list_dates{
+    display: flex;
+}
+
+
+@media (min-width: 768px) {
+
+    .year-heading{
+        display: flex;
+        justify-content: center;
+    }
+
+    .day{
+        height: 7rem;
+    }
+
+    .event-item{
+        font-size: medium;
+    }
+    .month-container{
+        scroll-margin-top: 120px;
+    }
+
+}
+
+.event-hr{
+    width: 75%;
+    opacity: 0.15;
+    height: 2px;
+    margin: 1rem auto;
+}
+
+@media (min-width: 992px){
+    .day-number{
+        font-size: large;
+    }
+
+    .container{
+        max-width: 992px;
+        margin: 0 auto;
+    }
+}
+
+/* for scrolling properly to the current month upon opening the calendar page on smaller height screens */
+@media(max-height: 844px){
+    .month-container {
+        /* scroll-margin-top: 4rem; */
+    }
+}
+
+@media(max-height: 800px){
+    .month-container{
+        /* scroll-margin-top: 210px; */
+    }
+}
+
+
+/* Rather ugly solution for disabling the styles applied on bootstrap validation */
+.form-control.is-invalid, .form-control.is-valid, .form-select.is-invalid, .form-select.is-valid, .form-check-input.is-valid, .form-check-input.is-invalid {
+    background-image: none;
+    border-color: gray;
+    background-color: inherit !important;
+}
+
+.form-check-label{
+    color: black !important;
+}
+
+.form-control.is-invalid:focus, .form-control.is-valid:focus, .form-select.is-invalid:focus, .form-select.is-valid:focus, .form-check-input.is-valid:focus, .form-check-input.is-invalid:focus{
+    border-color: gray;
+    box-shadow: 0 0 0 .25rem rgba(159, 158, 158, .25);
+}
+
+.event-container{
+    padding: 1rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2), 0 1px 3px rgba(0, 0, 0, 0.3);
+}

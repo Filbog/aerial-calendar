@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-08 01:05+0000\n"
+"POT-Creation-Date: 2025-01-09 19:40+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1579,6 +1579,10 @@ msgid "Your password has been reset."
 msgstr "Twoje hasło zostało zresetowane."
 
 #: templates/account/email/password_reset_subject.txt:3
+#: templates/account/password_reset.html:7
+#: templates/account/password_reset.html:11
+#: templates/account/password_reset_done.html:7
+#: templates/account/password_reset_done.html:11
 msgid "Password Reset"
 msgstr "Zmiana hasła"
 
@@ -1609,45 +1613,45 @@ msgstr "Jeśli to Ty, możesz zarejestrować się używając linku poniżej:"
 msgid "Unknown Account"
 msgstr "Nieznane konto"
 
-#: templates/account/email_change.html:5 templates/account/email_change.html:9
+#: templates/account/email_change.html:6 templates/account/email_change.html:10
 msgid "Email Address"
 msgstr "Adres e-mail"
 
-#: templates/account/email_change.html:21
-#: templates/account/email_change.html:29
+#: templates/account/email_change.html:22
+#: templates/account/email_change.html:30
 msgid "Current email"
 msgstr ""
 
-#: templates/account/email_change.html:31
+#: templates/account/email_change.html:32
 msgid "Changing to"
 msgstr ""
 
-#: templates/account/email_change.html:35
+#: templates/account/email_change.html:36
 msgid "Your email address is still pending verification."
 msgstr "Twój główny adres e-mail musi zostać zweryfikowany."
 
-#: templates/account/email_change.html:37
+#: templates/account/email_change.html:38
 msgid "Re-send Verification"
 msgstr ""
 
-#: templates/account/email_change.html:41
+#: templates/account/email_change.html:42
 msgid "Cancel Change"
 msgstr "E-mail zmieniony"
 
-#: templates/account/email_change.html:49
+#: templates/account/email_change.html:50
 msgid "Change to"
 msgstr "Zmień hasło"
 
-#: templates/account/email_change.html:54
+#: templates/account/email_change.html:55
 msgid "Change Email"
 msgstr "Zmień adres e-mail"
 
-#: templates/account/email_confirm.html:6
-#: templates/account/email_confirm.html:10
+#: templates/account/email_confirm.html:7
+#: templates/account/email_confirm.html:11
 msgid "Confirm Email Address"
 msgstr "Potwierdź adres e-mail"
 
-#: templates/account/email_confirm.html:16
+#: templates/account/email_confirm.html:17
 #, python-format
 msgid ""
 "Please confirm that <a href=\"mailto:%(email)s\">%(email)s</a> is an email "
@@ -1656,11 +1660,11 @@ msgstr ""
 "Potwierdź proszę <a href=\"mailto:%(email)s\">%(email)s</a>, że jest adresem "
 "e-mail dla użytkownika %(user_display)s."
 
-#: templates/account/email_confirm.html:24
+#: templates/account/email_confirm.html:25
 msgid "Confirm"
 msgstr "Potwierdź"
 
-#: templates/account/email_confirm.html:30
+#: templates/account/email_confirm.html:31
 #: templates/account/messages/email_confirmation_failed.txt:2
 #, python-format
 msgid ""
@@ -1670,7 +1674,7 @@ msgstr ""
 "Nie możemy potwierdzić ponieważ adres %(email)s został już potwierdzony dla "
 "innego konta"
 
-#: templates/account/email_confirm.html:36
+#: templates/account/email_confirm.html:37
 #, python-format
 msgid ""
 "This email confirmation link expired or is invalid. Please <a "
@@ -1679,8 +1683,8 @@ msgstr ""
 "Ten link wygasł lub jest niepoprawny. <a href=\"%(email_url)s\">Spróbuj "
 "potwierdzić swój email ponownie</a>."
 
-#: templates/account/login.html:5 templates/account/login.html:8
-#: templates/account/login.html:12
+#: templates/account/login.html:6 templates/account/login.html:9
+#: templates/account/login.html:13
 msgid "Log In"
 msgstr "Zaloguj"
 
@@ -1739,6 +1743,65 @@ msgstr "Główny adres e-mail został ustawiony."
 msgid "Your primary email address must be verified."
 msgstr "Twój główny adres e-mail musi zostać zweryfikowany."
 
+#: templates/account/password_change.html:5
+#: templates/account/password_change.html:9
+#: templates/account/password_change.html:21
+#: templates/account/password_reset_from_key.html:5
+#: templates/account/password_reset_from_key.html:12
+#: templates/account/password_reset_from_key.html:30
+#: templates/account/password_reset_from_key_done.html:6
+#: templates/account/password_reset_from_key_done.html:10
+msgid "Change Password"
+msgstr "Zmień hasło"
+
+#: templates/account/password_change.html:23
+msgid "Forgot Password?"
+msgstr ""
+
+#: templates/account/password_reset.html:17
+msgid ""
+"Forgotten your password? Enter your email address below, and we'll send you "
+"an email allowing you to reset it."
+msgstr ""
+
+#: templates/account/password_reset.html:28
+msgid "Reset My Password"
+msgstr ""
+
+#: templates/account/password_reset.html:33
+msgid "Please contact us if you have any trouble resetting your password."
+msgstr ""
+
+#: templates/account/password_reset_done.html:17
+msgid ""
+"We have sent you an email. If you have not received it please check your "
+"spam folder. Otherwise contact us if you do not receive it in a few minutes."
+msgstr ""
+"Wysłaliśmy do Ciebie e-mail. Jeśli nie widzisz e-maila weryfikacyjnego w "
+"swojej głównej skrzynce odbiorczej, sprawdź folder spam. Skontaktuj się z "
+"nami, jeśli nie otrzymasz wiadomości w ciągu kilku minut."
+
+#: templates/account/password_reset_from_key.html:10
+msgid "Bad Token"
+msgstr ""
+
+#: templates/account/password_reset_from_key.html:18
+#, python-format
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used.  Please request a <a href=\"%(passwd_reset_url)s\">new password reset</"
+"a>."
+msgstr ""
+
+#: templates/account/password_reset_from_key_done.html:13
+msgid "Your password is now changed."
+msgstr "Twoje hasło zostało zmienione."
+
+#: templates/account/password_set.html:6 templates/account/password_set.html:10
+#: templates/account/password_set.html:22
+msgid "Set Password"
+msgstr "Hasło ustawione"
+
 #: templates/account/signup.html:6 templates/account/signup.html:9
 #: templates/account/signup.html:12
 msgid "Sign Up"
@@ -1748,12 +1811,12 @@ msgstr "Rejestracja"
 msgid "Login with Google"
 msgstr "Zaloguj się"
 
-#: templates/account/verification_sent.html:5
-#: templates/account/verification_sent.html:8
+#: templates/account/verification_sent.html:6
+#: templates/account/verification_sent.html:9
 msgid "Verify Your Email Address"
 msgstr "Zweryfikuj adres e-mail"
 
-#: templates/account/verification_sent.html:10
+#: templates/account/verification_sent.html:11
 msgid ""
 "We have sent an email to you for verification. Follow the link provided to "
 "finalize the signup process. If you do not see the verification email in "
@@ -1833,7 +1896,6 @@ msgid "Edit"
 msgstr "Edytuj"
 
 #: templates/calendar/unverified_events.html:28
-
 msgid "Are you sure you want to verify the event?"
 msgstr "Czy na pewno chcesz zweryfikować to wydarzenie?"
 

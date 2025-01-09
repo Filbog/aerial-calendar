@@ -6,10 +6,10 @@
 :root{
     --primary: #4361EE;
     --primary-hover: #7189f6;
-    --secondary: #ce6ae7;
+    --secondary: #de7df6;
     --secondary-hover: #b03eaa;
-    --background: linear-gradient(to bottom, #f0f4ff, #ffffff);
-    --background-lighter: #f8f8ff;
+    --background: linear-gradient(to bottom, #d9e1f9, #ffffff);
+    --background-lighter:#f8f8ff;
     --navbar-bg: #2c3ebd;
 }
 
@@ -52,15 +52,18 @@ h1 {
 body {
     padding-top: 60px; /* for the navbar */
     padding-bottom: 3rem;
-    /* background: var(--background); */
-    background-image: url('/images/transparent-bg.png');
-    background-size: cover;
+    background: url('/static/images/transparent-bg-even-more-opaque.png'), var(--background);
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
-
-
+    background-size: contain;
 }
+
+
+.form-control, .form-select, .form-check-input {
+    background-color: var(--background-lighter);
+}
+
 
 .nav-link {
     color: white;
@@ -173,6 +176,7 @@ body {
 
 .form-select{
     width: 130px;
+    border: none;
 }
 
 
@@ -282,5 +286,5 @@ body {
     padding: 1rem;
     border: 1px solid #e0e0e0;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2), 0 1px 3px rgba(0, 0, 0, 0.3);
 }
