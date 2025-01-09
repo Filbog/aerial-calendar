@@ -175,7 +175,7 @@ body {
 }
 
 .form-select{
-    width: 130px;
+    width: 140px;
     border: none;
 }
 
@@ -270,7 +270,7 @@ body {
 .form-control.is-invalid, .form-control.is-valid, .form-select.is-invalid, .form-select.is-valid, .form-check-input.is-valid, .form-check-input.is-invalid {
     background-image: none;
     border-color: gray;
-    background-color: inherit !important;
+    background-color: var(--background-lighter) !important;
 }
 
 .form-check-label{

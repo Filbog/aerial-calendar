@@ -9,7 +9,7 @@
     <h1 class="subpage-heading">{% trans "Sign Up" %}</h1>
     <form method="post">{% csrf_token %}
         {% bootstrap_form form %}
-        <button type="submit" class="btn btn-success">{% trans "Sign Up" %}</button>
+        <button type="submit" class="btn btn-primary">{% trans "Sign Up" %}</button>
     </form>
-    <a href="{% provider_login_url 'google' %}">{% trans "Login with Google" %}</a>
+    <a class='btn btn-secondary' href="{% provider_login_url 'google' %}"><i class="bi bi-google"></i> {% trans "Sign up with Google" %}</a>
 {% endblock content %}

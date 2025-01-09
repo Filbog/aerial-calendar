@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-09 19:40+0000\n"
+"POT-Creation-Date: 2025-01-09 22:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1688,6 +1688,10 @@ msgstr ""
 msgid "Log In"
 msgstr "Zaloguj"
 
+#: templates/account/login.html:15
+msgid "Log in with Google"
+msgstr "Zaloguj się z Google"
+
 #: templates/account/logout.html:4 templates/account/logout.html:7
 #: templates/account/logout.html:12
 msgid "Log Out"
@@ -1808,8 +1812,8 @@ msgid "Sign Up"
 msgstr "Rejestracja"
 
 #: templates/account/signup.html:14
-msgid "Login with Google"
-msgstr "Zaloguj się"
+msgid "Sign up with Google"
+msgstr "Zarejestruj się z kontem Google"
 
 #: templates/account/verification_sent.html:6
 #: templates/account/verification_sent.html:9

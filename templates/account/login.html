@@ -12,4 +12,6 @@
         {% bootstrap_form form %}
         <button class="btn btn-success" type="submit">{% trans "Log In" %}</button>
     </form>
+    <a class='btn btn-secondary' href="{% provider_login_url 'google' %}"><i class="bi bi-google"></i> {% trans "Log in with Google" %}</a>
+
 {% endblock content %}
