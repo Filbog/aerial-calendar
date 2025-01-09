@@ -1881,7 +1881,7 @@ msgstr "Odznacz/zaznacz wszystkie"
 
 #: templates/calendar/navigate_events.html:38
 msgid "All"
-msgstr "Wszytkie"
+msgstr "Wszystkie"
 
 #: templates/calendar/navigate_events.html:43
 msgid "Apply"
