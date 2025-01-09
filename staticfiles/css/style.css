@@ -3,6 +3,38 @@
     font-family: 'Roboto', serif;
 }
 
+:root{
+    --primary: #4361EE;
+    --primary-hover: #7189f6;
+    --secondary: #ce6ae7;
+    --secondary-hover: #b03eaa;
+    --background: linear-gradient(to bottom, #f0f4ff, #ffffff);
+    --background-lighter: #f8f8ff;
+    --navbar-bg: #2c3ebd;
+}
+
+.btn{
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+}
+
+.btn-primary{
+    --bs-btn-bg: var(--primary);
+    --bs-btn-border-color: var(--primary);
+}
+.btn-secondary{
+    --bs-btn-bg: var(--secondary);
+    --bs-btn-border-color: var(--secondary);
+}
+.btn-secondary:hover{
+    --bs-btn-hover-bg: var(--secondary-hover);
+    --bs-btn-border-color: var(--secondary-hover);
+}
+.modal-content{
+    background-color: var(--background-lighter);
+}
+
+
 .alert{
     top: 60px;
     z-index: 1000;
@@ -13,10 +45,21 @@
 }
 h1 {
     display: block;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
 }
 
 body {
-    padding-top: 4.5rem;
+    padding-top: 60px; /* for the navbar */
+    padding-bottom: 3rem;
+    /* background: var(--background); */
+    background-image: url('/images/transparent-bg.png');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+
+
 }
 
 .nav-link {
@@ -40,7 +83,7 @@ body {
 
 .day{
     height: 6rem;
-    background: magenta;
+    background: #b7d6ff;
     /* border: 1px solid grey; */
     border-radius: 1px;
     display: flex;
@@ -104,23 +147,28 @@ body {
     position: sticky;
     top: 53px; /* Adjust to the height of your navbar if needed */
     z-index: 10; /* Ensure it appears above other content */
-    background-color: white; /* Optional: Match the page background for better visibility */
+    background-color: var(--background-lighter);
     padding: 6px 4px;
     margin-left: -1px;
     border-bottom: 1px solid #ccc; /* Optional: Add a subtle underline */
+    border-radius: 5px;
   }
 
 
 
 .calendar-navigation {
-position: sticky;
-top: 60px; /* below the navbar */
-left: 100%;
-max-width: 66%;
-z-index: 100;
-display: flex;
-justify-content: flex-end;
-gap: 10px;
+    position: sticky;
+    top: 60px; /* below the navbar */
+    left: 100%;
+    max-width: 66%;
+    z-index: 100;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.collapse-filters{
+    margin: 0;
 }
 
 .form-select{
@@ -150,7 +198,7 @@ gap: 10px;
 }
 
 .day.has-events:hover{
-    background-color: rgb(248, 106, 248);
+    background-color: var(--primary-hover);
     cursor: pointer;
 }
 
@@ -211,4 +259,28 @@ gap: 10px;
     .month-container{
         /* scroll-margin-top: 210px; */
     }
+}
+
+
+/* Rather ugly solution for disabling the styles applied on bootstrap validation */
+.form-control.is-invalid, .form-control.is-valid, .form-select.is-invalid, .form-select.is-valid, .form-check-input.is-valid, .form-check-input.is-invalid {
+    background-image: none;
+    border-color: gray;
+    background-color: inherit !important;
+}
+
+.form-check-label{
+    color: black !important;
+}
+
+.form-control.is-invalid:focus, .form-control.is-valid:focus, .form-select.is-invalid:focus, .form-select.is-valid:focus, .form-check-input.is-valid:focus, .form-check-input.is-invalid:focus{
+    border-color: gray;
+    box-shadow: 0 0 0 .25rem rgba(159, 158, 158, .25);
+}
+
+.event-container{
+    padding: 1rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.06);
 }

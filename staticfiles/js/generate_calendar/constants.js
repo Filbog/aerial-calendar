@@ -1,24 +1,37 @@
+const _ = window.gettext || ((x) => x);
+
 export const MONTH_NAMES = [
-  gettext("January"),
-  gettext("February"),
-  gettext("March"),
-  gettext("April"),
-  gettext("May"),
-  gettext("June"),
-  gettext("July"),
-  gettext("August"),
-  gettext("September"),
-  gettext("October"),
-  gettext("November"),
-  gettext("December"),
+  _("January"),
+  _("February"),
+  _("March"),
+  _("April"),
+  _("May"),
+  _("June"),
+  _("July"),
+  _("August"),
+  _("September"),
+  _("October"),
+  _("November"),
+  _("December"),
 ];
 
 export const DAY_NAMES = [
-  gettext("Mon"),
-  gettext("Tue"),
-  gettext("Wed"),
-  gettext("Thu"),
-  gettext("Fri"),
-  gettext("Sat"),
-  gettext("Sun"),
+  _("Mon"),
+  _("Tue"),
+  _("Wed"),
+  _("Thu"),
+  _("Fri"),
+  _("Sat"),
+  _("Sun"),
 ];
+
+// Hacky way, but not sure how to translate dynamically generated JS strings in django otherwise
+export const translatedTypes = {
+  competition: "zawody",
+  workshop: "warsztaty",
+  conference: "konferencja",
+  show: "show",
+  festival: "festiwal",
+  convention: "spotkania",
+  other: "inne",
+};
