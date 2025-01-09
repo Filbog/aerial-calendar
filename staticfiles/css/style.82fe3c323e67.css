@@ -52,7 +52,7 @@ h1 {
 body {
     padding-top: 60px; /* for the navbar */
     padding-bottom: 3rem;
-    background: url('/static/images/transparent-bg-even-more-opaque.png'), var(--background);
+    background: url("/static/images/transparent-bg-even-more-opaque.79af35dd413b.png"), var(--background);
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
