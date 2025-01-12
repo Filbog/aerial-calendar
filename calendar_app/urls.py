@@ -9,6 +9,7 @@ from .views import (
     EventDeleteView,
     UnverifiedEventsView,
     VerifyEventView,
+    YourAccountView,
     download_event_ics_view,
 )
 
@@ -25,4 +26,5 @@ urlpatterns = [
         "unverified-events/", UnverifiedEventsView.as_view(), name="unverified_events"
     ),
     path("verify-event/<uuid:pk>/", VerifyEventView.as_view(), name="verify_event"),
+    path("your-account/", YourAccountView.as_view(), name="your_account"),
 ]

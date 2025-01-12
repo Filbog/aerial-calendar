@@ -29,7 +29,7 @@
 <body>
     <nav class="navbar navbar-expand-xl fixed-top bg-dark" data-bs-theme="dark">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#"> <i class="bi bi-calendar3"></i> {% trans "Aerial Calendar" %}</a>
+          <a class="navbar-brand" href="{% url 'events' %}"> <i class="bi bi-calendar3"></i> {% trans "Aerial Calendar" %}</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="{% trans 'Toggle navigation' %}">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -58,7 +58,7 @@
     <div class="container" id="main-container">
     {% if messages %}
       {% for message in messages %}
-      <div class="position-fixed alert alert-success alert-dismissable fade show {% if message.tags %}{{ message.tags }}{% endif %}" role="alert" >
+      <div class="position-fixed alert alert-dismissable fade show alert-{% if message.tags %}{{ message.tags }}{% endif %}" role="alert" >
         {% trans message.message %}
         <button type="button" class="btn-close ms-2" data-bs-dismiss="alert" aria-label="{% trans 'Close' %}"></button>
       </div>
@@ -67,6 +67,9 @@
         {% block content %}
         {% endblock content %}
     </div>
+    <footer>
+      <p>Made with <i class="bi bi-heart-fill"></i> by <a href="https://www.linkedin.com/in/filip-boguslawski/" class="footer-link">Filip Bogusławski</a></p>
+    </footer>
     <!-- Logout modal -->
     <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
       <div class="modal-dialog">

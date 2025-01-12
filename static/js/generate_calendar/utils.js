@@ -69,7 +69,7 @@ export function renderEvent(e) {
     <div><h2 class='d-inline'>${e.name}</h2> <span class='${
     e.type
   }-type px-1 rounded'>${translatedType}</span></div>
-      <h5>${e.start_date} - ${e.end_date}</h5>
+      <h4>${e.start_date} - ${e.end_date}</h3>
       <h6><i class="bi bi-pin-map-fill"></i> ${e.location}</h6>
       <div class='modal-description d-none' id='${e.id}-description'>
       </div>

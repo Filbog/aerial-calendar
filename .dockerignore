@@ -1,4 +1,6 @@
 fly.toml
 .git/
 *.sqlite3
+*.sql
 cal_env
+db_backup

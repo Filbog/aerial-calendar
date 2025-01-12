@@ -11,6 +11,8 @@
     --background: linear-gradient(to bottom, #d9e1f9, #ffffff);
     --background-lighter:#f8f8ff;
     --navbar-bg: #2c3ebd;
+    --footer-height: 75px;
+    --navbar-height: 60px;
 }
 
 .btn{
@@ -36,7 +38,7 @@
 
 
 .alert{
-    top: 60px;
+    top: var(--navbar-height);
     z-index: 1000;
     width: fit-content;
 }
@@ -50,14 +52,19 @@ h1 {
 }
 
 body {
-    padding-top: 60px; /* for the navbar */
-    padding-bottom: 3rem;
-    background: url('/static/images/transparent-bg-even-more-opaque.png'), var(--background);
+    padding-top: var(--navbar-height); /* for the navbar */
+    background: url('/static/images/transparent-bg-even-more-opaque-kopia.png'), var(--background);
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
+    /* min-height: 100vh; */
 }
+
+#main-container{
+    min-height: calc(100vh - var(--footer-height) - var(--navbar-height)); /* minus footer minus navbar height */
+}
+
 
 
 .form-control, .form-select, .form-check-input {
@@ -129,7 +136,7 @@ body {
     background-color: lightblue;
 }
 
-.competiton-type{
+.competition-type{
     background-color: lightcoral;
 }
 
@@ -161,7 +168,7 @@ body {
 
 .calendar-navigation {
     position: sticky;
-    top: 60px; /* below the navbar */
+    top: var(--navbar-height); /* below the navbar */
     left: 100%;
     max-width: 66%;
     z-index: 100;
@@ -176,7 +183,7 @@ body {
 
 .form-select{
     width: 140px;
-    border: none;
+    /* border: none; */
 }
 
 
@@ -199,6 +206,8 @@ body {
 
 .day.has-events{
     transition: background-color 0.1s ease-in;
+    background: #9ec8f4;
+
 }
 
 .day.has-events:hover{
@@ -287,4 +296,22 @@ body {
     border: 1px solid #e0e0e0;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2), 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.text-justify{
+    text-align: justify;
+    font-size: 1.1rem;
+}
+footer{
+    height: var(--footer-height);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+footer p{
+    margin: 0;
+}
+.footer-link{
+    text-decoration: none;
+    font-weight: bold;
 }

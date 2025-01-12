@@ -9,12 +9,12 @@
     <div class="d-flex gap-3 flex-column flex-sm-row justify-content-center">
         <a class="btn btn-primary" href="{% url 'account_email' %}">{% trans "Change email address" %}</a>
         <a class="btn btn-primary" href="{% url 'account_change_password' %}">{% trans "Change password" %}</a>
-        <a class="btn btn-danger" href="#">{% trans "Delete account" %}</a>
+        <a class="btn btn-danger d-none" href="#">{% trans "Delete account" %}</a>
     </div>
 </div>
 
 <div class="user-events-container">
-    <h1 class="display-5 text-center mb-3">{% trans "Your events:" %}</h1>
+    <h1 class="display-5 text-center mb-3">{% trans "Manage your events:" %}</h1>
     {% for event in event_list %}
     <div class="d-flex flex-column gap-3 mt-3">
         <div>
