@@ -161,7 +161,6 @@ export function fillEventsModal(eventsArray, dateString) {
   eventsModalBody.innerHTML = "";
 
   eventsArray.forEach((e) => {
-    console.log(e);
     const eventItem = document.createElement("div");
     eventItem.classList.add("d-flex", "flex-column", "gap-2");
     eventItem.id = `event-${e.id}`;

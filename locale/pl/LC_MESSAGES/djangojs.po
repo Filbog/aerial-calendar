@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-06 21:05+0000\n"
+"POT-Creation-Date: 2025-01-18 23:11+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -95,6 +95,34 @@ msgstr "Sb"
 #: static/js/generate_calendar/constants.js:25
 msgid "Sun"
 msgstr "Nd"
+
+#: static/js/generate_calendar/constants.js:30
+msgid "competition"
+msgstr "zawody"
+
+#: static/js/generate_calendar/constants.js:31
+msgid "workshop"
+msgstr "warsztaty"
+
+#: static/js/generate_calendar/constants.js:32
+msgid "conference"
+msgstr "konferencja"
+
+#: static/js/generate_calendar/constants.js:33
+msgid "show"
+msgstr "show"
+
+#: static/js/generate_calendar/constants.js:34
+msgid "festival"
+msgstr "festiwal"
+
+#: static/js/generate_calendar/constants.js:35
+msgid "convention"
+msgstr "spotkania"
+
+#: static/js/generate_calendar/constants.js:36
+msgid "other"
+msgstr "inne"
 
 #: static/js/generate_calendar/utils.js:78
 msgid "Link to the event:"

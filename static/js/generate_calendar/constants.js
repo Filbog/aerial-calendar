@@ -27,11 +27,11 @@ export const DAY_NAMES = [
 
 // Hacky way, but not sure how to translate dynamically generated JS strings in django otherwise
 export const translatedTypes = {
-  competition: "zawody",
-  workshop: "warsztaty",
-  conference: "konferencja",
-  show: "show",
-  festival: "festiwal",
-  convention: "spotkania",
-  other: "inne",
+  competition: _("competition"),
+  workshop: _("workshop"),
+  conference: _("conference"),
+  show: _("show"),
+  festival: _("festival"),
+  convention: _("convention"),
+  other: _("other"),
 };

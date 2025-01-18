@@ -82,7 +82,6 @@ class EventCreateView(CustomLoginRequiredMixin, SuccessMessageMixin, CreateView)
     form_class = EventForm
     template_name = "calendar/event_create.html"
     success_url = reverse_lazy("events")
-    success_message = _("Event created")
     login_url = "account_login"
 
     def form_valid(self, form):
@@ -92,6 +91,14 @@ class EventCreateView(CustomLoginRequiredMixin, SuccessMessageMixin, CreateView)
         ).exists()
         response = super().form_valid(form)
         return response
+
+    def get_success_message(self, cleaned_data):
+        if self.request.user.groups.filter(name="verified").exists():
+            return _("Event created! It should appear in the calendar immediately.")
+        else:
+            return _(
+                "Event created and pending verification. It will appear as soon as it gets verified."
+            )
 
 
 class EventUpdateView(
