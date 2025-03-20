@@ -300,7 +300,6 @@ body {
 
 .text-justify{
     text-align: justify;
-    font-size: 1.1rem;
 }
 footer{
     height: var(--footer-height);
@@ -314,4 +313,27 @@ footer p{
 .footer-link{
     text-decoration: none;
     font-weight: bold;
+}
+
+.about-paragraphs{
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2), 0 1px 3px rgba(0, 0, 0, 0.3);
+    font-size: 1.1rem;
+
+}
+
+.form-text{
+    font-size: 1rem;
+}
+
+a{
+    color: var(--primary);
+    font-weight: 500;
+    transition: 0.3s color;
+}
+
+a:hover{
+    color: var(--primary-hover);
 }

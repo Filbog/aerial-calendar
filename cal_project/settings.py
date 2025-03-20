@@ -29,8 +29,12 @@ SECRET_KEY = env.str("DJANGO_SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool("DEBUG", default=True)
 
-ALLOWED_HOSTS = [".fly.dev", "localhost", "127.0.0.1"]  # new
-CSRF_TRUSTED_ORIGINS = ["https://*.fly.dev"]
+ALLOWED_HOSTS = [".fly.dev", "localhost", "127.0.0.1", "kalendarium-aerial.pl"]  # new
+CSRF_TRUSTED_ORIGINS = [
+    "https://*.fly.dev",
+    "https://kalendarium-aerial.pl",
+    "https://www.kalendarium-aerial.pl",
+]
 
 
 # Application definition
