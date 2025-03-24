@@ -27,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = env.str("DJANGO_SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env.bool("DEBUG", default=True)
+DEBUG = env.bool("DEBUG", default=False)
 
 ALLOWED_HOSTS = [
     ".fly.dev",
@@ -188,7 +188,7 @@ if DEBUG:  # local
     EMAIL_HOST_PASSWORD = env.str("EMAIL_HOST_PASSWORD")
     EMAIL_USE_TLS = True
     EMAIL_USE_SSL = False
-else:
+else:  # prod
     EMAIL_BACKEND = "sendgrid_backend.SendgridBackend"
     SENDGRID_API_KEY = env.str("SENDGRID_API_KEY")
     DEFAULT_FROM_EMAIL = "noreply@kalendarium-aerial.pl"
