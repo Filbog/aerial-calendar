@@ -210,7 +210,8 @@ LOGOUT_REDIRECT_URL = "events"
 ACCOUNT_LOGOUT_ON_GET = True
 SOCIALACCOUNT_AUTO_SIGNUP = True
 SOCIALACCOUNT_LOGIN_ON_GET = True
-ACCOUNT_DEFAULT_HTTP_PROTOCOL = "https"
+ACCOUNT_DEFAULT_HTTP_PROTOCOL = "https"  # with this one I try to repair fucking sendgrid making my URLS with http instead of https
+
 
 SOCIALACCOUNT_PROVIDERS = {
     "google": {
