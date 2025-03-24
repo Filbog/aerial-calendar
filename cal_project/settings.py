@@ -181,7 +181,8 @@ AUTHENTICATION_BACKENDS = (
 # EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 # DEFAULT_FROM_EMAIL = "filbog@example.com"
 
-if DEBUG:  # local
+ENVIRONMENT = env.str("ENVIRONMENT")
+if ENVIRONMENT == "local":  # local
     EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
     EMAIL_HOST = "smtp.gmail.com"
     EMAIL_PORT = 587
@@ -189,10 +190,11 @@ if DEBUG:  # local
     EMAIL_HOST_PASSWORD = env.str("EMAIL_HOST_PASSWORD")
     EMAIL_USE_TLS = True
     EMAIL_USE_SSL = False
-else:  # prod
+elif ENVIRONMENT == "production":  # prod
     EMAIL_BACKEND = "sendgrid_backend.SendgridBackend"
     SENDGRID_API_KEY = env.str("SENDGRID_API_KEY")
     DEFAULT_FROM_EMAIL = "noreply@kalendarium-aerial.pl"
+    SENDGRID_SANDBOX_MODE_IN_DEBUG = False
 
 
 SITE_ID = 1
@@ -208,6 +210,7 @@ LOGOUT_REDIRECT_URL = "events"
 ACCOUNT_LOGOUT_ON_GET = True
 SOCIALACCOUNT_AUTO_SIGNUP = True
 SOCIALACCOUNT_LOGIN_ON_GET = True
+ACCOUNT_DEFAULT_HTTP_PROTOCOL = "https"
 
 SOCIALACCOUNT_PROVIDERS = {
     "google": {
