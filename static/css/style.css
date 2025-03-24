@@ -36,6 +36,15 @@
     background-color: var(--background-lighter);
 }
 
+.copy-link{
+    color: var(--primary);
+    transition: color 0.3s;
+}
+.copy-link:hover{
+    color: var(--primary-hover);
+    cursor: pointer;
+}
+
 
 .alert{
     top: var(--navbar-height);

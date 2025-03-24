@@ -66,21 +66,24 @@ function generateOutlookCalendarURL(event) {
 export function renderEvent(e) {
   const translatedType = translatedTypes[e.type];
   return `
-    <div><h2 class='d-inline'>${e.name}</h2> <span class='${
+    <div><h3 class='d-inline'>${e.name}</h3> <span class='${
     e.type
   }-type px-1 rounded'>${translatedType}</span></div>
-      <h4>${e.start_date} - ${e.end_date}</h3>
+      <h5>${e.start_date} - ${e.end_date}</h5>
       <h6><i class="bi bi-pin-map-fill"></i> ${e.location}</h6>
       <div class='modal-description d-none' id='${e.id}-description'>
       </div>
       <div class="modal-links d-flex flex-column gap-2" id="${e.id}-links">
         <div class="modal-main-link">
-          <h4 class="bold my-0"> ${_("Link to the event:")} </h4>
-          <a href="${e.main_link}" target="_blank" rel="noopener">${
+          <h5 class="bold my-0"> ${_("Link to the event:")} </h5>
+          <a href="${
+            e.main_link
+          }" class='linkToCopy' target="_blank" rel="noopener noreferrer">${
     e.main_link
   }</a>
         </div>
       </div>
+
       <div class="btn-group d-inline-block">
         <button class="btn btn-primary dropdown-toggle d-inline" type="button" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">
           ${_("Add to calendar...")}
@@ -104,7 +107,18 @@ export function renderEvent(e) {
   )}</a></li>
         </ul>
       </div>
+      <div class="toast position-fixed align-items-center border-0" role="alert" aria-live="assertive" aria-atomic="true" id="copyToast">
+        <div class="d-flex">
+          <div class="toast-body">
+            ${_("Link copied!")}
+          </div>
+          <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+      </div>
       <hr class='event-hr'>
+
+
+
     `;
 }
 
@@ -117,14 +131,18 @@ export function renderAdditionalUrls(e) {
     <h5 class='mb-0'>${_("Additional links:")}</h5>
     ${
       e.additional_url_1
-        ? `<a href="${e.additional_url_1}" class="d-block">${
+        ? `<a href="${
+            e.additional_url_1
+          }" class="d-block linkToCopy" target="_blank" rel="noopener noreferrer">${
             e.additional_label_1 || "Link 1"
           }</a>`
         : ""
     }
     ${
       e.additional_url_2
-        ? `<a href="${e.additional_url_2}" class="d-block">${
+        ? `<a href="${
+            e.additional_url_2
+          }" class="d-block linkToCopy" target="_blank" rel="noopener noreferrer">${
             e.additional_label_2 || "Link 2"
           }</a>`
         : ""
@@ -153,6 +171,33 @@ export function renderDescription(e) {
   }
 }
 
+export function addCopyButtons(e) {
+  const links = e.querySelectorAll("a.linkToCopy");
+
+  links.forEach((link) => {
+    const copyButton = document.createElement("i");
+    copyButton.classList.add("bi", "bi-copy", "copy-link", "ms-2");
+
+    copyButton.addEventListener("click", () => {
+      const href = link.getAttribute("href");
+      navigator.clipboard
+        .writeText(href)
+        .then(() => {
+          // Show Bootstrap toast
+          const toast = new bootstrap.Toast(
+            document.getElementById("copyToast")
+          );
+          toast.show();
+        })
+        .catch((err) => {
+          console.error("Failed to copy link: ", err);
+        });
+    });
+
+    link.insertAdjacentElement("afterend", copyButton);
+  });
+}
+
 export function fillEventsModal(eventsArray, dateString) {
   const eventsModalTitle = document.getElementById("eventsModalTitle");
   const eventsModalBody = document.getElementById("eventsModalBody");
@@ -167,6 +212,7 @@ export function fillEventsModal(eventsArray, dateString) {
     eventItem.innerHTML = renderEvent(e);
     eventsModalBody.appendChild(eventItem);
     renderAdditionalUrls(e);
+    addCopyButtons(eventItem);
     renderDescription(e);
   });
 }

@@ -29,7 +29,13 @@ SECRET_KEY = env.str("DJANGO_SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool("DEBUG", default=True)
 
-ALLOWED_HOSTS = [".fly.dev", "localhost", "127.0.0.1", "kalendarium-aerial.pl"]  # new
+ALLOWED_HOSTS = [
+    ".fly.dev",
+    "localhost",
+    "127.0.0.1",
+    "kalendarium-aerial.pl",
+    "www.kalendarium-aerial.pl",
+]  # new
 CSRF_TRUSTED_ORIGINS = [
     "https://*.fly.dev",
     "https://kalendarium-aerial.pl",
@@ -168,17 +174,25 @@ AUTHENTICATION_BACKENDS = (
     "django.contrib.auth.backends.ModelBackend",
     "allauth.account.auth_backends.AuthenticationBackend",  # new
 )
-# temporary, until I set up a proper email backend
+
+###### EMAIL
+# optional - console
 # EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 # DEFAULT_FROM_EMAIL = "filbog@example.com"
 
-EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_HOST = "smtp.gmail.com"
-EMAIL_PORT = 587
-EMAIL_HOST_USER = env.str("EMAIL_HOST_USER")
-EMAIL_HOST_PASSWORD = env.str("EMAIL_HOST_PASSWORD")
-EMAIL_USE_TLS = True
-EMAIL_USE_SSL = False
+if DEBUG:  # local
+    EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+    EMAIL_HOST = "smtp.gmail.com"
+    EMAIL_PORT = 587
+    EMAIL_HOST_USER = env.str("EMAIL_HOST_USER")
+    EMAIL_HOST_PASSWORD = env.str("EMAIL_HOST_PASSWORD")
+    EMAIL_USE_TLS = True
+    EMAIL_USE_SSL = False
+else:
+    EMAIL_BACKEND = "sendgrid_backend.SendgridBackend"
+    SENDGRID_API_KEY = env.str("SENDGRID_API_KEY")
+    DEFAULT_FROM_EMAIL = "noreply@kalendarium-aerial.pl"
+
 
 SITE_ID = 1
 ACCOUNT_USERNAME_REQUIRED = False
