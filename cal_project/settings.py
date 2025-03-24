@@ -31,6 +31,7 @@ DEBUG = env.bool("DEBUG", default=False)
 
 ALLOWED_HOSTS = [
     ".fly.dev",
+    "www.kalendarium-aerial.fly.dev",
     "localhost",
     "127.0.0.1",
     "kalendarium-aerial.pl",
