@@ -64,6 +64,7 @@ INSTALLED_APPS = [
     "crispy_bootstrap5",
     "django_bootstrap5",
     "django_htmx",
+    "anymail",
     # my apps
     "accounts",
     "pages",
@@ -195,6 +196,17 @@ elif ENVIRONMENT == "production":  # prod
     SENDGRID_API_KEY = env.str("SENDGRID_API_KEY")
     DEFAULT_FROM_EMAIL = "noreply@kalendarium-aerial.pl"
     SENDGRID_SANDBOX_MODE_IN_DEBUG = False
+elif ENVIRONMENT == "mailgun":
+    ANYMAIL = {
+        # (exact settings here depend on your ESP...)
+        "MAILGUN_API_KEY": env.str("MAILGUN_API_KEY"),
+        "MAILGUN_SENDER_DOMAIN": "mail.kalendarium-aerial.pl",  # your Mailgun domain, if needed
+    }
+    EMAIL_BACKEND = (
+        "anymail.backends.mailgun.EmailBackend"  # or sendgrid.EmailBackend, or...
+    )
+    DEFAULT_FROM_EMAIL = "noreply.mail@kalendarium-aerial.pl"  # if you don't already have this in settings
+    SERVER_EMAIL = "filip.boguslawski.dev@gmail.com"  # ditto (default from-email for Django errors)
 
 
 SITE_ID = 1
