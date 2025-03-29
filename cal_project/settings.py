@@ -200,6 +200,7 @@ elif ENVIRONMENT == "mailgun":
     ANYMAIL = {
         # (exact settings here depend on your ESP...)
         "MAILGUN_API_KEY": env.str("MAILGUN_API_KEY"),
+        "MAILGUN_API_URL": "https://api.eu.mailgun.net/v3",
         "MAILGUN_SENDER_DOMAIN": "mail.kalendarium-aerial.pl",  # your Mailgun domain, if needed
     }
     EMAIL_BACKEND = (
