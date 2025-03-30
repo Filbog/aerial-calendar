@@ -206,11 +206,12 @@ elif ENVIRONMENT == "mailgun":
     EMAIL_BACKEND = (
         "anymail.backends.mailgun.EmailBackend"  # or sendgrid.EmailBackend, or...
     )
-    DEFAULT_FROM_EMAIL = "noreply.mail@kalendarium-aerial.pl"  # if you don't already have this in settings
+    DEFAULT_FROM_EMAIL = "Kalendarium Aerial <noreply.mail@kalendarium-aerial.pl>"  # if you don't already have this in settings
     SERVER_EMAIL = "filip.boguslawski.dev@gmail.com"  # ditto (default from-email for Django errors)
 
 
 SITE_ID = 1
+DEFAULT_DOMAIN = "https://kalendarium-aerial.pl"
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_AUTHENTICATION_METHOD = "email"

@@ -21,7 +21,16 @@ urlpatterns = [
     path("event_create/", EventCreateView.as_view(), name="event_create"),
     path("<uuid:pk>/edit/", EventUpdateView.as_view(), name="event_edit"),
     path("<uuid:pk>/delete/", EventDeleteView.as_view(), name="event_delete"),
-    path("<uuid:pk>/download-ics/", download_event_ics_view, name="download_event_ics"),
+    path(
+        "<uuid:pk>/download-ics/",
+        download_event_ics_view,
+        name="list_download_event_ics",
+    ),
+    path(
+        "list_layout/<uuid:pk>/download-ics/",
+        download_event_ics_view,
+        name="download_event_ics",
+    ),
     path(
         "unverified-events/", UnverifiedEventsView.as_view(), name="unverified_events"
     ),

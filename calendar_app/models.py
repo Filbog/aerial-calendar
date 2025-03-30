@@ -64,16 +64,3 @@ class Event(models.Model):
 
         self.clean()
         super().save(*args, **kwargs)
-
-
-typy_pol = [
-    ("competition", "Zawody"),
-    ("workshop", "Warsztaty"),
-    ("conference", "Konferencja"),
-    ("show", "Show"),
-    ("festival", "Festiwal"),
-    ("convention", "Konwent"),
-    ("other", "Inne"),
-]
-
-# _("Data rozpoczęcia nie może być późniejsza od daty zakończenia")

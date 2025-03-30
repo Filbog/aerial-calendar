@@ -8,8 +8,8 @@
     --primary-hover: #7189f6;
     --secondary: #de7df6;
     --secondary-hover: #b03eaa;
-    --background: linear-gradient(to bottom, #d9e1f9, #ffffff);
-    --background-lighter:#f8f8ff;
+    --background: linear-gradient(to bottom, #d9e1f9, #e5eaf8);
+    --background-lighter:#f7f9fe;
     --navbar-bg: #2c3ebd;
     --footer-height: 75px;
     --navbar-height: 60px;
@@ -326,7 +326,7 @@ footer p{
 
 .about-paragraphs{
     padding: 1rem;
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: rgba(255, 255, 255, 0.5);
     border-radius: 5px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2), 0 1px 3px rgba(0, 0, 0, 0.3);
     font-size: 1.1rem;

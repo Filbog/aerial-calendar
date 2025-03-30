@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-18 23:35+0000\n"
+"POT-Creation-Date: 2025-03-30 21:56+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1248,6 +1248,12 @@ msgstr ""
 msgid "close"
 msgstr "zamknij"
 
+#: cal_env/lib/python3.12/site-packages/test/integ/test_sendgrid.py:333
+#: cal_env/lib/python3.12/site-packages/test/integ/test_sendgrid.py:340
+#: cal_env/lib/python3.12/site-packages/test/integ/test_sendgrid.py:347
+msgid "global"
+msgstr ""
+
 #: calendar_app/forms.py:24
 msgid "Name of the event"
 msgstr "Nazwa wydarzenia"
@@ -1451,14 +1457,12 @@ msgid "Account Already Exists"
 msgstr "Konto już istnieje"
 
 #: templates/account/email/base_message.txt:1
-#, python-format
-msgid "Hello from %(site_name)s!"
+msgid "Hello from %(site_name)s! "
 msgstr "Witaj na %(site_name)s!"
 
 #: templates/account/email/base_message.txt:5
-#, python-format
 msgid ""
-"Thank you for using %(site_name)s!\n"
+"Thank you for using %(site_name)s\n"
 "%(site_domain)s"
 msgstr ""
 "Pozdrowienia od teamu %(site_name)s!\n"
@@ -1928,8 +1932,6 @@ msgid "Delete account"
 msgstr "Usuń konto"
 
 #: templates/calendar/your_account.html:17
-#, fuzzy
-#| msgid "Your events:"
 msgid "Manage your events:"
 msgstr "Twoje wydarzenia:"
 
@@ -1994,18 +1996,17 @@ msgstr "Idź do strony głównej"
 msgid "Frequently Asked Questions"
 msgstr "Najczęściej zadawane pytania"
 
-#~ msgid "Event created"
-#~ msgstr "Wydarzenie utworzone"
+msgid "Event created"
+msgstr "Wydarzenie utworzone"
 
-#~ msgid "About Page"
-#~ msgstr "O projekcie"
+msgid "About Page"
+msgstr "O projekcie"
 
-#~ msgid "Additonal links"
-#~ msgstr "Dodatkowe linki"
+msgid "Additonal links"
+msgstr "Dodatkowe linki"
 
-#~ msgid "Add"
-#~ msgstr "Dodaj"
-
+msgid "Add"
+msgstr "Dodaj"
 
 msgid "Forgot your password?"
 msgstr "Nie pamiętasz hasła?"

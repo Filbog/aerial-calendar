@@ -13,12 +13,22 @@
             <h5>{{ event.start_date|date:"j-m-Y" }} - {{ event.end_date|date:"j-m-Y" }}</h5>
             <h6><i class="bi bi-pin-map-fill"></i> {{ event.location }}</h6>
             {% if event.description %}
-            <div class='modal-description d-none' id='{{ event.id }}-description'></div>
+            <div class='modal-description' id='{{ event.id }}-description'>
+                {{ event.description }}
+            </div>
             {% endif %}
             <div class="modal-links d-flex flex-column gap-2" id="{{ event.id }}-links">
                 <div class="modal-main-link">
                     <h4 class="bold">{% trans "Link to the event:" %}</h4>
                     <a href="{{ event.main_link }}" target="_blank" rel="noopener">{{ event.main_link }}</a>
+                </div>
+                <div class="additional-links d-flex gap-3">
+                    {% if event.additional_url_1 %}
+                    <a href="{{ event.additional_url_1 }}" target="_blank" rel="noopener">{{ event.additional_label_1 }}</a>
+                    {% endif %}
+                    {% if event.additional_url_2 %}
+                    <a href="{{ event.additional_url_2 }}" target="_blank" rel="noopener">{{ event.additional_label_2 }}</a>
+                    {% endif %}
                 </div>
             </div>
             <div class="buttons d-flex gap-2">

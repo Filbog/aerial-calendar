@@ -4,6 +4,7 @@ import {
   renderAdditionalUrls,
   renderDescription,
   scrollToElement,
+  addCopyButtons,
 } from "./utils.js";
 
 export function generateList(year, events) {
@@ -42,6 +43,7 @@ export function generateList(year, events) {
 
         renderAdditionalUrls(event);
         renderDescription(event);
+        addCopyButtons(eventItem);
       });
     }
   }

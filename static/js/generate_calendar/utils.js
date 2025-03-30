@@ -107,7 +107,7 @@ export function renderEvent(e) {
   )}</a></li>
         </ul>
       </div>
-      <div class="toast position-fixed align-items-center border-0" role="alert" aria-live="assertive" aria-atomic="true" id="copyToast">
+      <div class="toast position-fixed align-items-center border-0 z-3" role="alert" aria-live="assertive" aria-atomic="true" id="copyToast">
         <div class="d-flex">
           <div class="toast-body">
             ${_("Link copied!")}
@@ -117,8 +117,6 @@ export function renderEvent(e) {
       </div>
       <hr class='event-hr'>
 
-
-
     `;
 }
 
@@ -127,27 +125,34 @@ export function renderAdditionalUrls(e) {
     const linksContainer = document.getElementById(`${e.id}-links`);
     const additionalLinks = document.createElement("div");
     additionalLinks.classList.add("additional-links");
-    additionalLinks.innerHTML = `
-    <h5 class='mb-0'>${_("Additional links:")}</h5>
-    ${
-      e.additional_url_1
-        ? `<a href="${
-            e.additional_url_1
-          }" class="d-block linkToCopy" target="_blank" rel="noopener noreferrer">${
-            e.additional_label_1 || "Link 1"
-          }</a>`
-        : ""
+
+    let linksHTML = `<h5 class='mb-0'>${_("Additional links:")}</h5>`;
+
+    if (e.additional_url_1) {
+      linksHTML += `
+      <div class="d-flex">
+        <a href="${e.additional_url_1}"
+           class="linkToCopy"
+           target="_blank"
+           rel="noopener noreferrer">
+          ${e.additional_label_1 || "Link 1"}
+        </a>
+      </div>`;
     }
-    ${
-      e.additional_url_2
-        ? `<a href="${
-            e.additional_url_2
-          }" class="d-block linkToCopy" target="_blank" rel="noopener noreferrer">${
-            e.additional_label_2 || "Link 2"
-          }</a>`
-        : ""
+
+    if (e.additional_url_2) {
+      linksHTML += `
+      <div class="d-flex">
+        <a href="${e.additional_url_2}"
+           class="linkToCopy"
+           target="_blank"
+           rel="noopener noreferrer">
+          ${e.additional_label_2 || "Link 2"}
+        </a>
+      </div>`;
     }
-    `;
+
+    additionalLinks.innerHTML = linksHTML;
     linksContainer.appendChild(additionalLinks);
   }
 }
