@@ -1,5 +1,4 @@
 from django.db import models
-import json
 from django.contrib.auth import get_user_model
 from django.urls import reverse
 import uuid
@@ -32,6 +31,7 @@ class Event(models.Model):
         ("show", _("show")),
         ("festival", _("festival")),
         ("convention", _("convention")),
+        ("camp/intensive", _("camp/intensive")),
         ("other", _("other")),
     ]
     type = models.CharField(max_length=20, choices=TYPE_CHOICES)
@@ -54,13 +54,12 @@ class Event(models.Model):
         return reverse("event_detail", args=[str(self.id)])
 
     def clean(self):
-        # Ensure the end date is not earlier than the start date
-
+        # Ensuring the end date is not earlier than the start date
         if self.end_date < self.start_date:
             raise ValidationError(_("Start date cannot be later than end date"))
 
     def save(self, *args, **kwargs):
-        # Call clean() before saving to ensure validation
+        # Calling clean() before saving to ensure validation
 
         self.clean()
         super().save(*args, **kwargs)

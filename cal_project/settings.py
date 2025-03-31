@@ -63,7 +63,6 @@ INSTALLED_APPS = [
     "crispy_forms",
     "crispy_bootstrap5",
     "django_bootstrap5",
-    "django_htmx",
     "anymail",
     # my apps
     "accounts",
@@ -80,7 +79,6 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "django_htmx.middleware.HtmxMiddleware",
     "allauth.account.middleware.AccountMiddleware",
     "django.middleware.locale.LocaleMiddleware",  # translation
 ]
@@ -168,47 +166,13 @@ STORAGES = {
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-
+###### AUTHENTICATION
 AUTH_USER_MODEL = "accounts.CustomUser"
 
-# allauth stuff
 AUTHENTICATION_BACKENDS = (
     "django.contrib.auth.backends.ModelBackend",
     "allauth.account.auth_backends.AuthenticationBackend",  # new
 )
-
-###### EMAIL
-# optional - console
-# EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
-# DEFAULT_FROM_EMAIL = "filbog@example.com"
-
-ENVIRONMENT = env.str("ENVIRONMENT")
-if ENVIRONMENT == "local":  # local
-    EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-    EMAIL_HOST = "smtp.gmail.com"
-    EMAIL_PORT = 587
-    EMAIL_HOST_USER = env.str("EMAIL_HOST_USER")
-    EMAIL_HOST_PASSWORD = env.str("EMAIL_HOST_PASSWORD")
-    EMAIL_USE_TLS = True
-    EMAIL_USE_SSL = False
-elif ENVIRONMENT == "production":  # prod
-    EMAIL_BACKEND = "sendgrid_backend.SendgridBackend"
-    SENDGRID_API_KEY = env.str("SENDGRID_API_KEY")
-    DEFAULT_FROM_EMAIL = "noreply@kalendarium-aerial.pl"
-    SENDGRID_SANDBOX_MODE_IN_DEBUG = False
-elif ENVIRONMENT == "mailgun":
-    ANYMAIL = {
-        # (exact settings here depend on your ESP...)
-        "MAILGUN_API_KEY": env.str("MAILGUN_API_KEY"),
-        "MAILGUN_API_URL": "https://api.eu.mailgun.net/v3",
-        "MAILGUN_SENDER_DOMAIN": "mail.kalendarium-aerial.pl",  # your Mailgun domain, if needed
-    }
-    EMAIL_BACKEND = (
-        "anymail.backends.mailgun.EmailBackend"  # or sendgrid.EmailBackend, or...
-    )
-    DEFAULT_FROM_EMAIL = "Kalendarium Aerial <noreply.mail@kalendarium-aerial.pl>"  # if you don't already have this in settings
-    SERVER_EMAIL = "filip.boguslawski.dev@gmail.com"  # ditto (default from-email for Django errors)
-
 
 SITE_ID = 1
 DEFAULT_DOMAIN = "https://kalendarium-aerial.pl"
@@ -236,6 +200,31 @@ SOCIALACCOUNT_PROVIDERS = {
         "OAUTH_PKCE_ENABLED": True,
     }
 }
+
+###### EMAIL
+# optional for local - console
+# EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+# DEFAULT_FROM_EMAIL = "filbog@example.com"
+
+ENVIRONMENT = env.str("ENVIRONMENT")
+if ENVIRONMENT == "local":  # local, uses my Gmail account
+    EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+    EMAIL_HOST = "smtp.gmail.com"
+    EMAIL_PORT = 587
+    EMAIL_HOST_USER = env.str("EMAIL_HOST_USER")
+    EMAIL_HOST_PASSWORD = env.str("EMAIL_HOST_PASSWORD")
+    EMAIL_USE_TLS = True
+    EMAIL_USE_SSL = False
+elif ENVIRONMENT == "mailgun":
+    ANYMAIL = {
+        "MAILGUN_API_KEY": env.str("MAILGUN_API_KEY"),
+        "MAILGUN_API_URL": "https://api.eu.mailgun.net/v3",
+        "MAILGUN_SENDER_DOMAIN": "mail.kalendarium-aerial.pl",  # my mailgun domain
+    }
+    EMAIL_BACKEND = "anymail.backends.mailgun.EmailBackend"
+    DEFAULT_FROM_EMAIL = "Kalendarium Aerial <noreply.mail@kalendarium-aerial.pl>"
+    SERVER_EMAIL = "filip.boguslawski.dev@gmail.com"  # ditto (default from-email for Django errors)
+
 
 # crispy forms
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"

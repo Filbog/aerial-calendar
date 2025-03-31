@@ -14,18 +14,14 @@ from django.contrib.auth.mixins import (
 )
 from django.contrib.messages.views import SuccessMessageMixin
 from .forms import EventForm
-from django.http import HttpResponse, JsonResponse
-from django.template.loader import render_to_string
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
-from django.contrib.admin.views.decorators import staff_member_required
 from django.utils.decorators import method_decorator
 from django.views.decorators.http import require_POST
 from django.utils.translation import gettext as _
 from django.contrib import messages
 
 
-import json
 from datetime import datetime
 
 from .models import Event

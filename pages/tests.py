@@ -1,22 +1,8 @@
-from django.test import TestCase, SimpleTestCase, override_settings
-from django.urls import reverse, resolve
+from django.test import TestCase, override_settings
+from django.urls import reverse
 from unittest.mock import patch
 
-from .views import HomePageView, AboutPageView
-
-
-class HomePageTests(SimpleTestCase):
-    def test_url_exists_at_correct_location(self):
-        response = self.client.get("/")
-        self.assertEqual(response.status_code, 200)
-
-    def test_url_by_name(self):
-        response = self.client.get(reverse("home"))
-        self.assertEqual(response.status_code, 200)
-
-    def test_homepage_url_resolves_homepageview(self):  # new
-        view = resolve("/")
-        self.assertEqual(view.func.__name__, HomePageView.as_view().__name__)
+from .views import AboutPageView
 
 
 class ErrorPagesTests(TestCase):
@@ -30,10 +16,10 @@ class ErrorPagesTests(TestCase):
         self.assertEqual(response.status_code, 405)
 
     @override_settings(DEBUG=False)
-    @patch("pages.views.HomePageView.get")
+    @patch("pages.views.AboutPageView.get")
     def test_500(self, mock_view):
         self.client.raise_request_exception = False
         mock_view.side_effect = Exception()
-        response = self.client.get(reverse("home"))
+        response = self.client.get(reverse("about"))
         self.assertEqual(response.status_code, 500)
         self.assertTemplateUsed(response, "500.html")

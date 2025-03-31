@@ -45,12 +45,13 @@
 
         function toggleLocationField() {
             if (isVirtualCheckbox.checked) {
-                locationInput.readOnly = true;  // Disable the field
-                locationInput.value = "online"; // Set the value to "online"
+                  // Disable the field and set value to 'online'
+                locationInput.readOnly = true;
+                locationInput.value = "online";
                 console.log(locationInput.value);
             } else {
-                locationInput.value = "";       // Clear the value
-                locationInput.readOnly = false; // Enable the field
+                locationInput.value = "";
+                locationInput.readOnly = false;
                 console.log(locationInput.value);
             }
         }

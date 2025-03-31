@@ -1,5 +1,4 @@
 {% load static %}
-{% load django_htmx %}
 {% load i18n %}
 
 
@@ -20,9 +19,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <!-- HTMX and django-htmx -->
-    <script src="https://unpkg.com/htmx.org@2.0.3" integrity="sha384-0895/pl2MU10Hqc6jd4RvrthNlDiE9U1tWmX7WRESftEDRosgxNsQG/Ze9YMRzHq" crossorigin="anonymous"></script>
-    {% django_htmx_script %}
     <!-- My custom assets -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>

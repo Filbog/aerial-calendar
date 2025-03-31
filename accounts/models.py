@@ -4,7 +4,7 @@ from django.db import models
 
 
 class CustomUser(AbstractUser):
-    # Add any custom fields here
+    # custom fields
     email = models.EmailField(unique=True)
     alias = models.CharField(max_length=100, blank=True, null=True)
 

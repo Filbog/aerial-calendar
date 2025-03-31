@@ -1,9 +1,7 @@
-from django.test import TestCase, Client
+from django.test import TestCase
 from django.urls import reverse
 from django.contrib.auth import get_user_model
-from django.contrib.auth.models import Group
 from .models import Event
-from datetime import datetime, timedelta
 from uuid import uuid4
 
 
@@ -15,14 +13,7 @@ class BaseEventTestCase(TestCase):
         self.other_user = get_user_model().objects.create_user(
             username="otheruser", email="otheruser@example.com", password="password"
         )
-        # self.normal_user = get_user_model().objects.create_user(
-        #     username="normal_user", email="normal@example.com", password="password"
-        # )
-        # self.verified_user = get_user_model().objects.create_user(
-        #     username="verified_user", email="verified@example.com", password="password"
-        # )
-        # self.group = Group.objects.get(name="verified")
-        # self.verified_user.groups.add(self.group)  # doesn't work, no idea how to do it otherwise
+
         self.event = Event.objects.create(
             name="Test Event",
             start_date="2025-01-01",
@@ -51,7 +42,7 @@ class CalendarViewTests(BaseEventTestCase):
 class EventDetailViewTests(BaseEventTestCase):
     def test_event_detail_view_requires_login(self):
         response = self.client.get(reverse("event_detail", args=[str(self.event.id)]))
-        self.assertEqual(response.status_code, 302)  # Redirects to login
+        self.assertEqual(response.status_code, 302)
 
     def test_event_detail_view_authenticated_user(self):
         self.client.login(username="testuser", password="password")
@@ -63,31 +54,13 @@ class EventDetailViewTests(BaseEventTestCase):
 class EventCreateViewTests(BaseEventTestCase):
     def test_event_create_requires_login(self):
         response = self.client.get(reverse("event_create"))
-        self.assertEqual(response.status_code, 302)  # Redirects to login
+        self.assertEqual(response.status_code, 302)
 
     def test_event_create_authenticated_user(self):
         self.client.login(username="testuser", password="password")
         response = self.client.get(reverse("event_create"))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, "calendar/event_create.html")
-
-    # def test_event_created_by_verified_user_is_verified(self):
-    #     self.client.login(username="verified_user", password="password")
-    #     response = self.client.post(
-    #         reverse("event_create"),
-    #         data={
-    #             "name": "Test Event",
-    #             "start_date": datetime.today().date(),
-    #             "end_date": (datetime.today() + timedelta(days=1)).date(),
-    #             "author": self.verified_user,  # Pass the user ID or instance as required by your model
-    #             "location": "Test City",
-    #             "type": "competition",
-    #             "main_link": "http://example.com",
-    #         },
-    #     )
-    #     self.assertEqual(response.status_code, 302)  # Redirect after success
-    #     event = Event.objects.last()
-    #     self.assertTrue(event.is_verified)
 
 
 class EventUpdateViewTests(BaseEventTestCase):
@@ -176,7 +149,7 @@ class UnverifiedEventsViewTests(PermissionTestBase):
 
     def test_access_unverified_events_as_anonymous(self):
         response = self.client.get(reverse("unverified_events"))
-        self.assertEqual(response.status_code, 403)  # Redirect to login
+        self.assertEqual(response.status_code, 403)
 
 
 class VerifyEventViewTests(PermissionTestBase):
@@ -202,6 +175,6 @@ class VerifyEventViewTests(PermissionTestBase):
         response = self.client.post(
             reverse("verify_event", args=[str(self.unverified_event.id)])
         )
-        self.assertEqual(response.status_code, 403)  # Redirect to login
+        self.assertEqual(response.status_code, 403)
         self.unverified_event.refresh_from_db()
         self.assertFalse(self.unverified_event.is_verified)

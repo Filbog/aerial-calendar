@@ -161,15 +161,18 @@ body {
 .other-type{
     background-color: lightpink;
 }
+.camp-type{
+    background-color: #f0a2fb;
+}
 
 .year-heading {
     position: sticky;
-    top: 53px; /* Adjust to the height of your navbar if needed */
-    z-index: 10; /* Ensure it appears above other content */
+    top: 53px; /* Adjusting to the height of the navbar */
+    z-index: 10; /* I need it on top since it's sticky */
     background-color: var(--background-lighter);
     padding: 6px 4px;
     margin-left: -1px;
-    border-bottom: 1px solid #ccc; /* Optional: Add a subtle underline */
+    border-bottom: 1px solid #ccc;
     border-radius: 5px;
   }
 
@@ -192,7 +195,6 @@ body {
 
 .form-select{
     width: 140px;
-    /* border: none; */
 }
 
 
@@ -247,6 +249,7 @@ body {
         font-size: medium;
     }
     .month-container{
+        /* for scrolling properly to the current month upon opening the calendar page on smaller height screens */
         scroll-margin-top: 120px;
     }
 
@@ -270,18 +273,6 @@ body {
     }
 }
 
-/* for scrolling properly to the current month upon opening the calendar page on smaller height screens */
-@media(max-height: 844px){
-    .month-container {
-        /* scroll-margin-top: 4rem; */
-    }
-}
-
-@media(max-height: 800px){
-    .month-container{
-        /* scroll-margin-top: 210px; */
-    }
-}
 
 
 /* Rather ugly solution for disabling the styles applied on bootstrap validation */

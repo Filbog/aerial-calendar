@@ -1,7 +1,4 @@
-from django.views.generic import TemplateView, ListView
-from calendar_app.models import Event
-from django.shortcuts import redirect
-from django.urls import reverse
+from django.views.generic import TemplateView
 
 
 class AboutPageView(TemplateView):
