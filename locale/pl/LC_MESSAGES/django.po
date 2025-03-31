@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-31 22:24+0000\n"
+"POT-Creation-Date: 2025-03-31 23:38+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1522,7 +1522,8 @@ msgid ""
 "Your email verification code is listed below. Please enter it in your open "
 "browser window."
 msgstr ""
-"Twój kod weryfikacyjny znajduje się poniżej. Wprowadź go w otwartym oknie przeglądarki."
+"Twój kod weryfikacyjny znajduje się poniżej. Wprowadź go w otwartym oknie "
+"przeglądarki."
 
 #: templates/account/email/email_confirmation_message.txt:9
 #, python-format
@@ -1547,7 +1548,8 @@ msgid ""
 "Your sign-in code is listed below. Please enter it in your open browser "
 "window."
 msgstr ""
-"Twój kod logowania znajduje się poniżej. Wprowadź go w otwartym oknie przeglądarki."
+"Twój kod logowania znajduje się poniżej. Wprowadź go w otwartym oknie "
+"przeglądarki."
 
 #: templates/account/email/login_code_message.txt:9
 #: templates/account/email/unknown_account_message.txt:6
@@ -1574,8 +1576,10 @@ msgid ""
 "It can be safely ignored if you did not request a password reset. Click the "
 "link below to reset your password."
 msgstr ""
-"Otrzymujesz tego e-maila, ponieważ Ty lub ktoś inny zażądał resetu hasła do Twojego konta.\n"
-"Możesz zignorować tę wiadomość, jeśli to nie Ty zgłosiłeś/aś prośbę. Kliknij poniższy link, aby zresetować hasło."
+"Otrzymujesz tego e-maila, ponieważ Ty lub ktoś inny zażądał resetu hasła do "
+"Twojego konta.\n"
+"Możesz zignorować tę wiadomość, jeśli to nie Ty zgłosiłeś/aś prośbę. Kliknij "
+"poniższy link, aby zresetować hasło."
 
 #: templates/account/email/password_reset_key_message.txt:9
 #, python-format
@@ -1704,6 +1708,10 @@ msgstr "Zaloguj"
 msgid "Log in with Google"
 msgstr "Zaloguj się z Google"
 
+#: templates/account/login.html:17
+msgid "Don't have an account? Sign up!"
+msgstr ""
+
 #: templates/account/logout.html:4 templates/account/logout.html:7
 #: templates/account/logout.html:12
 msgid "Log Out"
@@ -1810,12 +1818,17 @@ msgid ""
 "used.  Please request a <a href=\"%(passwd_reset_url)s\">new password reset</"
 "a>."
 msgstr ""
-"Link do resetowania hasła jest nieprawidłowy, prawdopodobnie dlatego, że został już użyty. "
-"<a href=\"%(passwd_reset_url)s\">Poproś o nowy link resetujący hasło</a>."
+"Link do resetowania hasła jest nieprawidłowy, prawdopodobnie dlatego, że "
+"został już użyty. <a href=\"%(passwd_reset_url)s\">Poproś o nowy link "
+"resetujący hasło</a>."
 
 #: templates/account/password_reset_from_key_done.html:13
 msgid "Your password is now changed."
 msgstr "Twoje hasło zostało zmienione."
+
+#: templates/account/password_reset_help_text.html:3
+msgid "Forgot your password?"
+msgstr "Nie pamiętasz hasła?"
 
 #: templates/account/password_set.html:6 templates/account/password_set.html:10
 #: templates/account/password_set.html:22
@@ -2013,9 +2026,3 @@ msgstr "Najczęściej zadawane pytania"
 
 #~ msgid "Add"
 #~ msgstr "Dodaj"
-
-#~ msgid "Forgot your password?"
-#~ msgstr "Nie pamiętasz hasła?"
-
-#~ "camp/intensive"
-#~ "obóz"

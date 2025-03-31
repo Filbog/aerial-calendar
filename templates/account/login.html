@@ -13,6 +13,7 @@
         {% bootstrap_form form %}
         <button class="btn btn-primary" type="submit">{% trans "Log In" %}</button>
     </form>
-    <a class='btn btn-secondary' href="{% provider_login_url 'google' %}"><i class="bi bi-google"></i> {% trans "Log in with Google" %}</a>
+    <!-- <a class='btn btn-secondary' href="{% provider_login_url 'google' %}"><i class="bi bi-google"></i> {% trans "Log in with Google" %}</a> -->
+     <a href="{% url 'account_signup' %}" class="btn btn-secondary">{% trans "Don't have an account? Sign up!" %}</a>
 
 {% endblock content %}

@@ -167,3 +167,7 @@ msgstr "Pokaż/ukryj opis"
 #: static/js/generate_calendar/utils.js:211
 msgid "Events"
 msgstr "Wydarzenia"
+
+
+#~ msgid "Forgot your password?"
+#~ msgstr "Nie pamiętasz hasła?"
