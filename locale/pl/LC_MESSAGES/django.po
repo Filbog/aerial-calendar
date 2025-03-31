@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-30 21:56+0000\n"
+"POT-Creation-Date: 2025-03-31 22:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1248,12 +1248,6 @@ msgstr ""
 msgid "close"
 msgstr "zamknij"
 
-#: cal_env/lib/python3.12/site-packages/test/integ/test_sendgrid.py:333
-#: cal_env/lib/python3.12/site-packages/test/integ/test_sendgrid.py:340
-#: cal_env/lib/python3.12/site-packages/test/integ/test_sendgrid.py:347
-msgid "global"
-msgstr ""
-
 #: calendar_app/forms.py:24
 msgid "Name of the event"
 msgstr "Nazwa wydarzenia"
@@ -1306,43 +1300,47 @@ msgstr "Dokąd prowadzi link 2"
 msgid "Code of points, elements catalogue etc"
 msgstr "Regulamin, katalog elemetów etc"
 
-#: calendar_app/models.py:29
+#: calendar_app/models.py:28
 msgid "competition"
 msgstr "zawody"
 
-#: calendar_app/models.py:30
+#: calendar_app/models.py:29
 msgid "workshop"
 msgstr "warsztaty"
 
-#: calendar_app/models.py:31
+#: calendar_app/models.py:30
 msgid "conference"
 msgstr "konferencja"
 
-#: calendar_app/models.py:32
+#: calendar_app/models.py:31
 msgid "show"
 msgstr "show"
 
-#: calendar_app/models.py:33
+#: calendar_app/models.py:32
 msgid "festival"
 msgstr "festiwal"
 
-#: calendar_app/models.py:34
+#: calendar_app/models.py:33
 msgid "convention"
 msgstr "spotkania"
+
+#: calendar_app/models.py:34
+msgid "camp/intensive"
+msgstr "obóz"
 
 #: calendar_app/models.py:35
 msgid "other"
 msgstr "inne"
 
-#: calendar_app/models.py:60
+#: calendar_app/models.py:59
 msgid "Start date cannot be later than end date"
 msgstr "Data rozpoczęcia nie może być późniejsza niż data zakończenia"
 
-#: calendar_app/views.py:97
+#: calendar_app/views.py:93
 msgid "Event created! It should appear in the calendar immediately."
 msgstr "Wydarzenie utworzone! Powinno automatycznie pojawić się w kalendarzu."
 
-#: calendar_app/views.py:100
+#: calendar_app/views.py:96
 msgid ""
 "Event created and pending verification. It will appear as soon as it gets "
 "verified."
@@ -1350,79 +1348,79 @@ msgstr ""
 "Wydarzenie utworzone i oczekuje na weryfikację. Pojawi się w kalendarzu od "
 "razu gdy zostanie zweryfikowane."
 
-#: calendar_app/views.py:110
+#: calendar_app/views.py:106
 msgid "Event updated"
 msgstr "Wydarzenie zaktualizowane"
 
-#: calendar_app/views.py:124
+#: calendar_app/views.py:120
 msgid "Event deleted"
 msgstr "Wydarzenie usunięte"
 
-#: calendar_app/views.py:153
+#: calendar_app/views.py:149
 msgid "Event successfully verified"
 msgstr "Wydarzenie zweryfikowane"
 
-#: templates/_base.html:11 templates/_base.html:32 templates/about.html:8
+#: templates/_base.html:10 templates/_base.html:28 templates/about.html:8
 msgid "Aerial Calendar"
 msgstr "Kalendarium Aerial"
 
-#: templates/_base.html:33
+#: templates/_base.html:29
 msgid "Toggle navigation"
 msgstr "Włącz nawigację"
 
-#: templates/_base.html:38
+#: templates/_base.html:34
 msgid "Calendar"
 msgstr "Kalendarz"
 
-#: templates/_base.html:39
+#: templates/_base.html:35
 msgid "List"
 msgstr "Lista"
 
-#: templates/_base.html:41 templates/_base.html:78 templates/_base.html:86
+#: templates/_base.html:37 templates/_base.html:74 templates/_base.html:82
 msgid "Log out"
 msgstr "Wyloguj"
 
-#: templates/_base.html:42
+#: templates/_base.html:38
 msgid "Create event"
 msgstr "Utwórz wydarzenie"
 
-#: templates/_base.html:43 templates/calendar/your_account.html:4
+#: templates/_base.html:39 templates/calendar/your_account.html:4
 #: templates/calendar/your_account.html:8
 msgid "Your account"
 msgstr "Twoje konto"
 
-#: templates/_base.html:45
+#: templates/_base.html:41
 msgid "Unverified"
 msgstr "Niezweryfikowane"
 
-#: templates/_base.html:48
+#: templates/_base.html:44
 msgid "Log in"
 msgstr "Zaloguj"
 
-#: templates/_base.html:49
+#: templates/_base.html:45
 msgid "Sign up"
 msgstr "Rejestracja"
 
-#: templates/_base.html:51 templates/faq.html:4
+#: templates/_base.html:47 templates/faq.html:4
 msgid "FAQ"
 msgstr "FAQ"
 
-#: templates/_base.html:52 templates/about.html:4
+#: templates/_base.html:48 templates/about.html:4
 msgid "About"
 msgstr "O projekcie"
 
-#: templates/_base.html:53 templates/contact.html:4
+#: templates/_base.html:49 templates/contact.html:4
 msgid "Contact"
 msgstr "Kontakt"
 
-#: templates/_base.html:63 templates/_base.html:79 templates/_base.html:85
+#: templates/_base.html:59 templates/_base.html:75 templates/_base.html:81
 #: templates/calendar/calendar_layout.html:29
 #: templates/calendar/navigate_events.html:20
 #: templates/calendar/navigate_events.html:42
 msgid "Close"
 msgstr "Zamknij"
 
-#: templates/_base.html:82 templates/account/logout.html:8
+#: templates/_base.html:78 templates/account/logout.html:8
 msgid "Are you sure you want to log out?"
 msgstr "Czy na pewno chcesz się wylogować?"
 
@@ -1457,10 +1455,12 @@ msgid "Account Already Exists"
 msgstr "Konto już istnieje"
 
 #: templates/account/email/base_message.txt:1
+#, python-format
 msgid "Hello from %(site_name)s! "
 msgstr "Witaj na %(site_name)s!"
 
 #: templates/account/email/base_message.txt:5
+#, python-format
 msgid ""
 "Thank you for using %(site_name)s\n"
 "%(site_domain)s"
@@ -1522,6 +1522,7 @@ msgid ""
 "Your email verification code is listed below. Please enter it in your open "
 "browser window."
 msgstr ""
+"Twój kod weryfikacyjny znajduje się poniżej. Wprowadź go w otwartym oknie przeglądarki."
 
 #: templates/account/email/email_confirmation_message.txt:9
 #, python-format
@@ -1546,6 +1547,7 @@ msgid ""
 "Your sign-in code is listed below. Please enter it in your open browser "
 "window."
 msgstr ""
+"Twój kod logowania znajduje się poniżej. Wprowadź go w otwartym oknie przeglądarki."
 
 #: templates/account/email/login_code_message.txt:9
 #: templates/account/email/unknown_account_message.txt:6
@@ -1555,7 +1557,7 @@ msgstr ""
 
 #: templates/account/email/login_code_subject.txt:3
 msgid "Sign-In Code"
-msgstr ""
+msgstr "Kod logowania"
 
 #: templates/account/email/password_changed_message.txt:4
 msgid "Your password has been changed."
@@ -1572,6 +1574,8 @@ msgid ""
 "It can be safely ignored if you did not request a password reset. Click the "
 "link below to reset your password."
 msgstr ""
+"Otrzymujesz tego e-maila, ponieważ Ty lub ktoś inny zażądał resetu hasła do Twojego konta.\n"
+"Możesz zignorować tę wiadomość, jeśli to nie Ty zgłosiłeś/aś prośbę. Kliknij poniższy link, aby zresetować hasło."
 
 #: templates/account/email/password_reset_key_message.txt:9
 #, python-format
@@ -1784,7 +1788,7 @@ msgstr "Zresetuj moje hasło"
 
 #: templates/account/password_reset.html:33
 msgid "Please contact us if you have any trouble resetting your password."
-msgstr ""
+msgstr "Skontaktuj się z nami jeśli masz problemy ze zresetowaniem hasła"
 
 #: templates/account/password_reset_done.html:17
 msgid ""
@@ -1806,6 +1810,8 @@ msgid ""
 "used.  Please request a <a href=\"%(passwd_reset_url)s\">new password reset</"
 "a>."
 msgstr ""
+"Link do resetowania hasła jest nieprawidłowy, prawdopodobnie dlatego, że został już użyty. "
+"<a href=\"%(passwd_reset_url)s\">Poproś o nowy link resetujący hasło</a>."
 
 #: templates/account/password_reset_from_key_done.html:13
 msgid "Your password is now changed."
@@ -1901,21 +1907,21 @@ msgstr "Wszystkie"
 msgid "Apply"
 msgstr "Zastosuj"
 
-#: templates/calendar/unverified_events.html:20
+#: templates/calendar/unverified_events.html:22
 #: templates/calendar/your_account.html:31
 msgid "Link to the event:"
 msgstr "Link do wydarzenia:"
 
-#: templates/calendar/unverified_events.html:25
+#: templates/calendar/unverified_events.html:35
 #: templates/calendar/your_account.html:36
 msgid "Edit"
 msgstr "Edytuj"
 
-#: templates/calendar/unverified_events.html:28
+#: templates/calendar/unverified_events.html:38
 msgid "Are you sure you want to verify the event?"
 msgstr "Czy na pewno chcesz zweryfikować to wydarzenie?"
 
-#: templates/calendar/unverified_events.html:28
+#: templates/calendar/unverified_events.html:38
 msgid "Verify"
 msgstr "Zweryfikuj"
 
@@ -1996,17 +2002,20 @@ msgstr "Idź do strony głównej"
 msgid "Frequently Asked Questions"
 msgstr "Najczęściej zadawane pytania"
 
-msgid "Event created"
-msgstr "Wydarzenie utworzone"
+#~ msgid "Event created"
+#~ msgstr "Wydarzenie utworzone"
 
-msgid "About Page"
-msgstr "O projekcie"
+#~ msgid "About Page"
+#~ msgstr "O projekcie"
 
-msgid "Additonal links"
-msgstr "Dodatkowe linki"
+#~ msgid "Additonal links"
+#~ msgstr "Dodatkowe linki"
 
-msgid "Add"
-msgstr "Dodaj"
+#~ msgid "Add"
+#~ msgstr "Dodaj"
 
-msgid "Forgot your password?"
-msgstr "Nie pamiętasz hasła?"
+#~ msgid "Forgot your password?"
+#~ msgstr "Nie pamiętasz hasła?"
+
+#~ "camp/intensive"
+#~ "obóz"

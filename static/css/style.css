@@ -138,31 +138,31 @@ body {
 
 /* event types */
 .show-type{
-    background-color: lightgreen;
+    background-color: #43c3ff;
 }
 
 .festival-type{
-    background-color: lightblue;
+    background-color: #bea0fb;
 }
 
 .competition-type{
-    background-color: lightcoral;
+    background-color: #FFB7B2;
 }
 
 .workshop-type{
-    background-color: lightyellow;
+    background-color: #5ceeeb;
 }
 .conference-type{
-    background-color: lightseagreen;
+    background-color: #FFED9E;
 }
 .convention-type{
-    background-color: lightsalmon;
+    background-color: #45ffff;
 }
 .other-type{
-    background-color: lightpink;
+    background-color: #FFA8B8;
 }
-.camp-type{
-    background-color: #f0a2fb;
+.camp_intensive-type{
+    background-color: #32c137;
 }
 
 .year-heading {

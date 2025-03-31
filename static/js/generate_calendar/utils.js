@@ -65,6 +65,7 @@ function generateOutlookCalendarURL(event) {
 
 export function renderEvent(e) {
   const translatedType = translatedTypes[e.type];
+  console.log(translatedType);
   return `
     <div><h3 class='d-inline'>${e.name}</h3> <span class='${
     e.type

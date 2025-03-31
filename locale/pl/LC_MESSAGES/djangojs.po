@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-18 23:11+0000\n"
+"POT-Creation-Date: 2025-03-31 22:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -124,38 +124,46 @@ msgstr "spotkania"
 msgid "other"
 msgstr "inne"
 
-#: static/js/generate_calendar/utils.js:78
+#: static/js/generate_calendar/constants.js:37
+msgid "camp/intensive"
+msgstr "obóz"
+
+#: static/js/generate_calendar/utils.js:79
 msgid "Link to the event:"
 msgstr "Link do wydarzenia:"
 
-#: static/js/generate_calendar/utils.js:86
+#: static/js/generate_calendar/utils.js:90
 msgid "Add to calendar..."
 msgstr "Dodaj do kalendarza..."
 
-#: static/js/generate_calendar/utils.js:91
+#: static/js/generate_calendar/utils.js:95
 msgid "Google Calendar"
 msgstr "Kalendarz Google"
 
-#: static/js/generate_calendar/utils.js:94
+#: static/js/generate_calendar/utils.js:98
 msgid "Outlook"
 msgstr ""
 
-#: static/js/generate_calendar/utils.js:98
+#: static/js/generate_calendar/utils.js:102
 msgid "Apple Calendar"
 msgstr "Kalendarz Apple"
 
-#: static/js/generate_calendar/utils.js:103
+#: static/js/generate_calendar/utils.js:107
 msgid "ICS File"
 msgstr "Plik ICS"
 
-#: static/js/generate_calendar/utils.js:117
+#: static/js/generate_calendar/utils.js:114
+msgid "Link copied!"
+msgstr "Link skopiowany!"
+
+#: static/js/generate_calendar/utils.js:130
 msgid "Additional links:"
 msgstr "Dodatkowe linki:"
 
-#: static/js/generate_calendar/utils.js:147
+#: static/js/generate_calendar/utils.js:171
 msgid "Show/hide description"
 msgstr "Pokaż/ukryj opis"
 
-#: static/js/generate_calendar/utils.js:160
+#: static/js/generate_calendar/utils.js:211
 msgid "Events"
 msgstr "Wydarzenia"

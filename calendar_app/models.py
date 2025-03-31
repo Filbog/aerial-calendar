@@ -31,7 +31,7 @@ class Event(models.Model):
         ("show", _("show")),
         ("festival", _("festival")),
         ("convention", _("convention")),
-        ("camp/intensive", _("camp/intensive")),
+        ("camp_intensive", _("camp/intensive")),
         ("other", _("other")),
     ]
     type = models.CharField(max_length=20, choices=TYPE_CHOICES)

@@ -34,4 +34,5 @@ export const translatedTypes = {
   festival: _("festival"),
   convention: _("convention"),
   other: _("other"),
+  camp_intensive: _("camp/intensive"),
 };
